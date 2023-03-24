@@ -1,0 +1,17 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+  original_url:
+    type: string
+  short_url:
+    type: string
+  code: 
+    type: string
+  clicks: 
+    type: integer
+    format: int32
+  created_at:
+    type: string
+    format: date-time

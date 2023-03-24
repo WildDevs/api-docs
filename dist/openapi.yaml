@@ -50,14 +50,14 @@ paths:
 
         Options for method **string**:
 
-        | Key              | Description                                                   |
-        | ---------------- | --------------------------------------------------------------|
-        | min              | The minimum length of the string (ignored if length is given) |
-        | max              | The maximum length of the API key (ignored if length is given)|
-        | length           | The length of the string                                      |
-        | pool             | The characters used for the string generation                 |
-        | batch            | The number of strings to generate                             |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | min              | The minimum length of the string (ignored if length is given)     |
+        | max              | The maximum length of the API key (ignored if length is given)    |
+        | length           | The length of the string                                          |
+        | pool             | The characters used for the string generation                     |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
 
         Options for method **bytes**:
 
@@ -67,7 +67,7 @@ paths:
         | max              | The maximum length of the API key (ignored if length is given)    |
         | length           | The length of the string                                          |
         | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
 
         Options for method **base32**:
 
@@ -75,14 +75,14 @@ paths:
         | ---------------- | ------------------------------------------------------------------|
         | dashes           | Adds dashes (-) to the string                                     |
         | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
 
         Options for method **base62**:
 
         | Key              | Description                                                       |
         | ---------------- | ------------------------------------------------------------------|
         | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
 
         Options for method **uuidv4**:
 
@@ -90,7 +90,7 @@ paths:
         | ---------------- | ------------------------------------------------------------------|
         | dashes           | Adds dashes (-) to the string                                     |
         | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
 
         Options for method **uuidv5**:
 
@@ -100,7 +100,7 @@ paths:
         | namespace        | The UUID to use for the generation (ignored if batch is given)    |
         | dashes           | Adds dashes (-) to the string                                     |
         | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
       tags:
         - Random
       requestBody:
@@ -1293,6 +1293,300 @@ paths:
                     type: string
         '401':
           description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /urlshorteners:
+    get:
+      summary: Gets all url shorteners
+      operationId: shortUrls
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Shorten urls are bound to the user who owns the api-key. This is an endpoint to retrieve all these shorten urls.
+      tags:
+        - Utils
+      security:
+        - ApiKey: []
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          original_url:
+                            type: string
+                          short_url:
+                            type: string
+                          code:
+                            type: string
+                          clicks:
+                            type: integer
+                            format: int32
+                          created_at:
+                            type: string
+                            format: date-time
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /urlshortener:
+    post:
+      summary: Shorts a given URL
+      operationId: shortUrl
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        If `x-api-key` is supplied, then the short-urls are assigned to the user who owns the api-key. So you can query all short-urls and get more information, like the number of clicks. You can also remove them with the delete endpoint.
+
+        Available shortener domains are: "xfive.de", "xtc5.de"
+
+        If "custom_id" is passed with payload, random id will not be generated and your custom id will be used, if its available.
+
+        Returns the short url.
+      tags:
+        - Utils
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                original_url:
+                  type: string
+                domain:
+                  type: string
+                custom_id:
+                  type: string
+              required:
+                - original_url
+                - domain
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+                        format: url
+                        description: Returns the shorten url
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  '/urlshortener/{id}':
+    delete:
+      summary: Deletes a given url shortener object.
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Utils
+      security:
+        - ApiKey: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: UUID of the shorten url
+          required: true
+      responses:
+        '204':
+          description: Null Response
+        '400':
+          description: Bad Request Error
           content:
             application/json:
               schema:

@@ -41,22 +41,28 @@ servers:
 paths:
 # Random
   /string:
-    $ref: "./resources/random/string.yaml"
+    $ref: "./resources/random/string/post.yaml"
   /number:
-    $ref: "./resources/random/number.yaml"
+    $ref: "./resources/random/number/post.yaml"
 # Utils
   /encode:
-    $ref: "./resources/utils/encode.yaml"
+    $ref: "./resources/utils/encode/post.yaml"
   /decode:
-    $ref: "./resources/utils/decode.yaml"
+    $ref: "./resources/utils/decode/post.yaml"
   /hash:
-    $ref: "./resources/utils/hash.yaml"
+    $ref: "./resources/utils/hash/post.yaml"
   /geoip/{ip}:
-    $ref: "./resources/utils/geoip.yaml"
+    $ref: "./resources/utils/geoip/post.yaml"
   /qrcode:
-    $ref: "./resources/utils/qrcode.yaml"
+    $ref: "./resources/utils/qrcode/post.yaml"
   /compile:
-    $ref: "./resources/utils/compile.yaml"
+    $ref: "./resources/utils/compile/post.yaml"
+  /urlshorteners:
+    $ref: "./resources/utils/urlshortener/get.yaml"
+  /urlshortener:
+    $ref: "./resources/utils/urlshortener/post.yaml"
+  /urlshortener/{id}:
+    $ref: "./resources/utils/urlshortener/delete.yaml"
 
 components:
   securitySchemes:

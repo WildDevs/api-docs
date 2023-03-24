@@ -18,7 +18,6 @@ post:
     | logoBackgroundColor			    | #ffffff		  | Set background hex color when image background transparent    |
     | backgroundImage				      | undefined		| URL															                              |
     | backgroundImageAlpha		    | 1.0			    | Background image transparency. Ranges: 0 - 1.0				        |
-
   tags:
     - Utils
   security:
@@ -28,16 +27,15 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../../schemas/utils/qrcode/payload.yaml"
-
+          $ref: "../../../schemas/utils/qrcode/post/payload.yaml"
   responses:
     '200':
-      $ref: "../../responses/utils/qrcode.yaml"
+      $ref: "../../../responses/utils/qrcode/post.yaml"
     '400':
-      $ref: "../../responses/error/badrequest.yaml"
+      $ref: "../../../responses/error/badrequest.yaml"
     '401':
-      $ref: "../../responses/error/unauthorized.yaml"
+      $ref: "../../../responses/error/unauthorized.yaml"
     '429':
-      $ref: "../../responses/error/toomanyrequests.yaml"
+      $ref: "../../../responses/error/toomanyrequests.yaml"
     '500':
-      $ref: "../../responses/error/unexpected.yaml"
+      $ref: "../../../responses/error/unexpected.yaml"
