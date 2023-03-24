@@ -1,6 +1,6 @@
 post:
   summary: Hashes a text into various formats
-  operationId: hashString
+  operationId: hash
   description: |
     Hashes given text into various formats
   tags:
@@ -17,5 +17,7 @@ post:
       $ref: "../../responses/utils/hash.yaml"
     '400':
       $ref: "../../responses/error/badrequest.yaml"
-    default:
+    '429':
+      $ref: "../../responses/error/toomanyrequests.yaml"
+    '500':
       $ref: "../../responses/error/unexpected.yaml"

@@ -1,0 +1,4 @@
+ApiKey:
+  type: apiKey
+  in: header
+  name: x-api-key

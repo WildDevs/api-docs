@@ -1,0 +1,43 @@
+post:
+  summary: Create QR Code (Quick Response Code)
+  operationId: qrcode
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+    | Option					            | Defaults		| Description												                            |
+    | --------------------------- | ----------- | ------------------------------------------------------------- |
+    | text						            | ''			    | Text															                            |
+    | width						            | 256			    | Width															                            |
+    | height						          | 256			    | Height														                            |
+    | colorDark					          | #000000		  | Dark hex color												                        |
+    | colorLight					        | #ffffff		  | Light hex color												                        |
+    | logo						            | undefined		| URL															                              |
+    | logoWidth					          | width/3.5		| Fixed logo width												                      |
+    | logoHeight					        | height/3.5	| Fixed logo height												                      |
+    | logoBackgroundTransparent	  | false			  | Transparency. When true, logoBackgroundColor is invalid		    |
+    | logoBackgroundColor			    | #ffffff		  | Set background hex color when image background transparent    |
+    | backgroundImage				      | undefined		| URL															                              |
+    | backgroundImageAlpha		    | 1.0			    | Background image transparency. Ranges: 0 - 1.0				        |
+
+  tags:
+    - Utils
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/utils/qrcode/payload.yaml"
+
+  responses:
+    '200':
+      $ref: "../../responses/utils/qrcode.yaml"
+    '400':
+      $ref: "../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../responses/error/unexpected.yaml"

@@ -1,0 +1,52 @@
+type: object
+properties:
+  text:
+    type: string
+    description: The text which should be coded into the qrcode
+    example: Wild Devs Community
+  width:
+    type: integer
+    format: int32
+    description: Width in pixels
+  height:
+    type: integer
+    format: int32
+    description: Height in pixels
+  colorDark:
+    type: string
+    format: hex
+    description: Color in hex-code format, E.g. `#EE5519`
+  colorLight:
+    type: string
+    format: hex
+    description: Color in hex-code format, E.g. `#EE5519`
+  logo:
+    type: string
+    format: url
+    description: Provide the URL to the image which should be embedded into the qrcode
+  logoWidth:
+    type: integer
+    format: int32
+    description: Width in pixels
+  logoHeight:
+    type: integer
+    format: int32
+    description: Height in pixels
+  logoBackgroundColor:
+    type: string
+    format: hex
+    description: Color in hex-code format, E.g. `#EE5519`
+  logoBackgroundTransparent:
+    type: boolean
+  backgroundImage:
+    type: string
+    format: url
+    description: Provide the URL to the background image which should be embedded into the qrcode
+  backgroundImageAlpha:
+    type: number
+    minimum: 0
+    maximum: 1
+    format: float
+    description: Must be greater than or equal to `0` AND less than or equal to `1`
+required:
+  - text

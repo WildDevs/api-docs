@@ -1,0 +1,53 @@
+post:
+  summary: Compile code and get the output
+  operationId: compile
+  description: |
+    `Subscriber` Only Endpoint. API-Key is needed.
+
+    Supported languages are: "c", "cpp", "js", "python"
+
+    For each language are some options available:
+    
+    **c**
+    | Key              | Description                                                   |
+    | ---------------- | --------------------------------------------------------------|
+    | std              | Sets the standard library for the compilation                 |
+    Available **std** values are: "c99", "c11","c17", "c18"                          
+    
+    ---
+    
+    **cpp**
+    | Key              | Description                                                   |
+    | ---------------- | --------------------------------------------------------------|
+    | std              | Sets the standard library for the compilation                 |
+    Available **std** values are: "c++98","c++03", "c++11", "c++14", "c++17"         
+    
+    ---
+    
+    **python**
+    | Key              | Description                                                   |
+    | ---------------- | --------------------------------------------------------------|
+    | version          | Sets the python version, default is: 3                        |
+    Available **version** values are: 2, 3                                           
+  tags:
+    - Utils
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/utils/compile/payload.yaml"
+
+  responses:
+    '200':
+      $ref: "../../responses/utils/compile.yaml"
+    '400':
+      $ref: "../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../responses/error/unexpected.yaml"

@@ -1,6 +1,6 @@
 post:
   summary: Decode text to base64, utf8, utf16le, hex, ascii and latin1
-  operationId: decodeString
+  operationId: decode
   description: |
     Decodes given text into various formats
 
@@ -19,5 +19,7 @@ post:
       $ref: "../../responses/utils/decode.yaml"
     '400':
       $ref: "../../responses/error/badrequest.yaml"
-    default:
+    '429':
+      $ref: "../../responses/error/toomanyrequests.yaml"
+    '500':
       $ref: "../../responses/error/unexpected.yaml"

@@ -1,0 +1,153 @@
+type: object
+properties:
+  city:
+    type: object
+    properties:
+      geoname_id:
+        type: integer
+        format: int32
+      names:
+        type: object
+        properties:
+          de:
+            type: string
+          en:
+            type: string
+          es:
+            type: string
+          fr:
+            type: string
+          ja:
+            type: string
+          pt_BR:
+            type: string
+          ru:
+            type: string
+          zh-CN:
+            type: string
+  continent:
+    type: object
+    properties:
+      code:
+        type: string
+      geoname_id:
+        type: integer
+        format: int32
+      names:
+        type: object
+        properties:
+          de:
+            type: string
+          en:
+            type: string
+          es:
+            type: string
+          fr:
+            type: string
+          ja:
+            type: string
+          pt_BR:
+            type: string
+          ru:
+            type: string
+          zh-CN:
+            type: string
+  country:
+    type: object
+    properties:
+      geoname_id:
+        type: integer
+        format: int32
+      is_in_european_union:
+        type: boolean
+      iso_code:
+        type: string
+      names:
+        type: object
+        properties:
+          de:
+            type: string
+          en:
+            type: string
+          es:
+            type: string
+          fr:
+            type: string
+          ja:
+            type: string
+          pt_BR:
+            type: string
+          ru:
+            type: string
+          zh-CN:
+            type: string
+  location:
+    type: object
+    properties:
+      accuracy_radius:
+        type: integer
+        format: int32
+      latitude:
+        type: integer
+        format: int32
+      longitude:
+        type: integer
+        format: int32
+      time_zone:
+        type: string
+  registered_country:
+    type: object
+    properties:
+      geoname_id:
+        type: integer
+        format: int32
+      is_in_european_union:
+        type: boolean
+      iso_code:
+        type: string
+      names:
+        type: object
+        properties:
+          de:
+            type: string
+          en:
+            type: string
+          es:
+            type: string
+          fr:
+            type: string
+          ja:
+            type: string
+          pt_BR:
+            type: string
+          ru:
+            type: string
+          zh-CN:
+            type: string
+  subdivisions:
+    type: object
+    properties:
+      geoname_id:
+        type: integer
+        format: int32
+      iso_code:
+        type: string
+      names:
+        type: object
+        properties:
+          de:
+            type: string
+          en:
+            type: string
+          es:
+            type: string
+          fr:
+            type: string
+          ja:
+            type: string
+          pt_BR:
+            type: string
+          ru:
+            type: string
+          zh-CN:
+            type: string
