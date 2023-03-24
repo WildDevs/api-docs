@@ -1,0 +1,7 @@
+- in: path
+  name: id
+  schema:
+    type: string
+    format: uuid
+  description: UUID of the shorten url
+  required: true

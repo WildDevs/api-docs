@@ -4,8 +4,8 @@ content:
   application/json:
     schema:
       allOf:
-      - $ref: "../../schemas/success.yaml"
+      - $ref: "../../../schemas/success.yaml"
       - type: object
         properties:
           data:
-            $ref: "../../schemas/random/number/response.yaml"
+            $ref: "../../../schemas/utils/qrcode/post/response.yaml"

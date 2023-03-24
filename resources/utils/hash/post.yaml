@@ -10,14 +10,13 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../../schemas/utils/hash/payload.yaml"
-
+          $ref: "../../../schemas/utils/hash/post/payload.yaml"
   responses:
     '200':
-      $ref: "../../responses/utils/hash.yaml"
+      $ref: "../../../responses/utils/hash/post.yaml"
     '400':
-      $ref: "../../responses/error/badrequest.yaml"
+      $ref: "../../../responses/error/badrequest.yaml"
     '429':
-      $ref: "../../responses/error/toomanyrequests.yaml"
+      $ref: "../../../responses/error/toomanyrequests.yaml"
     '500':
-      $ref: "../../responses/error/unexpected.yaml"
+      $ref: "../../../responses/error/unexpected.yaml"

@@ -1,0 +1,3 @@
+type: string
+format: url
+description: Returns the shorten url

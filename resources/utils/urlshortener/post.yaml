@@ -1,0 +1,30 @@
+post:
+  summary: Shorts a given URL
+  operationId: shortUrl
+  description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+    If `x-api-key` is supplied, then the short-urls are assigned to the user who owns the api-key. So you can query all short-urls and get more information, like the number of clicks. You can also remove them with the delete endpoint.
+
+    Available shortener domains are: "xfive.de", "xtc5.de"
+
+    If "custom_id" is passed with payload, random id will not be generated and your custom id will be used, if its available.
+
+    Returns the short url.
+  tags:
+    - Utils
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/utils/urlshortener/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/utils/urlshortener/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

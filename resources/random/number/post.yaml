@@ -1,0 +1,22 @@
+post:
+  summary: Random Number Generator
+  operationId: number
+  description: Generate random numbers.
+  tags:
+    - Random
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/random/number/post/payload.yaml"
+
+  responses:
+    '200':
+      $ref: "../../../responses/random/number/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"
