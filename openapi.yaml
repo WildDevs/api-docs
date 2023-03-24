@@ -8,8 +8,12 @@ info:
     This API is open for everyone without providing any api-key, but includes member and subscriber endpoints. For those you need an api-key to query the desired endpoints, they are also marked with a lock in this API documentation.
 
     You can [sign up](https://wild-devs.net/register) and generate own api key for free, which also increases your rate-limit.
+    
+    To communicate with our api, you must combine your "key" with your "secret" separated by a colon and encode it with base64.
+    Provide the base64 string as `x-api-key` with the request header.
 
-    Rate-Limits are:
+    ---
+    <h3>Rate-Limits</h3>
     | Scope                   | Limit                 |
     |-------------------------|-----------------------|
     | Public                  | 100 requests / 24h    |
@@ -17,8 +21,16 @@ info:
     | Subscriber: Silver      | 2.500 requests / 24h  |
     | Subscriber: Gold        | 6.000 requests / 24h  |
     | Subscriber: Platinum    | 18.000 requests / 24h |
-  license:
-    name: MIT
+    ---
+    Every endpoint will report the current state of your rate. Following information can be found in the response header:
+      - x-ratelimit-retry-after
+      - x-ratelimit-limit
+      - x-ratelimit-remaining
+      - x-ratelimit-reset
+    ---
+    All responses are in `JSON` format, **subscribers** also can get them in `XML` format. Just add `xml` as query parameter to the request url.
+    E.g. `https://api.wild-devs.net/v1/geoip/37.120.190.250?xml`
+    ---
   contact:
     name: API Support
     url: https://help.wild-devs.net/
@@ -39,3 +51,13 @@ paths:
     $ref: "./resources/utils/decode.yaml"
   /hash:
     $ref: "./resources/utils/hash.yaml"
+  /geoip/{ip}:
+    $ref: "./resources/utils/geoip.yaml"
+  /qrcode:
+    $ref: "./resources/utils/qrcode.yaml"
+  /compile:
+    $ref: "./resources/utils/compile.yaml"
+
+components:
+  securitySchemes:
+    $ref: "./schemas/security.yaml"

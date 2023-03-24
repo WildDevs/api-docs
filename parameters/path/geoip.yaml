@@ -1,0 +1,7 @@
+- in: path
+  name: ip
+  schema:
+    type: string
+    format: ip
+  description: IPv4 or IPv6 address
+  required: true

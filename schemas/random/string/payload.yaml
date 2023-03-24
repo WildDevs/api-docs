@@ -2,26 +2,26 @@ type: object
 properties:
   method:
     type: string
-    description: Allowed methods are <code>string</code>, <code>bytes</code>, <code>base32</code>, <code>base62</code>, <code>uuidv4</code>, <code>uuidv5</code>
+    description: Allowed methods are `string`, `bytes`, `base32`, `base62`, `uuidv4`, `uuidv5`
     example: bytes
   length:
     type: integer
     format: int32
     minimum: 1
     maximum: 128
-    description: The length must be between <code>1</code> and <code>128</code>
+    description: The length must be between `1` and `128`
     example: 8
   min:
     type: integer
     format: int32
     minimum: 1
-    description: Must be greater than <code>0</code> and less than or equal to <code>max</code>
+    description: Must be greater than `0` AND less than or equal to `max`
     example: 1
   max:
     type: integer
     format: int32
     maximum: 128
-    description: Must be greater than or equal to <code>1</code> or <code>min</code> and less than or equal to <code>128</code>
+    description: Must be greater than or equal to `1` or `min` AND less than or equal to `128`
     example: 42
   pool:
     type: string
@@ -29,12 +29,12 @@ properties:
     example: ABCDEF123456789
   prefix:
     type: string
-    description: A prefix for the string, a period (.) will be added automatically.
+    description: A prefix for the string, a period (.) will be added automatically
     example: wd
   batch:
     type: integer
     format: int32
-    description: Must be greater than <code>1</code> and less than or equal to <code>100</code>
+    description: Must be greater than or equal to `1` AND less than or equal to `100`
     example: 5
   dashes:
     type: boolean

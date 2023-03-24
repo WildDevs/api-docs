@@ -1,0 +1,19 @@
+type: object
+properties:
+  language:
+    type: string
+    description: Available languages are `c`, `cpp`, `js` and `python`
+  code:
+    type: string
+    format: base64
+    description: Provide the code as base64 string to avoid character escapes. 
+  std:
+    type: string
+    description: For `C` and `C++` only.
+  version:
+    type: integer
+    format: int32
+    description: For `Python` only.
+required:
+  - language
+  - code

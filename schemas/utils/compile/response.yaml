@@ -1,0 +1,8 @@
+type: object
+properties:
+  source:
+    type: string
+    description: Defines the source of the response. Can be `compiler` or `runtime`
+  result:
+    type: string
+    description: Output of the given code.

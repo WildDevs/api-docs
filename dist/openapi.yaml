@@ -9,7 +9,11 @@ info:
 
     You can [sign up](https://wild-devs.net/register) and generate own api key for free, which also increases your rate-limit.
 
-    Rate-Limits are:
+    To communicate with our api, you must combine your "key" with your "secret" separated by a colon and encode it with base64.
+    Provide the base64 string as `x-api-key` with the request header.
+
+    ---
+    <h3>Rate-Limits</h3>
     | Scope                   | Limit                 |
     |-------------------------|-----------------------|
     | Public                  | 100 requests / 24h    |
@@ -17,8 +21,16 @@ info:
     | Subscriber: Silver      | 2.500 requests / 24h  |
     | Subscriber: Gold        | 6.000 requests / 24h  |
     | Subscriber: Platinum    | 18.000 requests / 24h |
-  license:
-    name: MIT
+    ---
+    Every endpoint will report the current state of your rate. Following information can be found in the response header:
+      - x-ratelimit-retry-after
+      - x-ratelimit-limit
+      - x-ratelimit-remaining
+      - x-ratelimit-reset
+    ---
+    All responses are in `JSON` format, **subscribers** also can get them in `XML` format. Just add `xml` as query parameter to the request url.
+    E.g. `https://api.wild-devs.net/v1/geoip/37.120.190.250?xml`
+    ---
   contact:
     name: API Support
     url: 'https://help.wild-devs.net/'
@@ -30,7 +42,7 @@ paths:
   /string:
     post:
       summary: Random String Generator
-      operationId: createRandomString
+      operationId: string
       description: |
         Generate random strings for passwords, product keys, vouchers or uuids as identifiers.
 
@@ -100,26 +112,26 @@ paths:
               properties:
                 method:
                   type: string
-                  description: 'Allowed methods are <code>string</code>, <code>bytes</code>, <code>base32</code>, <code>base62</code>, <code>uuidv4</code>, <code>uuidv5</code>'
+                  description: 'Allowed methods are `string`, `bytes`, `base32`, `base62`, `uuidv4`, `uuidv5`'
                   example: bytes
                 length:
                   type: integer
                   format: int32
                   minimum: 1
                   maximum: 128
-                  description: The length must be between <code>1</code> and <code>128</code>
+                  description: The length must be between `1` and `128`
                   example: 8
                 min:
                   type: integer
                   format: int32
                   minimum: 1
-                  description: Must be greater than <code>0</code> and less than or equal to <code>max</code>
+                  description: Must be greater than `0` AND less than or equal to `max`
                   example: 1
                 max:
                   type: integer
                   format: int32
                   maximum: 128
-                  description: Must be greater than or equal to <code>1</code> or <code>min</code> and less than or equal to <code>128</code>
+                  description: Must be greater than or equal to `1` or `min` AND less than or equal to `128`
                   example: 42
                 pool:
                   type: string
@@ -127,12 +139,12 @@ paths:
                   example: ABCDEF123456789
                 prefix:
                   type: string
-                  description: 'A prefix for the string, a period (.) will be added automatically.'
+                  description: 'A prefix for the string, a period (.) will be added automatically'
                   example: wd
                 batch:
                   type: integer
                   format: int32
-                  description: Must be greater than <code>1</code> and less than or equal to <code>100</code>
+                  description: Must be greater than or equal to `1` AND less than or equal to `100`
                   example: 5
                 dashes:
                   type: boolean
@@ -178,6 +190,23 @@ paths:
                     type: string
                   note:
                     type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
         '500':
           description: Unexpected Error
           content:
@@ -198,7 +227,7 @@ paths:
   /number:
     post:
       summary: Random Number Generator
-      operationId: createRandomNumber
+      operationId: number
       description: Generate random numbers.
       tags:
         - Random
@@ -213,18 +242,18 @@ paths:
                   type: integer
                   format: int32
                   minimum: 1
-                  description: Must be greater than <code>0</code> and less than or equal to <code>max</code>
+                  description: Must be greater than `0` AND less than or equal to `max`
                   example: 1
                 max:
                   type: integer
                   format: int32
                   maximum: null
-                  description: Must be greater than or equal to <code>1</code> or <code>min</code> and less than or equal to <code>9.007.199.254.740.991</code>
+                  description: Must be greater than or equal to `1` or `min` AND less than or equal to `9.007.199.254.740.991`
                   example: 42
                 batch:
                   type: integer
                   format: int32
-                  description: Must be greater than <code>1</code> and less than or equal to <code>100</code>
+                  description: Must be greater than or equal to `1` AND less than or equal to `100`
                   example: 5
               required:
                 - min
@@ -271,7 +300,24 @@ paths:
                     type: string
                   note:
                     type: string
-        default:
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
           description: Unexpected Error
           content:
             application/json:
@@ -291,7 +337,7 @@ paths:
   /encode:
     post:
       summary: 'Encode text to base64, utf8, utf16le, hex, ascii and latin1'
-      operationId: encodeString
+      operationId: encode
       description: |
         Encodes given text into various formats
 
@@ -373,7 +419,24 @@ paths:
                     type: string
                   note:
                     type: string
-        default:
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
           description: Unexpected Error
           content:
             application/json:
@@ -393,7 +456,7 @@ paths:
   /decode:
     post:
       summary: 'Decode text to base64, utf8, utf16le, hex, ascii and latin1'
-      operationId: decodeString
+      operationId: decode
       description: |
         Decodes given text into various formats
 
@@ -475,7 +538,24 @@ paths:
                     type: string
                   note:
                     type: string
-        default:
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
           description: Unexpected Error
           content:
             application/json:
@@ -494,8 +574,8 @@ paths:
                     type: string
   /hash:
     post:
-      summary: Hashes a text to various formats
-      operationId: hashString
+      summary: Hashes a text into various formats
+      operationId: hash
       description: |
         Hashes given text into various formats
       tags:
@@ -656,7 +736,24 @@ paths:
                     type: string
                   note:
                     type: string
-        default:
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
           description: Unexpected Error
           content:
             application/json:
@@ -673,3 +770,581 @@ paths:
                     type: string
                   note:
                     type: string
+  '/geoip/{ip}':
+    get:
+      summary: Get geolocation information about an IPv4 or IPv6 address.
+      operationId: geoip
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Utils
+      security:
+        - ApiKey: []
+      parameters:
+        - in: path
+          name: ip
+          schema:
+            type: string
+            format: ip
+          description: IPv4 or IPv6 address
+          required: true
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          city:
+                            type: object
+                            properties:
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+                          continent:
+                            type: object
+                            properties:
+                              code:
+                                type: string
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+                          country:
+                            type: object
+                            properties:
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              is_in_european_union:
+                                type: boolean
+                              iso_code:
+                                type: string
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+                          location:
+                            type: object
+                            properties:
+                              accuracy_radius:
+                                type: integer
+                                format: int32
+                              latitude:
+                                type: integer
+                                format: int32
+                              longitude:
+                                type: integer
+                                format: int32
+                              time_zone:
+                                type: string
+                          registered_country:
+                            type: object
+                            properties:
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              is_in_european_union:
+                                type: boolean
+                              iso_code:
+                                type: string
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+                          subdivisions:
+                            type: object
+                            properties:
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              iso_code:
+                                type: string
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /qrcode:
+    post:
+      summary: Create QR Code (Quick Response Code)
+      operationId: qrcode
+      description: "`Member` & `Subscriber` Endpoint. API-Key is needed.\n\n| Option\t\t\t\t\t            | Defaults\t\t| Description\t\t\t\t\t\t\t\t\t\t\t\t                            |\n| --------------------------- | ----------- | ------------------------------------------------------------- |\n| text\t\t\t\t\t\t            | ''\t\t\t    | Text\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                            |\n| width\t\t\t\t\t\t            | 256\t\t\t    | Width\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                            |\n| height\t\t\t\t\t\t          | 256\t\t\t    | Height\t\t\t\t\t\t\t\t\t\t\t\t\t\t                            |\n| colorDark\t\t\t\t\t          | #000000\t\t  | Dark hex color\t\t\t\t\t\t\t\t\t\t\t\t                        |\n| colorLight\t\t\t\t\t        | #ffffff\t\t  | Light hex color\t\t\t\t\t\t\t\t\t\t\t\t                        |\n| logo\t\t\t\t\t\t            | undefined\t\t| URL\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                              |\n| logoWidth\t\t\t\t\t          | width/3.5\t\t| Fixed logo width\t\t\t\t\t\t\t\t\t\t\t\t                      |\n| logoHeight\t\t\t\t\t        | height/3.5\t| Fixed logo height\t\t\t\t\t\t\t\t\t\t\t\t                      |\n| logoBackgroundTransparent\t  | false\t\t\t  | Transparency. When true, logoBackgroundColor is invalid\t\t    |\n| logoBackgroundColor\t\t\t    | #ffffff\t\t  | Set background hex color when image background transparent    |\n| backgroundImage\t\t\t\t      | undefined\t\t| URL\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                              |\n| backgroundImageAlpha\t\t    | 1.0\t\t\t    | Background image transparency. Ranges: 0 - 1.0\t\t\t\t        |\n"
+      tags:
+        - Utils
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The text which should be coded into the qrcode
+                  example: Wild Devs Community
+                width:
+                  type: integer
+                  format: int32
+                  description: Width in pixels
+                height:
+                  type: integer
+                  format: int32
+                  description: Height in pixels
+                colorDark:
+                  type: string
+                  format: hex
+                  description: 'Color in hex-code format, E.g. `#EE5519`'
+                colorLight:
+                  type: string
+                  format: hex
+                  description: 'Color in hex-code format, E.g. `#EE5519`'
+                logo:
+                  type: string
+                  format: url
+                  description: Provide the URL to the image which should be embedded into the qrcode
+                logoWidth:
+                  type: integer
+                  format: int32
+                  description: Width in pixels
+                logoHeight:
+                  type: integer
+                  format: int32
+                  description: Height in pixels
+                logoBackgroundColor:
+                  type: string
+                  format: hex
+                  description: 'Color in hex-code format, E.g. `#EE5519`'
+                logoBackgroundTransparent:
+                  type: boolean
+                backgroundImage:
+                  type: string
+                  format: url
+                  description: Provide the URL to the background image which should be embedded into the qrcode
+                backgroundImageAlpha:
+                  type: number
+                  minimum: 0
+                  maximum: 1
+                  format: float
+                  description: Must be greater than or equal to `0` AND less than or equal to `1`
+              required:
+                - text
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+                        format: base64
+                        description: QRCode will be provided as base64.
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /compile:
+    post:
+      summary: Compile code and get the output
+      operationId: compile
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed.
+
+        Supported languages are: "c", "cpp", "js", "python"
+
+        For each language are some options available:
+
+        **c**
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | std              | Sets the standard library for the compilation                 |
+        Available **std** values are: "c99", "c11","c17", "c18"                          
+
+        ---
+
+        **cpp**
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | std              | Sets the standard library for the compilation                 |
+        Available **std** values are: "c++98","c++03", "c++11", "c++14", "c++17"         
+
+        ---
+
+        **python**
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | version          | Sets the python version, default is: 3                        |
+        Available **version** values are: 2, 3                                           
+      tags:
+        - Utils
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: 'Available languages are `c`, `cpp`, `js` and `python`'
+                code:
+                  type: string
+                  format: base64
+                  description: Provide the code as base64 string to avoid character escapes.
+                std:
+                  type: string
+                  description: For `C` and `C++` only.
+                version:
+                  type: integer
+                  format: int32
+                  description: For `Python` only.
+              required:
+                - language
+                - code
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          source:
+                            type: string
+                            description: Defines the source of the response. Can be `compiler` or `runtime`
+                          result:
+                            type: string
+                            description: Output of the given code.
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
