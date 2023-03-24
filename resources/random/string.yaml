@@ -8,14 +8,14 @@ post:
 
     Options for method **string**:
 
-    | Key              | Description                                                   |
-    | ---------------- | --------------------------------------------------------------|
-    | min              | The minimum length of the string (ignored if length is given) |
-    | max              | The maximum length of the API key (ignored if length is given)|
-    | length           | The length of the string                                      |
-    | pool             | The characters used for the string generation                 |
-    | batch            | The number of strings to generate                             |
-    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+    | Key              | Description                                                       |
+    | ---------------- | ------------------------------------------------------------------|
+    | min              | The minimum length of the string (ignored if length is given)     |
+    | max              | The maximum length of the API key (ignored if length is given)    |
+    | length           | The length of the string                                          |
+    | pool             | The characters used for the string generation                     |
+    | batch            | The number of strings to generate                                 |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |
 
     Options for method **bytes**:
 
@@ -25,7 +25,7 @@ post:
     | max              | The maximum length of the API key (ignored if length is given)    |
     | length           | The length of the string                                          |
     | batch            | The number of strings to generate                                 |
-    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |
   
     Options for method **base32**:
 
@@ -33,14 +33,14 @@ post:
     | ---------------- | ------------------------------------------------------------------|
     | dashes           | Adds dashes (-) to the string                                     |
     | batch            | The number of strings to generate                                 |
-    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |
 
     Options for method **base62**:
 
     | Key              | Description                                                       |
     | ---------------- | ------------------------------------------------------------------|
     | batch            | The number of strings to generate                                 |
-    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |
 
     Options for method **uuidv4**:
 
@@ -48,7 +48,7 @@ post:
     | ---------------- | ------------------------------------------------------------------|
     | dashes           | Adds dashes (-) to the string                                     |
     | batch            | The number of strings to generate                                 |
-    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |
 
     Options for method **uuidv5**:
 
@@ -58,7 +58,7 @@ post:
     | namespace        | The UUID to use for the generation (ignored if batch is given)    |
     | dashes           | Adds dashes (-) to the string                                     |
     | batch            | The number of strings to generate                                 |
-    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |
 
   tags:
     - Random
