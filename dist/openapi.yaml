@@ -1,0 +1,675 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Wild Devs API
+  description: |
+    High Performance & High Security API by [Wild-Devs](https://wild-devs.net). 
+
+    This API is open for everyone without providing any api-key, but includes member and subscriber endpoints. For those you need an api-key to query the desired endpoints, they are also marked with a lock in this API documentation.
+
+    You can [sign up](https://wild-devs.net/register) and generate own api key for free, which also increases your rate-limit.
+
+    Rate-Limits are:
+    | Scope                   | Limit                 |
+    |-------------------------|-----------------------|
+    | Public                  | 100 requests / 24h    |
+    | Member                  | 300 requests / 24h    |
+    | Subscriber: Silver      | 2.500 requests / 24h  |
+    | Subscriber: Gold        | 6.000 requests / 24h  |
+    | Subscriber: Platinum    | 18.000 requests / 24h |
+  license:
+    name: MIT
+  contact:
+    name: API Support
+    url: 'https://help.wild-devs.net/'
+    email: support@wild-devs.net
+servers:
+  - url: 'https://api.wild-devs.net/v1'
+    description: API Production Server
+paths:
+  /string:
+    post:
+      summary: Random String Generator
+      operationId: createRandomString
+      description: |
+        Generate random strings for passwords, product keys, vouchers or uuids as identifiers.
+
+        Allowed methods: string, bytes, base32, base62, uuidv4, uuidv5
+
+        Options for method **string**:
+
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | min              | The minimum length of the string (ignored if length is given) |
+        | max              | The maximum length of the API key (ignored if length is given)|
+        | length           | The length of the string                                      |
+        | pool             | The characters used for the string generation                 |
+        | batch            | The number of strings to generate                             |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+        Options for method **bytes**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | min              | The minimum length of the string (ignored if length is given)     |
+        | max              | The maximum length of the API key (ignored if length is given)    |
+        | length           | The length of the string                                          |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+        Options for method **base32**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | dashes           | Adds dashes (-) to the string                                     |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+        Options for method **base62**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+        Options for method **uuidv4**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | dashes           | Adds dashes (-) to the string                                     |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+        Options for method **uuidv5**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | name             | A unique name to use for the generation                           |
+        | namespace        | The UUID to use for the generation (ignored if batch is given)    |
+        | dashes           | Adds dashes (-) to the string                                     |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+      tags:
+        - Random
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  description: 'Allowed methods are <code>string</code>, <code>bytes</code>, <code>base32</code>, <code>base62</code>, <code>uuidv4</code>, <code>uuidv5</code>'
+                  example: bytes
+                length:
+                  type: integer
+                  format: int32
+                  minimum: 1
+                  maximum: 128
+                  description: The length must be between <code>1</code> and <code>128</code>
+                  example: 8
+                min:
+                  type: integer
+                  format: int32
+                  minimum: 1
+                  description: Must be greater than <code>0</code> and less than or equal to <code>max</code>
+                  example: 1
+                max:
+                  type: integer
+                  format: int32
+                  maximum: 128
+                  description: Must be greater than or equal to <code>1</code> or <code>min</code> and less than or equal to <code>128</code>
+                  example: 42
+                pool:
+                  type: string
+                  description: The characters used for the string generation
+                  example: ABCDEF123456789
+                prefix:
+                  type: string
+                  description: 'A prefix for the string, a period (.) will be added automatically.'
+                  example: wd
+                batch:
+                  type: integer
+                  format: int32
+                  description: Must be greater than <code>1</code> and less than or equal to <code>100</code>
+                  example: 5
+                dashes:
+                  type: boolean
+                  description: Adds dashes (-) to the string
+                  example: true
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /number:
+    post:
+      summary: Random Number Generator
+      operationId: createRandomNumber
+      description: Generate random numbers.
+      tags:
+        - Random
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                min:
+                  type: integer
+                  format: int32
+                  minimum: 1
+                  description: Must be greater than <code>0</code> and less than or equal to <code>max</code>
+                  example: 1
+                max:
+                  type: integer
+                  format: int32
+                  maximum: null
+                  description: Must be greater than or equal to <code>1</code> or <code>min</code> and less than or equal to <code>9.007.199.254.740.991</code>
+                  example: 42
+                batch:
+                  type: integer
+                  format: int32
+                  description: Must be greater than <code>1</code> and less than or equal to <code>100</code>
+                  example: 5
+              required:
+                - min
+                - max
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: integer
+                          format: int32
+                          example: 42
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /encode:
+    post:
+      summary: 'Encode text to base64, utf8, utf16le, hex, ascii and latin1'
+      operationId: encodeString
+      description: |
+        Encodes given text into various formats
+
+        Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
+      tags:
+        - Utils
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Any string to encode into various formats
+                  example: My string to encode
+                from:
+                  type: string
+                  description: 'Define what type your string is -> "base64", "utf8", "utf16le", "latin1", "hex" or "ascii"'
+                  example: ascii
+              required:
+                - text
+                - from
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          base64:
+                            type: string
+                            format: base64
+                          utf8:
+                            type: string
+                            format: utf8
+                          utf16le:
+                            type: string
+                            format: utf16le
+                          latin1:
+                            type: string
+                            format: latin1
+                          hex:
+                            type: string
+                            format: hex
+                          ascii:
+                            type: string
+                            format: ascii
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /decode:
+    post:
+      summary: 'Decode text to base64, utf8, utf16le, hex, ascii and latin1'
+      operationId: decodeString
+      description: |
+        Decodes given text into various formats
+
+        Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
+      tags:
+        - Utils
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Any string to decode into various formats
+                  example: My string to decode
+                from:
+                  type: string
+                  description: 'Define what type your string is -> "base64", "utf8", "utf16le", "latin1", "hex" or "ascii"'
+                  example: base64
+              required:
+                - text
+                - from
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          base64:
+                            type: string
+                            format: base64
+                          utf8:
+                            type: string
+                            format: utf8
+                          utf16le:
+                            type: string
+                            format: utf16le
+                          latin1:
+                            type: string
+                            format: latin1
+                          hex:
+                            type: string
+                            format: hex
+                          ascii:
+                            type: string
+                            format: ascii
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /hash:
+    post:
+      summary: Hashes a text to various formats
+      operationId: hashString
+      description: |
+        Hashes given text into various formats
+      tags:
+        - Utils
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Any string to hash into various formats
+                  example: My string to hash
+              required:
+                - text
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          RSA-MD5:
+                            type: string
+                          RSA-RIPEMD160:
+                            type: string
+                          RSA-SHA1:
+                            type: string
+                          RSA-SHA1-2:
+                            type: string
+                          RSA-SHA224:
+                            type: string
+                          RSA-SHA256:
+                            type: string
+                          RSA-SHA3-224:
+                            type: string
+                          RSA-SHA3-256:
+                            type: string
+                          RSA-SHA3-384:
+                            type: string
+                          RSA-SHA3-512:
+                            type: string
+                          RSA-SHA384:
+                            type: string
+                          RSA-SHA512:
+                            type: string
+                          RSA-SHA512/224:
+                            type: string
+                          RSA-SHA512/256:
+                            type: string
+                          RSA-SM3:
+                            type: string
+                          blake2b512:
+                            type: string
+                          blake2s256:
+                            type: string
+                          id-rsassa-pkcs1-v1_5-with-sha3-224:
+                            type: string
+                          id-rsassa-pkcs1-v1_5-with-sha3-256:
+                            type: string
+                          id-rsassa-pkcs1-v1_5-with-sha3-384:
+                            type: string
+                          id-rsassa-pkcs1-v1_5-with-sha3-512:
+                            type: string
+                          md5:
+                            type: string
+                          md5-sha1:
+                            type: string
+                          md5WithRSAEncryption:
+                            type: string
+                          ripemd:
+                            type: string
+                          ripemd160:
+                            type: string
+                          ripemd160WithRSA:
+                            type: string
+                          rmd160:
+                            type: string
+                          sha1:
+                            type: string
+                          sha1WithRSAEncryption:
+                            type: string
+                          sha224:
+                            type: string
+                          sha224WithRSAEncryption:
+                            type: string
+                          sha256:
+                            type: string
+                          sha256WithRSAEncryption:
+                            type: string
+                          sha3-224:
+                            type: string
+                          sha3-256:
+                            type: string
+                          sha3-384:
+                            type: string
+                          sha3-512:
+                            type: string
+                          sha384:
+                            type: string
+                          sha384WithRSAEncryption:
+                            type: string
+                          sha512:
+                            type: string
+                          sha512-224:
+                            type: string
+                          sha512-224WithRSAEncryption:
+                            type: string
+                          sha512-256:
+                            type: string
+                          sha512-256WithRSAEncryption:
+                            type: string
+                          sha512WithRSAEncryption:
+                            type: string
+                          shake128:
+                            type: string
+                          shake256:
+                            type: string
+                          sm3:
+                            type: string
+                          sm3WithRSAEncryption:
+                            type: string
+                          ssl3-md5:
+                            type: string
+                          ssl3-sha1:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string

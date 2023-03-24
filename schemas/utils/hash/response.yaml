@@ -1,0 +1,106 @@
+type: object
+properties:
+  RSA-MD5:
+    type: string
+  RSA-RIPEMD160: 
+    type: string
+  RSA-SHA1: 
+    type: string
+  RSA-SHA1-2: 
+    type: string
+  RSA-SHA224: 
+    type: string
+  RSA-SHA256: 
+    type: string
+  RSA-SHA3-224:
+    type: string 
+  RSA-SHA3-256:
+    type: string 
+  RSA-SHA3-384:
+    type: string 
+  RSA-SHA3-512:
+    type: string 
+  RSA-SHA384: 
+    type: string
+  RSA-SHA512: 
+    type: string
+  RSA-SHA512/224: 
+    type: string
+  RSA-SHA512/256:
+    type: string 
+  RSA-SM3: 
+    type: string
+  blake2b512: 
+    type: string
+  blake2s256: 
+    type: string
+  id-rsassa-pkcs1-v1_5-with-sha3-224: 
+    type: string
+  id-rsassa-pkcs1-v1_5-with-sha3-256: 
+    type: string
+  id-rsassa-pkcs1-v1_5-with-sha3-384: 
+    type: string
+  id-rsassa-pkcs1-v1_5-with-sha3-512:
+    type: string
+  md5: 
+    type: string
+  md5-sha1: 
+    type: string
+  md5WithRSAEncryption: 
+    type: string
+  ripemd: 
+    type: string
+  ripemd160: 
+    type: string
+  ripemd160WithRSA: 
+    type: string
+  rmd160: 
+    type: string
+  sha1: 
+    type: string
+  sha1WithRSAEncryption: 
+    type: string
+  sha224: 
+    type: string
+  sha224WithRSAEncryption: 
+    type: string
+  sha256: 
+    type: string
+  sha256WithRSAEncryption: 
+    type: string
+  sha3-224: 
+    type: string
+  sha3-256: 
+    type: string
+  sha3-384: 
+    type: string
+  sha3-512: 
+    type: string
+  sha384: 
+    type: string
+  sha384WithRSAEncryption: 
+    type: string
+  sha512: 
+    type: string
+  sha512-224: 
+    type: string
+  sha512-224WithRSAEncryption: 
+    type: string
+  sha512-256: 
+    type: string
+  sha512-256WithRSAEncryption: 
+    type: string
+  sha512WithRSAEncryption: 
+    type: string
+  shake128: 
+    type: string
+  shake256: 
+    type: string
+  sm3: 
+    type: string
+  sm3WithRSAEncryption: 
+    type: string
+  ssl3-md5: 
+    type: string
+  ssl3-sha1: 
+    type: string

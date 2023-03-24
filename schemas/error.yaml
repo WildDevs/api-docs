@@ -1,0 +1,12 @@
+type: object
+properties:
+  status:
+    type: string
+    example: error
+  code:
+    type: integer
+    format: int32
+  message:
+    type: string
+  note:
+    type: string

@@ -1,0 +1,8 @@
+type: object
+properties:
+  text:
+    type: string
+    description: Any string to hash into various formats
+    example: My string to hash
+required:
+  - text

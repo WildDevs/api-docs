@@ -1,0 +1,23 @@
+post:
+  summary: Encode text to base64, utf8, utf16le, hex, ascii and latin1
+  operationId: encodeString
+  description: |
+    Encodes given text into various formats
+
+    Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
+  tags:
+    - Utils
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/utils/encode/payload.yaml"
+
+  responses:
+    '200':
+      $ref: "../../responses/utils/encode.yaml"
+    '400':
+      $ref: "../../responses/error/badrequest.yaml"
+    default:
+      $ref: "../../responses/error/unexpected.yaml"

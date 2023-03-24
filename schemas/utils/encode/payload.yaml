@@ -1,0 +1,13 @@
+type: object
+properties:
+  text:
+    type: string
+    description: Any string to encode into various formats
+    example: My string to encode
+  from:
+    type: string
+    description: Define what type your string is -> "base64", "utf8", "utf16le", "latin1", "hex" or "ascii"
+    example: ascii
+required:
+  - text
+  - from

@@ -1,0 +1,10 @@
+type: object
+properties:
+  status:
+    type: string
+    example: success
+  code:
+    type: integer
+    format: int32
+  message:
+    type: string

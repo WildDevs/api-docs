@@ -1,0 +1,41 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Wild Devs API
+  description: | 
+    High Performance & High Security API by [Wild-Devs](https://wild-devs.net). 
+
+    This API is open for everyone without providing any api-key, but includes member and subscriber endpoints. For those you need an api-key to query the desired endpoints, they are also marked with a lock in this API documentation.
+
+    You can [sign up](https://wild-devs.net/register) and generate own api key for free, which also increases your rate-limit.
+
+    Rate-Limits are:
+    | Scope                   | Limit                 |
+    |-------------------------|-----------------------|
+    | Public                  | 100 requests / 24h    |
+    | Member                  | 300 requests / 24h    |
+    | Subscriber: Silver      | 2.500 requests / 24h  |
+    | Subscriber: Gold        | 6.000 requests / 24h  |
+    | Subscriber: Platinum    | 18.000 requests / 24h |
+  license:
+    name: MIT
+  contact:
+    name: API Support
+    url: https://help.wild-devs.net/
+    email: support@wild-devs.net
+servers:
+  - url: https://api.wild-devs.net/v1
+    description: API Production Server
+paths:
+# Random
+  /string:
+    $ref: "./resources/random/string.yaml"
+  /number:
+    $ref: "./resources/random/number.yaml"
+# Utils
+  /encode:
+    $ref: "./resources/utils/encode.yaml"
+  /decode:
+    $ref: "./resources/utils/decode.yaml"
+  /hash:
+    $ref: "./resources/utils/hash.yaml"

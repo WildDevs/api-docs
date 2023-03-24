@@ -1,0 +1,77 @@
+post:
+  summary: Random String Generator
+  operationId: createRandomString
+  description: |
+    Generate random strings for passwords, product keys, vouchers or uuids as identifiers.
+  
+    Allowed methods: string, bytes, base32, base62, uuidv4, uuidv5
+
+    Options for method **string**:
+
+    | Key              | Description                                                   |
+    | ---------------- | --------------------------------------------------------------|
+    | min              | The minimum length of the string (ignored if length is given) |
+    | max              | The maximum length of the API key (ignored if length is given)|
+    | length           | The length of the string                                      |
+    | pool             | The characters used for the string generation                 |
+    | batch            | The number of strings to generate                             |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+    Options for method **bytes**:
+
+    | Key              | Description                                                       |
+    | ---------------- | ------------------------------------------------------------------|
+    | min              | The minimum length of the string (ignored if length is given)     |
+    | max              | The maximum length of the API key (ignored if length is given)    |
+    | length           | The length of the string                                          |
+    | batch            | The number of strings to generate                                 |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+  
+    Options for method **base32**:
+
+    | Key              | Description                                                       |
+    | ---------------- | ------------------------------------------------------------------|
+    | dashes           | Adds dashes (-) to the string                                     |
+    | batch            | The number of strings to generate                                 |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+    Options for method **base62**:
+
+    | Key              | Description                                                       |
+    | ---------------- | ------------------------------------------------------------------|
+    | batch            | The number of strings to generate                                 |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+    Options for method **uuidv4**:
+
+    | Key              | Description                                                       |
+    | ---------------- | ------------------------------------------------------------------|
+    | dashes           | Adds dashes (-) to the string                                     |
+    | batch            | The number of strings to generate                                 |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+    Options for method **uuidv5**:
+
+    | Key              | Description                                                       |
+    | ---------------- | ------------------------------------------------------------------|
+    | name             | A unique name to use for the generation                           |
+    | namespace        | The UUID to use for the generation (ignored if batch is given)    |
+    | dashes           | Adds dashes (-) to the string                                     |
+    | batch            | The number of strings to generate                                 |
+    | prefix           | A prefix for the string, a period (.) will be added automatically |             |
+
+  tags:
+    - Random
+  requestBody:
+    required: false
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/random/string/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../responses/random/string.yaml"
+    '400':
+      $ref: "../../responses/error/badrequest.yaml"
+    '500':
+      $ref: "../../responses/error/unexpected.yaml"

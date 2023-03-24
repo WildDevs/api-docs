@@ -1,0 +1,20 @@
+type: object
+properties:
+  base64:
+    type: string
+    format: base64
+  utf8:
+    type: string
+    format: utf8
+  utf16le:
+    type: string
+    format: utf16le
+  latin1:
+    type: string
+    format: latin1
+  hex:
+    type: string
+    format: hex
+  ascii:
+    type: string
+    format: ascii

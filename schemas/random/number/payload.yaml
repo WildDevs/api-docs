@@ -1,0 +1,22 @@
+type: object
+properties:
+  min:
+    type: integer
+    format: int32
+    minimum: 1
+    description: Must be greater than <code>0</code> and less than or equal to <code>max</code>
+    example: 1
+  max:
+    type: integer
+    format: int32
+    maximum: 
+    description: Must be greater than or equal to <code>1</code> or <code>min</code> and less than or equal to <code>9.007.199.254.740.991</code>
+    example: 42
+  batch:
+    type: integer
+    format: int32
+    description: Must be greater than <code>1</code> and less than or equal to <code>100</code>
+    example: 5
+required:
+  - min
+  - max
