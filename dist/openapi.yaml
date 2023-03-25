@@ -779,8 +779,6 @@ paths:
           required: false
           schema:
             type: boolean
-      security:
-        - ApiKey: []
       responses:
         '200':
           description: Expected Response
@@ -1002,8 +1000,6 @@ paths:
           schema:
             type: integer
             format: int32
-      security:
-        - ApiKey: []
       responses:
         '200':
           description: Expected Response
@@ -1136,8 +1132,6 @@ paths:
           schema:
             type: integer
             format: int32
-      security:
-        - ApiKey: []
       responses:
         '200':
           description: Expected Response

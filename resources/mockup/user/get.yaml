@@ -7,8 +7,6 @@ get:
     - Mockup
   parameters:
     $ref: "../../../parameters/query/mockup/user.yaml"
-  security:
-    - ApiKey: []
   responses:
     '200':
       $ref: "../../../responses/mockup/user/get.yaml"
