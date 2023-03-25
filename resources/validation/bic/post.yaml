@@ -1,0 +1,26 @@
+post:
+  summary: Check if the given bic (Bank Identification Code) or SWIFT code is valid.
+  operationId: bic
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/bic/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/bic/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

@@ -5,32 +5,50 @@ info:
   description: | 
     High Performance & High Security API by [Wild-Devs](https://wild-devs.net). 
 
-    This API is open for everyone without providing any api-key, but includes member and subscriber endpoints. For those you need an api-key to query the desired endpoints, they are also marked with a lock in this API documentation.
+    <h3>API For Everyone</h3>
+    <div style="border: 1px dashed grey; padding: 10px; background-color: #f0f0f0;">
+      This API is open for everyone without providing any api-key, but also includes member and subscriber endpoints. For those you need an api-key to query the desired endpoints, they are also marked with a lock in this API documentation.
 
-    You can [sign up](https://wild-devs.net/register) and generate own api key for free, which also increases your rate-limit.
-    
-    To communicate with our api, you must combine your "key" with your "secret" separated by a colon and encode it with base64.
-    Provide the base64 string as `x-api-key` with the request header.
+      You can <a href='https://wild-devs.net/register' target='_blank'>sign up</a> and generate own api key for free, which also increases your rate-limit.
+      
+      To communicate with some endpoints of our api, you must combine your "key" with your "secret" separated by a colon and encode it with base64. Provide the base64 string as `x-api-key` with the request header.
+    </div>
 
-    ---
     <h3>Rate-Limits</h3>
-    | Scope                   | Limit                 |
-    |-------------------------|-----------------------|
-    | Public                  | 100 requests / 24h    |
-    | Member                  | 300 requests / 24h    |
-    | Subscriber: Silver      | 2.500 requests / 24h  |
-    | Subscriber: Gold        | 6.000 requests / 24h  |
-    | Subscriber: Platinum    | 18.000 requests / 24h |
-    ---
-    Every endpoint will report the current state of your rate. Following information can be found in the response header:
+    <div style="border: 1px dashed grey; padding: 10px; background-color: #f0f0f0;">
+      A rate limit is the number of API calls an app or user can make within a given time period. If this limit is exceeded or if CPU or total time limits are exceeded, the app or user may be throttled. API requests made by a throttled user or app will fail. All API requests are subject to rate limits.
+      Our rates are quite fair and divided into 3 categories.
+
+      **All limits last 24h, starting from the first request**
+
+      - Public: **100** requests
+      - Member: **300** requests
+      - Subscriber: Silver: **2.500** requests
+      - Subscriber: Gold: **6.000** requests
+      - Subscriber: Platinum: **18.000** requests
+ 
+      Every endpoint will report the current state of your rate. Following information can be found in the response header:
+      
       - x-ratelimit-retry-after
       - x-ratelimit-limit
       - x-ratelimit-remaining
       - x-ratelimit-reset
-    ---
-    All responses are in `JSON` format, **subscribers** also can get them in `XML` format. Just add `xml` as query parameter to the request url.
-    E.g. `https://api.wild-devs.net/v1/geoip/37.120.190.250?xml`
-    ---
+    </div>
+
+    <h3>Response Formats</h3>
+    <div style="border: 1px dashed grey; padding: 10px; background-color: #f0f0f0;">
+      We support two response formats:
+
+      In general, all responses are in `JSON` format, **subscribers** also can get them in `XML` format. Just add `xml` as query parameter to the request url.
+      
+      Example: `https://api.wild-devs.net/v1/geoip/37.120.190.250?xml`
+    </div>
+
+    <h3>Support</h3>
+    <div style="border: 1px dashed grey; padding: 10px; background-color: #f0f0f0;">
+      If you need any support, you can join our <a href='https://discord.wild-devs.net' target='_blank'>Discord</a>. Here, you can connect with other developers who are also using our API and get help with any issues you may be experiencing. Our community is full of knowledgeable developers who are eager to share their expertise and help you succeed. Of course we also offer support via <a href='mailto:support@wild-devs.net'>email</a> or our <a href='https://help.wild-devs.net' target='_blank'>support ticket center</a> and are available to answer your questions.
+    </div>
+
   contact:
     name: API Support
     url: https://help.wild-devs.net/
@@ -39,31 +57,86 @@ servers:
   - url: https://api.wild-devs.net/v1
     description: API Production Server
 paths:
+# Conversion
+  /currency:
+    $ref: "./resources/conversion/currency/post.yaml"
+  /unit:
+    $ref: "./resources/conversion/unit/post.yaml"
+# Games
+  /epicgames/free:
+    $ref: "./resources/games/epicgames/get.yaml"
 # Random
   /string:
     $ref: "./resources/random/string/post.yaml"
   /number:
     $ref: "./resources/random/number/post.yaml"
+# UrlShortener
+  /urlshorteners:
+    $ref: "./resources/urlshortener/get.yaml"
+  /urlshortener:
+    $ref: "./resources/urlshortener/post.yaml"
+  /urlshortener/{id}:
+    $ref: "./resources/urlshortener/delete.yaml"
 # Utils
-  /encode:
-    $ref: "./resources/utils/encode/post.yaml"
-  /decode:
-    $ref: "./resources/utils/decode/post.yaml"
-  /hash:
-    $ref: "./resources/utils/hash/post.yaml"
-  /geoip/{ip}:
-    $ref: "./resources/utils/geoip/post.yaml"
-  /qrcode:
-    $ref: "./resources/utils/qrcode/post.yaml"
   /compile:
     $ref: "./resources/utils/compile/post.yaml"
-  /urlshorteners:
-    $ref: "./resources/utils/urlshortener/get.yaml"
-  /urlshortener:
-    $ref: "./resources/utils/urlshortener/post.yaml"
-  /urlshortener/{id}:
-    $ref: "./resources/utils/urlshortener/delete.yaml"
-
+  /decode:
+    $ref: "./resources/utils/decode/post.yaml"
+  /encode:
+    $ref: "./resources/utils/encode/post.yaml"
+  /geoip/{ip}:
+    $ref: "./resources/utils/geoip/post.yaml"
+  /hash:
+    $ref: "./resources/utils/hash/post.yaml"
+  /qrcode:
+    $ref: "./resources/utils/qrcode/post.yaml"
+# Validation
+  /bic:
+    $ref: "./resources/validation/bic/post.yaml"
+  /btc:
+    $ref: "./resources/validation/btc/post.yaml"
+  /creditcard:
+    $ref: "./resources/validation/creditcard/post.yaml"
+  /ean:
+    $ref: "./resources/validation/ean/post.yaml"
+  /email:
+    $ref: "./resources/validation/email/post.yaml"
+  /eth:
+    $ref: "./resources/validation/eth/post.yaml"
+  /fqdn:
+    $ref: "./resources/validation/fqdn/post.yaml"
+  /iban:
+    $ref: "./resources/validation/iban/post.yaml"
+  /identitycard:
+    $ref: "./resources/validation/identitycard/post.yaml"
+  /imei:
+    $ref: "./resources/validation/imei/post.yaml"
+  /ip:
+    $ref: "./resources/validation/ip/post.yaml"
+  /isbn:
+    $ref: "./resources/validation/isbn/post.yaml"
+  /isin:
+    $ref: "./resources/validation/isin/post.yaml"
+  /issn:
+    $ref: "./resources/validation/issn/post.yaml"
+  /licenseplate:
+    $ref: "./resources/validation/licenseplate/post.yaml"
+  /mac:
+    $ref: "./resources/validation/mac/post.yaml"
+  /magnet:
+    $ref: "./resources/validation/magnet/post.yaml"
+  /mimetype:
+    $ref: "./resources/validation/mimetype/post.yaml"
+  /password:
+    $ref: "./resources/validation/password/post.yaml"
+  /postalcode:
+    $ref: "./resources/validation/postalcode/post.yaml"
+  /semver:
+    $ref: "./resources/validation/semver/post.yaml"
+  /tax:
+    $ref: "./resources/validation/tax/post.yaml"
+  /uuid:
+    $ref: "./resources/validation/uuid/post.yaml"
 components:
   securitySchemes:
     $ref: "./schemas/security.yaml"

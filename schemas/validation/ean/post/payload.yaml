@@ -1,0 +1,6 @@
+type: object
+properties:
+  ean:
+    type: string
+required:
+  - ean

@@ -9,7 +9,7 @@ properties:
   max:
     type: integer
     format: int32
-    maximum: 
+    maximum: 9007199254740991
     description: Must be greater than or equal to `1` or `min` AND less than or equal to `9.007.199.254.740.991`
     example: 42
   batch:

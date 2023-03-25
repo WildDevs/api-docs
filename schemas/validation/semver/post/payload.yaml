@@ -1,0 +1,6 @@
+type: object
+properties:
+  semver:
+    type: string
+required:
+  - semver

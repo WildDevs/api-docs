@@ -1,0 +1,43 @@
+post:
+  summary: Check if the given string matches the format of a country's license plate.
+  operationId: licenseplate
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+    Supported locales: 
+    ```
+      cs-CZ
+      de-DE
+      de-LI
+      en-IN
+      es-AR
+      hu-HU
+      pt-BR
+      pt-PT
+      sq-AL
+      sv-SE 
+      any
+    ```
+
+    If `any` is used, endpoint will check if any of the locales match.
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/licenseplate/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/licenseplate/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

@@ -1,0 +1,6 @@
+type: object
+properties:
+  magnet:
+    type: string
+required:
+  - magnet

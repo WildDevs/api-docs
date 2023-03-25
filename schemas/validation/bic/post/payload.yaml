@@ -1,0 +1,6 @@
+type: object
+properties:
+  bic:
+    type: string
+required:
+  - bic

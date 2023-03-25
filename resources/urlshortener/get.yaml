@@ -1,0 +1,22 @@
+get:
+  summary: Gets all url shorteners
+  operationId: getShortUrls
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+    
+    Shorten urls are bound to the user who owns the api-key. This is an endpoint to retrieve all these shorten urls.
+  tags:
+    - UrlShortener
+  security:
+    - ApiKey: []
+  responses:
+    '200':
+      $ref: "../../responses/urlshortener/get.yaml"
+    '400':
+      $ref: "../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../responses/error/unexpected.yaml"

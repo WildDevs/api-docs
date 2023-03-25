@@ -1,0 +1,46 @@
+post:
+  summary: Check if the given email is valid
+  operationId: email
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+    Valid payload options: "email", "allow_display_name", "require_display_name", "allow_utf8_local_part", "allow_ip_domain", "domain_specific_validation", "blacklisted_chars", "host_blacklist", "host_whitelist", "mx"   
+
+    If **allow_display_name** is set to true, the validator will also match Display Name <email-address>. 
+
+    If **require_display_name** is set to true, the validator will reject strings without the format Display Name <email-address>. 
+
+    If **allow_utf8_local_part** is set to false, the validator will not allow any non-English UTF8 character in email address' local part. 
+    
+    If **allow_ip_domain** is set to true, the validator will allow IP addresses in the host part.
+
+    If **domain_specific_validation** is true, some additional validation will be enabled, e.g. disallowing certain syntactically valid email addresses that are rejected by Gmail. 
+    
+    If **blacklisted_chars** receives a string, then the validator will reject emails that include any of the characters in the string, in the name part. 
+    
+    If **host_blacklist** is set to an array of strings and the part of the email after the @ symbol matches one of the strings defined in it, the validation fails. 
+    
+    If **host_whitelist** is set to an array of strings and the part of the email after the @ symbol matches none of the strings defined in it, the validation fails.
+    
+    if **mx** is set to true, the validator will do a mx record check on the domain of the email.
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/email/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/email/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

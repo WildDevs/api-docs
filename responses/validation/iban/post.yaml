@@ -1,0 +1,11 @@
+# 200
+description: Expected Response
+content:
+  application/json:
+    schema:
+      allOf:
+      - $ref: "../../../schemas/success.yaml"
+      - type: object
+        properties:
+          data:
+            $ref: "../../../schemas/validation/iban/post/response.yaml"

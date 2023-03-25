@@ -1,0 +1,29 @@
+post:
+  summary: Check if the given ean (European Article Number) is valid.
+  operationId: ean
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+    The International Article Number (also known as European Article Number or EAN) is a standard describing a barcode symbology and numbering system used in global trade to identify a specific retail product type, in a specific packaging configuration, from a specific manufacturer.
+      
+    The most commonly used EAN standard is the thirteen-digit EAN-13, a superset of the original 12-digit Universal Product Code (UPC-A) standard developed in 1970 by George J. Laurer.[1] An EAN-13 number includes a 3-digit GS1 prefix (indicating country of registration or special type of product). A prefix with a first digit of "0" indicates a 12-digit UPC-A code follows. A prefix with first two digits of "45" or "49" indicates a Japanese Article Number (JAN) follows.
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/ean/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/ean/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

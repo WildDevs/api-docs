@@ -1,0 +1,28 @@
+post:
+  summary: Check if the given ISSN (International Standard Serial Number) is valid.
+  operationId: issn
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+    
+    An International Standard Serial Number (ISSN) is an eight-digit serial number used to uniquely identify a serial publication, such as a magazine. The ISSN is especially helpful in distinguishing between serials with the same title. ISSNs are used in ordering, cataloging, interlibrary loans, and other practices in connection with serial literature.
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/issn/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/issn/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

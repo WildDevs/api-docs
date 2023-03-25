@@ -1,0 +1,9 @@
+type: object
+properties:
+  licenseplate:
+    type: string
+  locale:
+    type: string
+required:
+  - licenseplate
+  - locale

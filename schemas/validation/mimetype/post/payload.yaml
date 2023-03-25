@@ -1,0 +1,6 @@
+type: object
+properties:
+  mimetype:
+    type: string
+required:
+  - mimetype

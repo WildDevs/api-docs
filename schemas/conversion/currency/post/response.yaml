@@ -1,0 +1,11 @@
+type: object
+properties:
+  rate:
+    type: number
+    format: float
+  date:
+    type: string
+    format: "YYYY-MM-DD"
+  result:
+    type: number
+    format: float

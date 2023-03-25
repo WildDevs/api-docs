@@ -1,0 +1,7 @@
+type: object
+properties:
+  address:
+    type: string
+    description: ethereum address
+required:
+  - address

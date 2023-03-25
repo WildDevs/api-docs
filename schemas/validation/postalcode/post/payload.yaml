@@ -1,0 +1,6 @@
+type: object
+properties:
+  postalcode:
+    type: string
+required:
+  - postalcode

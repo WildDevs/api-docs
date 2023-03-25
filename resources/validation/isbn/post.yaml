@@ -1,0 +1,30 @@
+post:
+  summary: Check if the given ISBN (International Standard Book Number) is valid.
+  operationId: isbn
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+    The International Standard Book Number (ISBN) is a numeric commercial book identifier that is intended to be unique.
+
+    The 10-digit ISBN format was developed by the International Organization for Standardization (ISO) and was published in 1970 as international standard ISO 2108 (the 9-digit SBN code can be converted to a 10-digit ISBN by prefixing it with a zero).
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/isbn/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/isbn/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

@@ -1,0 +1,40 @@
+type: object
+properties:
+  email:
+    type: string
+    format: email
+    description: email address to check
+    example: info@wild-devs.net
+  allow_display_name:
+    type: boolean
+    description: If is set to true, the validator will also match `Display Name <email-address>` format. 
+  require_display_name:
+    type: boolean
+    description: If is set to true, the validator will reject strings without the `Display Name <email-address>` format. 
+  allow_utf8_local_part:
+    type: boolean
+    description: If is set to false, the validator will not allow any non-English UTF8 character in email address' local part. 
+  allow_ip_domain:
+    type: boolean
+    description:  If is set to true, the validator will allow IP addresses in the host part.
+  domain_specific_validation:
+    type: boolean
+    description: If is set to true, some additional validation will be enabled, e.g. disallowing certain syntactically valid email addresses that are rejected by Gmail. 
+  blacklisted_chars:
+    type: string
+    description: If receives a string, then the validator will reject emails that include any of the characters in the string, in the name part. 
+  host_blacklist:
+    type: array
+    items:
+      type: string
+    description: If is set to an array of strings and the part of the email after the @ symbol matches one of the strings defined in it, the validation fails. 
+  host_whitelist:
+    type: array
+    items:
+      type: string
+    description: If is set to an array of strings and the part of the email after the @ symbol matches none of the strings defined in it, the validation fails.
+  mx:
+    type: boolean
+    description: if is set to true, the validator will do a mx record check on the domain of the email.
+required:
+  - email

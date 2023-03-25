@@ -1,0 +1,35 @@
+post:
+  summary: Check if the given string can be considered a strong password or not. 
+  operationId: password
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+    Allows for custom requirements or scoring rules. If `returnScore` is true, then the function returns an integer score for the password rather than a boolean.
+
+    Options: "minLength", "minLowercase", "minUppercase", "minNumbers", "minSymbols", "returnScore", "pointsPerUnique", "pointsPerRepeat", "pointsForContainingLower", "pointsForContainingUpper", "pointsForContainingNumber", "pointsForContainingSymbol"
+
+    Default options are:
+    
+    { minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1, returnScore: false, pointsPerUnique: 1, pointsPerRepeat: 0.5, pointsForContainingLower: 10, pointsForContainingUpper: 10, pointsForContainingNumber: 10, pointsForContainingSymbol: 10 }
+      
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/password/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/password/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

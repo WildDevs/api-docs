@@ -1,0 +1,6 @@
+type: object
+properties:
+  issn:
+    type: string
+required:
+  - issn

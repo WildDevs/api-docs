@@ -1,0 +1,6 @@
+type: object
+properties:
+  identity:
+    type: string
+required:
+  - identity
