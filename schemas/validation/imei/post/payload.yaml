@@ -1,0 +1,12 @@
+type: object
+properties:
+  imei:
+    type: string
+  allow_hyphens:
+    type: boolean
+    description: |
+      IMEI should be of format `###############` or `##-######-######-#`.
+      
+      Defaults to first format. If is set to true, the validator will validate the second format.
+required:
+  - imei

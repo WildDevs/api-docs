@@ -1,0 +1,20 @@
+get:
+  summary: Gets the current and next weeks free games
+  operationId: getEpicGamesFree
+  description: |
+    `Subscriber` Only Endpoint. API-Key is needed.
+  tags:
+    - Games
+  security:
+    - ApiKey: []
+  responses:
+    '200':
+      $ref: "../../../responses/games/epicgames/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

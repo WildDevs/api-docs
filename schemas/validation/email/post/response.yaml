@@ -1,0 +1,13 @@
+type: object
+properties:
+  valid:
+    type: boolean
+  mx:
+    description: only when `mx` is set to true
+    type: object
+    properties:
+      exchange: 
+        type: string
+        description: the domain of the mail-server behind the email address
+      valid: 
+        type: boolean

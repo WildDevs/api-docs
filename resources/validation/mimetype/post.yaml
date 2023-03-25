@@ -1,0 +1,65 @@
+post:
+  summary: Check if the given MIME type format is valid.
+  operationId: mimetype
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+    A media type (also known as a MIME type) is a two-part identifier for file formats and format contents transmitted on the Internet. The Internet Assigned Numbers Authority (IANA) is the official authority for the standardization and publication of these classifications. Media types were originally defined in Request for Comments RFC 2045 (MIME) 
+        
+    Format of Internet Message Bodies (Nov 1996) in November 1996 as a part of the MIME (Multipurpose Internet Mail Extensions) specification, for denoting type of email message content and attachments; hence the original name, MIME type. Media types are also used by other internet protocols such as HTTP and document file formats such as HTML, for similar purposes.
+  
+    **Common examples:**
+
+    ```
+    application/javascript
+    application/json
+    application/ld+json
+    application/msword (.doc)
+    application/pdf
+    application/sql
+    application/vnd.api+json
+    application/vnd.ms-excel (.xls)
+    application/vnd.ms-powerpoint (.ppt)
+    application/vnd.oasis.opendocument.text (.odt)
+    application/vnd.openxmlformats-officedocument.presentationml.presentation (.pptx)
+    application/vnd.openxmlformats-officedocument.spreadsheetml.sheet (.xlsx)
+    application/vnd.openxmlformats-officedocument.wordprocessingml.document (.docx)
+    application/x-www-form-urlencoded
+    application/xml
+    application/zip
+    application/zstd (.zst)
+    audio/mpeg
+    audio/ogg
+    image/avif
+    image/jpeg (.jpg, .jpeg, .jfif, .pjpeg, .pjp)
+    image/png
+    image/svg+xml (.svg)
+    model/obj (.obj)
+    multipart/form-data
+    text/plain
+    text/css
+    text/csv
+    text/html
+    text/xml
+    ```
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/mimetype/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/mimetype/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

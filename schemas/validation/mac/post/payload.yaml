@@ -1,0 +1,9 @@
+type: object
+properties:
+  address:
+    type: string
+  no_separators:
+    type: boolean
+    description: If is true, the validator will allow MAC addresses without separators. Also, it allows the use of hyphens, spaces or dots e.g. '01 02 03 04 05 ab', '01-02-03-04-05-ab' or '0102.0304.05ab'. The options also allow a eui property to specify if it needs to be validated against EUI-48 or EUI-64. The accepted values of EUI are 48, 64.
+required:
+  - address

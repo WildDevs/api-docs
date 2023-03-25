@@ -39,6 +39,678 @@ servers:
   - url: 'https://api.wild-devs.net/v1'
     description: API Production Server
 paths:
+  /currency:
+    post:
+      summary: Convert an amount from one currency to another currency
+      operationId: currency
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed.
+
+        Supported currencies:
+        ```
+        AED (United Arab Emirates Dirham)
+        AFN (Afghan Afghani)
+        ALL (Albanian Lek)
+        AMD (Armenian Dram)
+        ANG (Netherlands Antillean Guilder)
+        AOA (Angolan Kwanza)
+        ARS (Argentine Peso)
+        AUD (Australian Dollar)
+        AWG (Aruban Florin)
+        AZN (Azerbaijani Manat)
+        BAM (Bosnia-Herzegovina Convertible Mark)
+        BBD (Barbadian Dollar)
+        BDT (Bangladeshi Taka)
+        BGN (Bulgarian Lev)
+        BHD (Bahraini Dinar)
+        BIF (Burundian Franc)
+        BMD (Bermudan Dollar)
+        BND (Brunei Dollar)
+        BOB (Bolivian Boliviano)
+        BRL (Brazilian Real)
+        BSD (Bahamian Dollar)
+        BTC (Bitcoin)
+        BTN (Bhutanese Ngultrum)
+        BWP (Botswanan Pula)
+        BYN (Belarusian Ruble)
+        BZD (Belize Dollar)
+        CAD (Canadian Dollar)
+        CDF (Congolese Franc)
+        CHF (Swiss Franc)
+        CLF (Chilean Unit of Account (UF))
+        CLP (Chilean Peso)
+        CNH (Chinese Yuan (Offshore))
+        CNY (Chinese Yuan)
+        COP (Colombian Peso)
+        CRC (Costa Rican Colón)
+        CUC (Cuban Convertible Peso)
+        CUP (Cuban Peso)
+        CVE (Cape Verdean Escudo)
+        CZK (Czech Republic Koruna)
+        DJF (Djiboutian Franc)
+        DKK (Danish Krone)
+        DOP (Dominican Peso)
+        DZD (Algerian Dinar)
+        EGP (Egyptian Pound)
+        ERN (Eritrean Nakfa)
+        ETB (Ethiopian Birr)
+        EUR (Euro)
+        FJD (Fijian Dollar)
+        FKP (Falkland Islands Pound)
+        GBP (British Pound Sterling)
+        GEL (Georgian Lari)
+        GGP (Guernsey Pound)
+        GHS (Ghanaian Cedi)
+        GIP (Gibraltar Pound)
+        GMD (Gambian Dalasi)
+        GNF (Guinean Franc)
+        GTQ (Guatemalan Quetzal)
+        GYD (Guyanaese Dollar)
+        HKD (Hong Kong Dollar)
+        HNL (Honduran Lempira)
+        HRK (Croatian Kuna)
+        HTG (Haitian Gourde)
+        HUF (Hungarian Forint)
+        IDR (Indonesian Rupiah)
+        ILS (Israeli New Sheqel)
+        IMP (Manx pound)
+        INR (Indian Rupee)
+        IQD (Iraqi Dinar)
+        IRR (Iranian Rial)
+        ISK (Icelandic Króna)
+        JEP (Jersey Pound)
+        JMD (Jamaican Dollar)
+        JOD (Jordanian Dinar)
+        JPY (Japanese Yen)
+        KES (Kenyan Shilling)
+        KGS (Kyrgystani Som)
+        KHR (Cambodian Riel)
+        KMF (Comorian Franc)
+        KPW (North Korean Won)
+        KRW (South Korean Won)
+        KWD (Kuwaiti Dinar)
+        KYD (Cayman Islands Dollar)
+        KZT (Kazakhstani Tenge)
+        LAK (Laotian Kip)
+        LBP (Lebanese Pound)
+        LKR (Sri Lankan Rupee)
+        LRD (Liberian Dollar)
+        LSL (Lesotho Loti)
+        LYD (Libyan Dinar)
+        MAD (Moroccan Dirham)
+        MDL (Moldovan Leu)
+        MGA (Malagasy Ariary)
+        MKD (Macedonian Denar)
+        MMK (Myanma Kyat)
+        MNT (Mongolian Tugrik)
+        MOP (Macanese Pataca)
+        MRO (Mauritanian Ouguiya (pre-2018))
+        MRU (Mauritanian Ouguiya)
+        MUR (Mauritian Rupee)
+        MVR (Maldivian Rufiyaa)
+        MWK (Malawian Kwacha)
+        MXN (Mexican Peso)
+        MYR (Malaysian Ringgit)
+        MZN (Mozambican Metical)
+        NAD (Namibian Dollar)
+        NGN (Nigerian Naira)
+        NIO (Nicaraguan Córdoba)
+        NOK (Norwegian Krone)
+        NPR (Nepalese Rupee)
+        NZD (New Zealand Dollar)
+        OMR (Omani Rial)
+        PAB (Panamanian Balboa)
+        PEN (Peruvian Nuevo Sol)
+        PGK (Papua New Guinean Kina)
+        PHP (Philippine Peso)
+        PKR (Pakistani Rupee)
+        PLN (Polish Zloty)
+        PYG (Paraguayan Guarani)
+        QAR (Qatari Rial)
+        RON (Romanian Leu)
+        RSD (Serbian Dinar)
+        RUB (Russian Ruble)
+        RWF (Rwandan Franc)
+        SAR (Saudi Riyal)
+        SBD (Solomon Islands Dollar)
+        SCR (Seychellois Rupee)
+        SDG (Sudanese Pound)
+        SEK (Swedish Krona)
+        SGD (Singapore Dollar)
+        SHP (Saint Helena Pound)
+        SLL (Sierra Leonean Leone)
+        SOS (Somali Shilling)
+        SRD (Surinamese Dollar)
+        SSP (South Sudanese Pound)
+        STD (São Tomé and Príncipe Dobra (pre-2018))
+        STN (São Tomé and Príncipe Dobra)
+        SVC (Salvadoran Colón)
+        SYP (Syrian Pound)
+        SZL (Swazi Lilangeni)
+        THB (Thai Baht)
+        TJS (Tajikistani Somoni)
+        TMT (Turkmenistani Manat)
+        TND (Tunisian Dinar)
+        TOP (Tongan Paanga)
+        TRY (Turkish Lira)
+        TTD (Trinidad and Tobago Dollar)
+        TWD (New Taiwan Dollar)
+        TZS (Tanzanian Shilling)
+        UAH (Ukrainian Hryvnia)
+        UGX (Ugandan Shilling)
+        USD (United States Dollar)
+        UYU (Uruguayan Peso)
+        UZS (Uzbekistan Som)
+        VEF (Venezuelan Bolívar Fuerte (Old))
+        VES (Venezuelan Bolívar Soberano)
+        VND (Vietnamese Dong)
+        VUV (Vanuatu Vatu)
+        WST (Samoan Tala)
+        XAF (CFA Franc BEAC)
+        XAG (Silver Ounce)
+        XAU (Gold Ounce)
+        XCD (East Caribbean Dollar)
+        XDR (Special Drawing Rights)
+        XOF (CFA Franc BCEAO)
+        XPD (Palladium Ounce)
+        XPF (CFP Franc)
+        XPT (Platinum Ounce)
+        YER (Yemeni Rial)
+        ZAR (South African Rand)
+        ZMW (Zambian Kwacha)
+        ZWL (Zimbabwean Dollar)
+        ```
+      tags:
+        - Conversion
+      security:
+        - ApiKey: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: string
+                  example: USD
+                to:
+                  type: string
+                  example: EUR
+                amount:
+                  type: number
+                  format: float
+                  example: 192.47
+              required:
+                - from
+                - to
+                - amount
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          rate:
+                            type: number
+                            format: float
+                          date:
+                            type: string
+                            format: YYYY-MM-DD
+                          result:
+                            type: number
+                            format: float
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /unit:
+    post:
+      summary: Random Number Generator
+      operationId: unit
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed.
+
+        Supported units are:
+
+        **Length**
+        ```
+        mm, cm, m, in, ft-us, ft, mi
+        ```
+
+        **Area**
+        ```
+        mm2, cm2, m2, ha, km2, in2, ft2, ac, mi2
+        ```
+
+        **Mass**
+        ```
+        mcg, mg, g, kg, oz, lb, mt, t
+        ```
+
+        **Volume** 
+        ```
+        mm3, cm3, ml, l, kl, m3, km3, tsp, Tbs, in3, fl-oz, cup, pnt, qt, gal, ft3, yd3
+        ```
+
+        **Volume Flow Rate**
+        ```
+        mm3/s, cm3/s, ml/s, cl/s, dl/s, l/s, l/min, l/h, kl/s, kl/min, kl/h, m3/s, m3/min, m3/h, km3/s, tsp/s, Tbs/s, in3/s, in3/min, in3/h, fl-oz/s, fl-oz/min, fl-oz/h, cup/s, pnt/s, pnt/min, pnt/h, qt/s, gal/s, gal/min, gal/h, ft3/s, ft3/min, ft3/h, yd3/s, yd3/min, yd3/h
+        ```
+
+        **Temperature**
+        ```
+        C, F, K, R
+        ```
+
+        **Time**
+        ```
+        ns, mu, ms, s, min, h, d, week, month, year
+        ```
+
+        **Frequency**
+        ```
+        Hz, mHz, kHz, MHz, GHz, THz, rpm, deg/s, rad/s
+        ```
+
+        **Speed**
+        ```
+        m/s, km/h, m/h, knot, ft/s
+        ```
+
+        **Pace**
+        ```
+        s/m, min/km, s/ft, min/km
+        ```
+
+        **Pressure**
+        ```
+        Pa, hPa, kPa, MPa, bar, torr, psi, ksi
+        ```
+
+        **Digital**
+        ```
+        b, Kb, Mb, Gb, Tb, B, KB, MB, GB, TB
+        ```
+
+        **Illuminance**
+        ```
+        lx, ft-cd
+        ```
+
+        **Parts-Per**
+        ```
+        ppm, ppb, ppt, ppq
+        ```
+
+        **Voltage**
+        ```
+        V, mV, kV
+        ```
+
+        **Current**
+        ```
+        A, mA, kA
+        ```
+
+        **Power**
+        ```
+        W, mW, kW, MW, GW
+        ```
+
+        **Apparent Power**
+        ```
+        VA, mVA, kVA, MVA, GVA
+        ```
+
+        **Reactive Power**
+        ```
+        VAR, mVAR, kVAR, MVAR, GVAR
+        ```
+
+        **Energy**
+        ```
+        Wh, mWh, kWh, MWh, GWh, J, kJ
+        ```
+
+        **Reactive Energy**
+        ```
+        VARh, mVARh, kVARh, MVARh, GVARh
+        ```
+
+        **Angle**
+        ```
+        deg, rad, grad, arcmin, arcsec
+        ```
+      tags:
+        - Conversion
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: string
+                  example: m/s
+                to:
+                  type: string
+                  example: m/h
+                amount:
+                  type: number
+                  format: float
+                  example: 10.65
+              required:
+                - from
+                - to
+                - amount
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: integer
+                        format: int32
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /epicgames/free:
+    get:
+      summary: Gets the current and next weeks free games
+      operationId: getEpicGamesFree
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed.
+      tags:
+        - Games
+      security:
+        - ApiKey: []
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          currentWeek:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                description:
+                                  type: string
+                                type:
+                                  type: string
+                                startDate:
+                                  type: string
+                                  format: date-time
+                                endDate:
+                                  type: string
+                                  format: date-time
+                          nextWeek:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                description:
+                                  type: string
+                                type:
+                                  type: string
+                                startDate:
+                                  type: string
+                                  format: date-time
+                                endDate:
+                                  type: string
+                                  format: date-time
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /string:
     post:
       summary: Random String Generator
@@ -247,7 +919,7 @@ paths:
                 max:
                   type: integer
                   format: int32
-                  maximum: null
+                  maximum: 9007199254740991
                   description: Must be greater than or equal to `1` or `min` AND less than or equal to `9.007.199.254.740.991`
                   example: 42
                 batch:
@@ -334,34 +1006,18 @@ paths:
                     type: string
                   note:
                     type: string
-  /encode:
-    post:
-      summary: 'Encode text to base64, utf8, utf16le, hex, ascii and latin1'
-      operationId: encode
+  /urlshorteners:
+    get:
+      summary: Gets all url shorteners
+      operationId: getShortUrls
       description: |
-        Encodes given text into various formats
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
 
-        Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
+        Shorten urls are bound to the user who owns the api-key. This is an endpoint to retrieve all these shorten urls.
       tags:
-        - Utils
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                text:
-                  type: string
-                  description: Any string to encode into various formats
-                  example: My string to encode
-                from:
-                  type: string
-                  description: 'Define what type your string is -> "base64", "utf8", "utf16le", "latin1", "hex" or "ascii"'
-                  example: ascii
-              required:
-                - text
-                - from
+        - UrlShortener
+      security:
+        - ApiKey: []
       responses:
         '200':
           description: Expected Response
@@ -384,26 +1040,374 @@ paths:
                       data:
                         type: object
                         properties:
-                          base64:
+                          id:
                             type: string
-                            format: base64
-                          utf8:
+                            format: uuid
+                          original_url:
                             type: string
-                            format: utf8
-                          utf16le:
+                          short_url:
                             type: string
-                            format: utf16le
-                          latin1:
+                          code:
                             type: string
-                            format: latin1
-                          hex:
+                          clicks:
+                            type: integer
+                            format: int32
+                          created_at:
                             type: string
-                            format: hex
-                          ascii:
-                            type: string
-                            format: ascii
+                            format: date-time
         '400':
           description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /urlshortener:
+    post:
+      summary: Shorts a given URL
+      operationId: shortUrl
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        If `x-api-key` is supplied, then the short-urls are assigned to the user who owns the api-key. So you can query all short-urls and get more information, like the number of clicks. You can also remove them with the delete endpoint.
+
+        Available shortener domains are: "xfive.de", "xtc5.de"
+
+        If "custom_id" is passed with payload, random id will not be generated and your custom id will be used, if its available.
+
+        Returns the short url.
+      tags:
+        - UrlShortener
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                original_url:
+                  type: string
+                domain:
+                  type: string
+                custom_id:
+                  type: string
+              required:
+                - original_url
+                - domain
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+                        format: url
+                        description: Returns the shorten url
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  '/urlshortener/{id}':
+    delete:
+      summary: Deletes a given url shortener object.
+      operationId: deleteShortUrl
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - UrlShortener
+      security:
+        - ApiKey: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: UUID of the shorten url
+          required: true
+      responses:
+        '204':
+          description: Null Response
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /compile:
+    post:
+      summary: Compile code and get the output
+      operationId: compile
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed.
+
+        Supported languages are: "c", "cpp", "js", "python"
+
+        For each language are some options available:
+
+        **c**
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | std              | Sets the standard library for the compilation                 |
+        Available **std** values are: "c99", "c11","c17", "c18"                          
+
+        ---
+
+        **cpp**
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | std              | Sets the standard library for the compilation                 |
+        Available **std** values are: "c++98","c++03", "c++11", "c++14", "c++17"         
+
+        ---
+
+        **python**
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | version          | Sets the python version, default is: 3                        |
+        Available **version** values are: 2, 3                                           
+      tags:
+        - Utils
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: 'Available languages are `c`, `cpp`, `js` and `python`'
+                code:
+                  type: string
+                  format: base64
+                  description: Provide the code as base64 string to avoid character escapes.
+                std:
+                  type: string
+                  description: For `C` and `C++` only.
+                version:
+                  type: integer
+                  format: int32
+                  description: For `Python` only.
+              required:
+                - language
+                - code
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          source:
+                            type: string
+                            description: Defines the source of the response. Can be `compiler` or `runtime`
+                          result:
+                            type: string
+                            description: Output of the given code.
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
           content:
             application/json:
               schema:
@@ -572,12 +1576,14 @@ paths:
                     type: string
                   note:
                     type: string
-  /hash:
+  /encode:
     post:
-      summary: Hashes a text into various formats
-      operationId: hash
+      summary: 'Encode text to base64, utf8, utf16le, hex, ascii and latin1'
+      operationId: encode
       description: |
-        Hashes given text into various formats
+        Encodes given text into various formats
+
+        Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
       tags:
         - Utils
       requestBody:
@@ -589,10 +1595,15 @@ paths:
               properties:
                 text:
                   type: string
-                  description: Any string to hash into various formats
-                  example: My string to hash
+                  description: Any string to encode into various formats
+                  example: My string to encode
+                from:
+                  type: string
+                  description: 'Define what type your string is -> "base64", "utf8", "utf16le", "latin1", "hex" or "ascii"'
+                  example: ascii
               required:
                 - text
+                - from
       responses:
         '200':
           description: Expected Response
@@ -615,110 +1626,24 @@ paths:
                       data:
                         type: object
                         properties:
-                          RSA-MD5:
+                          base64:
                             type: string
-                          RSA-RIPEMD160:
+                            format: base64
+                          utf8:
                             type: string
-                          RSA-SHA1:
+                            format: utf8
+                          utf16le:
                             type: string
-                          RSA-SHA1-2:
+                            format: utf16le
+                          latin1:
                             type: string
-                          RSA-SHA224:
+                            format: latin1
+                          hex:
                             type: string
-                          RSA-SHA256:
+                            format: hex
+                          ascii:
                             type: string
-                          RSA-SHA3-224:
-                            type: string
-                          RSA-SHA3-256:
-                            type: string
-                          RSA-SHA3-384:
-                            type: string
-                          RSA-SHA3-512:
-                            type: string
-                          RSA-SHA384:
-                            type: string
-                          RSA-SHA512:
-                            type: string
-                          RSA-SHA512/224:
-                            type: string
-                          RSA-SHA512/256:
-                            type: string
-                          RSA-SM3:
-                            type: string
-                          blake2b512:
-                            type: string
-                          blake2s256:
-                            type: string
-                          id-rsassa-pkcs1-v1_5-with-sha3-224:
-                            type: string
-                          id-rsassa-pkcs1-v1_5-with-sha3-256:
-                            type: string
-                          id-rsassa-pkcs1-v1_5-with-sha3-384:
-                            type: string
-                          id-rsassa-pkcs1-v1_5-with-sha3-512:
-                            type: string
-                          md5:
-                            type: string
-                          md5-sha1:
-                            type: string
-                          md5WithRSAEncryption:
-                            type: string
-                          ripemd:
-                            type: string
-                          ripemd160:
-                            type: string
-                          ripemd160WithRSA:
-                            type: string
-                          rmd160:
-                            type: string
-                          sha1:
-                            type: string
-                          sha1WithRSAEncryption:
-                            type: string
-                          sha224:
-                            type: string
-                          sha224WithRSAEncryption:
-                            type: string
-                          sha256:
-                            type: string
-                          sha256WithRSAEncryption:
-                            type: string
-                          sha3-224:
-                            type: string
-                          sha3-256:
-                            type: string
-                          sha3-384:
-                            type: string
-                          sha3-512:
-                            type: string
-                          sha384:
-                            type: string
-                          sha384WithRSAEncryption:
-                            type: string
-                          sha512:
-                            type: string
-                          sha512-224:
-                            type: string
-                          sha512-224WithRSAEncryption:
-                            type: string
-                          sha512-256:
-                            type: string
-                          sha512-256WithRSAEncryption:
-                            type: string
-                          sha512WithRSAEncryption:
-                            type: string
-                          shake128:
-                            type: string
-                          shake256:
-                            type: string
-                          sm3:
-                            type: string
-                          sm3WithRSAEncryption:
-                            type: string
-                          ssl3-md5:
-                            type: string
-                          ssl3-sha1:
-                            type: string
+                            format: ascii
         '400':
           description: Bad Request Error
           content:
@@ -1029,6 +1954,204 @@ paths:
                     type: string
                   note:
                     type: string
+  /hash:
+    post:
+      summary: Hashes a text into various formats
+      operationId: hash
+      description: |
+        Hashes given text into various formats
+      tags:
+        - Utils
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Any string to hash into various formats
+                  example: My string to hash
+              required:
+                - text
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          RSA-MD5:
+                            type: string
+                          RSA-RIPEMD160:
+                            type: string
+                          RSA-SHA1:
+                            type: string
+                          RSA-SHA1-2:
+                            type: string
+                          RSA-SHA224:
+                            type: string
+                          RSA-SHA256:
+                            type: string
+                          RSA-SHA3-224:
+                            type: string
+                          RSA-SHA3-256:
+                            type: string
+                          RSA-SHA3-384:
+                            type: string
+                          RSA-SHA3-512:
+                            type: string
+                          RSA-SHA384:
+                            type: string
+                          RSA-SHA512:
+                            type: string
+                          RSA-SHA512/224:
+                            type: string
+                          RSA-SHA512/256:
+                            type: string
+                          RSA-SM3:
+                            type: string
+                          blake2b512:
+                            type: string
+                          blake2s256:
+                            type: string
+                          id-rsassa-pkcs1-v1_5-with-sha3-224:
+                            type: string
+                          id-rsassa-pkcs1-v1_5-with-sha3-256:
+                            type: string
+                          id-rsassa-pkcs1-v1_5-with-sha3-384:
+                            type: string
+                          id-rsassa-pkcs1-v1_5-with-sha3-512:
+                            type: string
+                          md5:
+                            type: string
+                          md5-sha1:
+                            type: string
+                          md5WithRSAEncryption:
+                            type: string
+                          ripemd:
+                            type: string
+                          ripemd160:
+                            type: string
+                          ripemd160WithRSA:
+                            type: string
+                          rmd160:
+                            type: string
+                          sha1:
+                            type: string
+                          sha1WithRSAEncryption:
+                            type: string
+                          sha224:
+                            type: string
+                          sha224WithRSAEncryption:
+                            type: string
+                          sha256:
+                            type: string
+                          sha256WithRSAEncryption:
+                            type: string
+                          sha3-224:
+                            type: string
+                          sha3-256:
+                            type: string
+                          sha3-384:
+                            type: string
+                          sha3-512:
+                            type: string
+                          sha384:
+                            type: string
+                          sha384WithRSAEncryption:
+                            type: string
+                          sha512:
+                            type: string
+                          sha512-224:
+                            type: string
+                          sha512-224WithRSAEncryption:
+                            type: string
+                          sha512-256:
+                            type: string
+                          sha512-256WithRSAEncryption:
+                            type: string
+                          sha512WithRSAEncryption:
+                            type: string
+                          shake128:
+                            type: string
+                          shake256:
+                            type: string
+                          sm3:
+                            type: string
+                          sm3WithRSAEncryption:
+                            type: string
+                          ssl3-md5:
+                            type: string
+                          ssl3-sha1:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /qrcode:
     post:
       summary: Create QR Code (Quick Response Code)
@@ -1186,40 +2309,14 @@ paths:
                     type: string
                   note:
                     type: string
-  /compile:
+  /bic:
     post:
-      summary: Compile code and get the output
-      operationId: compile
+      summary: Check if the given bic (Bank Identification Code) or SWIFT code is valid.
+      operationId: bic
       description: |
-        `Subscriber` Only Endpoint. API-Key is needed.
-
-        Supported languages are: "c", "cpp", "js", "python"
-
-        For each language are some options available:
-
-        **c**
-        | Key              | Description                                                   |
-        | ---------------- | --------------------------------------------------------------|
-        | std              | Sets the standard library for the compilation                 |
-        Available **std** values are: "c99", "c11","c17", "c18"                          
-
-        ---
-
-        **cpp**
-        | Key              | Description                                                   |
-        | ---------------- | --------------------------------------------------------------|
-        | std              | Sets the standard library for the compilation                 |
-        Available **std** values are: "c++98","c++03", "c++11", "c++14", "c++17"         
-
-        ---
-
-        **python**
-        | Key              | Description                                                   |
-        | ---------------- | --------------------------------------------------------------|
-        | version          | Sets the python version, default is: 3                        |
-        Available **version** values are: 2, 3                                           
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
       tags:
-        - Utils
+        - Validation
       security:
         - ApiKey: []
       requestBody:
@@ -1229,23 +2326,2194 @@ paths:
             schema:
               type: object
               properties:
-                language:
+                bic:
                   type: string
-                  description: 'Available languages are `c`, `cpp`, `js` and `python`'
-                code:
+              required:
+                - bic
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /btc:
+    post:
+      summary: Check if the given bitcoin address is valid.
+      operationId: btc
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
                   type: string
-                  format: base64
-                  description: Provide the code as base64 string to avoid character escapes.
-                std:
+                  description: bitcoin address
+              required:
+                - address
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /creditcard:
+    post:
+      summary: Check if the given creditcard number is valid.
+      operationId: creditcard
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                number:
                   type: string
-                  description: For `C` and `C++` only.
-                version:
+              required:
+                - number
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /ean:
+    post:
+      summary: Check if the given ean (European Article Number) is valid.
+      operationId: ean
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+        The International Article Number (also known as European Article Number or EAN) is a standard describing a barcode symbology and numbering system used in global trade to identify a specific retail product type, in a specific packaging configuration, from a specific manufacturer.
+          
+        The most commonly used EAN standard is the thirteen-digit EAN-13, a superset of the original 12-digit Universal Product Code (UPC-A) standard developed in 1970 by George J. Laurer.[1] An EAN-13 number includes a 3-digit GS1 prefix (indicating country of registration or special type of product). A prefix with a first digit of "0" indicates a 12-digit UPC-A code follows. A prefix with first two digits of "45" or "49" indicates a Japanese Article Number (JAN) follows.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ean:
+                  type: string
+              required:
+                - ean
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /email:
+    post:
+      summary: Check if the given email is valid
+      operationId: email
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Valid payload options: "email", "allow_display_name", "require_display_name", "allow_utf8_local_part", "allow_ip_domain", "domain_specific_validation", "blacklisted_chars", "host_blacklist", "host_whitelist", "mx"   
+
+        If **allow_display_name** is set to true, the validator will also match Display Name <email-address>. 
+
+        If **require_display_name** is set to true, the validator will reject strings without the format Display Name <email-address>. 
+
+        If **allow_utf8_local_part** is set to false, the validator will not allow any non-English UTF8 character in email address' local part. 
+
+        If **allow_ip_domain** is set to true, the validator will allow IP addresses in the host part.
+
+        If **domain_specific_validation** is true, some additional validation will be enabled, e.g. disallowing certain syntactically valid email addresses that are rejected by Gmail. 
+
+        If **blacklisted_chars** receives a string, then the validator will reject emails that include any of the characters in the string, in the name part. 
+
+        If **host_blacklist** is set to an array of strings and the part of the email after the @ symbol matches one of the strings defined in it, the validation fails. 
+
+        If **host_whitelist** is set to an array of strings and the part of the email after the @ symbol matches none of the strings defined in it, the validation fails.
+
+        if **mx** is set to true, the validator will do a mx record check on the domain of the email.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: email address to check
+                  example: info@wild-devs.net
+                allow_display_name:
+                  type: boolean
+                  description: 'If is set to true, the validator will also match `Display Name <email-address>` format.'
+                require_display_name:
+                  type: boolean
+                  description: 'If is set to true, the validator will reject strings without the `Display Name <email-address>` format.'
+                allow_utf8_local_part:
+                  type: boolean
+                  description: 'If is set to false, the validator will not allow any non-English UTF8 character in email address'' local part.'
+                allow_ip_domain:
+                  type: boolean
+                  description: 'If is set to true, the validator will allow IP addresses in the host part.'
+                domain_specific_validation:
+                  type: boolean
+                  description: 'If is set to true, some additional validation will be enabled, e.g. disallowing certain syntactically valid email addresses that are rejected by Gmail.'
+                blacklisted_chars:
+                  type: string
+                  description: 'If receives a string, then the validator will reject emails that include any of the characters in the string, in the name part.'
+                host_blacklist:
+                  type: array
+                  items:
+                    type: string
+                  description: 'If is set to an array of strings and the part of the email after the @ symbol matches one of the strings defined in it, the validation fails.'
+                host_whitelist:
+                  type: array
+                  items:
+                    type: string
+                  description: 'If is set to an array of strings and the part of the email after the @ symbol matches none of the strings defined in it, the validation fails.'
+                mx:
+                  type: boolean
+                  description: 'if is set to true, the validator will do a mx record check on the domain of the email.'
+              required:
+                - email
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          valid:
+                            type: boolean
+                          mx:
+                            description: only when `mx` is set to true
+                            type: object
+                            properties:
+                              exchange:
+                                type: string
+                                description: the domain of the mail-server behind the email address
+                              valid:
+                                type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /eth:
+    post:
+      summary: Check if the given ethereum address is valid.
+      operationId: eth
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: ethereum address
+              required:
+                - address
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /fqdn:
+    post:
+      summary: Check if the given fqdn (fully qualified domain name) is valid.
+      operationId: fqdn
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fqdn:
+                  type: string
+              required:
+                - fqdn
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /iban:
+    post:
+      summary: Check if the given IBAN (International Bank Account Number) is valid.
+      operationId: iban
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                iban:
+                  type: string
+              required:
+                - iban
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /identitycard:
+    post:
+      summary: Check if the given identity card code is valid.
+      operationId: identitycard
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                identity:
+                  type: string
+              required:
+                - identity
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /imei:
+    post:
+      summary: Check if the given IMEI number is valid.
+      operationId: imei
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        IMEI should be of format `###############` or `##-######-######-#`
+
+        options: **allow_hyphens** 
+
+        Defaults to first format. If **allow_hyphens** is set to true, the validator will validate the second format.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                imei:
+                  type: string
+                allow_hyphens:
+                  type: boolean
+                  description: |
+                    IMEI should be of format `###############` or `##-######-######-#`.
+
+                    Defaults to first format. If is set to true, the validator will validate the second format.
+              required:
+                - imei
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /ip:
+    post:
+      summary: Check if the given IP (version 4 or 6) address is valid.
+      operationId: ip
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ip:
+                  type: string
+              required:
+                - ip
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /isbn:
+    post:
+      summary: Check if the given ISBN (International Standard Book Number) is valid.
+      operationId: isbn
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        The International Standard Book Number (ISBN) is a numeric commercial book identifier that is intended to be unique.
+
+        The 10-digit ISBN format was developed by the International Organization for Standardization (ISO) and was published in 1970 as international standard ISO 2108 (the 9-digit SBN code can be converted to a 10-digit ISBN by prefixing it with a zero).
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isbn:
+                  type: string
+              required:
+                - isbn
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /isin:
+    post:
+      summary: Check if the given ISIN (stock/security identifier) is valid.
+      operationId: isin
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isin:
+                  type: string
+              required:
+                - isin
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /issn:
+    post:
+      summary: Check if the given ISSN (International Standard Serial Number) is valid.
+      operationId: issn
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        An International Standard Serial Number (ISSN) is an eight-digit serial number used to uniquely identify a serial publication, such as a magazine. The ISSN is especially helpful in distinguishing between serials with the same title. ISSNs are used in ordering, cataloging, interlibrary loans, and other practices in connection with serial literature.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                issn:
+                  type: string
+              required:
+                - issn
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /licenseplate:
+    post:
+      summary: Check if the given string matches the format of a country's license plate.
+      operationId: licenseplate
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Supported locales: 
+        ```
+          cs-CZ
+          de-DE
+          de-LI
+          en-IN
+          es-AR
+          hu-HU
+          pt-BR
+          pt-PT
+          sq-AL
+          sv-SE 
+          any
+        ```
+
+        If `any` is used, endpoint will check if any of the locales match.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                licenseplate:
+                  type: string
+                locale:
+                  type: string
+              required:
+                - licenseplate
+                - locale
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /mac:
+    post:
+      summary: Check if the given MAC address is valid.
+      operationId: mac
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        options: **no_separators**
+            
+        If **no_separators** is true, the validator will allow MAC addresses without separators. Also, it allows the use of hyphens, spaces or dots e.g. '01 02 03 04 05 ab', '01-02-03-04-05-ab' or '0102.0304.05ab'. The options also allow a EUI property to specify if it needs to be validated against EUI-48 or EUI-64. The accepted values of EUI are 48, 64.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                no_separators:
+                  type: boolean
+                  description: 'If is true, the validator will allow MAC addresses without separators. Also, it allows the use of hyphens, spaces or dots e.g. ''01 02 03 04 05 ab'', ''01-02-03-04-05-ab'' or ''0102.0304.05ab''. The options also allow a eui property to specify if it needs to be validated against EUI-48 or EUI-64. The accepted values of EUI are 48, 64.'
+              required:
+                - address
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /magnet:
+    post:
+      summary: Check if the given Magnet URI format is valid.
+      operationId: magnet
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Magnet is a URI scheme that defines the format of magnet links, a de facto standard for identifying files (URN) by their content, via cryptographic hash value rather than by their location.
+
+        Although magnet links can be used in a number of contexts, they are particularly useful in peer-to-peer file sharing networks because they allow resources to be referred to without the need for a continuously available host, and can be generated by anyone who already has the file, without the need for a central authority to issue them. This makes them popular for use as "guaranteed" search terms within the file sharing community where anyone can distribute a magnet link to ensure that the resource retrieved by that link is the one intended, regardless of how it is retrieved.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                magnet:
+                  type: string
+              required:
+                - magnet
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /mimetype:
+    post:
+      summary: Check if the given MIME type format is valid.
+      operationId: mimetype
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        A media type (also known as a MIME type) is a two-part identifier for file formats and format contents transmitted on the Internet. The Internet Assigned Numbers Authority (IANA) is the official authority for the standardization and publication of these classifications. Media types were originally defined in Request for Comments RFC 2045 (MIME) 
+            
+        Format of Internet Message Bodies (Nov 1996) in November 1996 as a part of the MIME (Multipurpose Internet Mail Extensions) specification, for denoting type of email message content and attachments; hence the original name, MIME type. Media types are also used by other internet protocols such as HTTP and document file formats such as HTML, for similar purposes.
+
+        **Common examples:**
+
+        ```
+        application/javascript
+        application/json
+        application/ld+json
+        application/msword (.doc)
+        application/pdf
+        application/sql
+        application/vnd.api+json
+        application/vnd.ms-excel (.xls)
+        application/vnd.ms-powerpoint (.ppt)
+        application/vnd.oasis.opendocument.text (.odt)
+        application/vnd.openxmlformats-officedocument.presentationml.presentation (.pptx)
+        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet (.xlsx)
+        application/vnd.openxmlformats-officedocument.wordprocessingml.document (.docx)
+        application/x-www-form-urlencoded
+        application/xml
+        application/zip
+        application/zstd (.zst)
+        audio/mpeg
+        audio/ogg
+        image/avif
+        image/jpeg (.jpg, .jpeg, .jfif, .pjpeg, .pjp)
+        image/png
+        image/svg+xml (.svg)
+        model/obj (.obj)
+        multipart/form-data
+        text/plain
+        text/css
+        text/csv
+        text/html
+        text/xml
+        ```
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mimetype:
+                  type: string
+              required:
+                - mimetype
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /password:
+    post:
+      summary: Check if the given string can be considered a strong password or not.
+      operationId: password
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Allows for custom requirements or scoring rules. If `returnScore` is true, then the function returns an integer score for the password rather than a boolean.
+
+        Options: "minLength", "minLowercase", "minUppercase", "minNumbers", "minSymbols", "returnScore", "pointsPerUnique", "pointsPerRepeat", "pointsForContainingLower", "pointsForContainingUpper", "pointsForContainingNumber", "pointsForContainingSymbol"
+
+        Default options are:
+
+        { minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1, returnScore: false, pointsPerUnique: 1, pointsPerRepeat: 0.5, pointsForContainingLower: 10, pointsForContainingUpper: 10, pointsForContainingNumber: 10, pointsForContainingSymbol: 10 }
+          
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                minLength:
                   type: integer
                   format: int32
-                  description: For `Python` only.
+                minLowercase:
+                  type: integer
+                  format: int32
+                minUppercase:
+                  type: integer
+                  format: int32
+                minNumbers:
+                  type: integer
+                  format: int32
+                minSymbols:
+                  type: integer
+                  format: int32
+                returnScore:
+                  type: boolean
+                  description: 'If is true, then the endpoint returns an integer score for the password rather than a boolean.'
+                pointsPerUnique:
+                  type: integer
+                  format: int32
+                pointsPerRepeat:
+                  type: integer
+                  format: int32
+                pointsForContainingLower:
+                  type: integer
+                  format: int32
+                pointsForContainingUpper:
+                  type: integer
+                  format: int32
+                pointsForContainingNumber:
+                  type: integer
+                  format: int32
+                pointsForContainingSymbol:
+                  type: integer
+                  format: int32
               required:
-                - language
-                - code
+                - password
       responses:
         '200':
           description: Expected Response
@@ -1266,14 +4534,7 @@ paths:
                   - type: object
                     properties:
                       data:
-                        type: object
-                        properties:
-                          source:
-                            type: string
-                            description: Defines the source of the response. Can be `compiler` or `runtime`
-                          result:
-                            type: string
-                            description: Output of the given code.
+                        type: boolean
         '400':
           description: Bad Request Error
           content:
@@ -1342,139 +4603,89 @@ paths:
                     type: string
                   note:
                     type: string
-  /urlshorteners:
-    get:
-      summary: Gets all url shorteners
-      operationId: shortUrls
+  /postalcode:
+    post:
+      summary: Check if the given Postalcode is valid.
+      operationId: postalcode
       description: |
         `Member` & `Subscriber` Endpoint. API-Key is needed.
 
-        Shorten urls are bound to the user who owns the api-key. This is an endpoint to retrieve all these shorten urls.
+        Supported locales:
+        ```
+          AD
+          AT
+          AU
+          AZ
+          BA
+          BE
+          BG
+          BR
+          BY
+          CA
+          CH
+          CN
+          CZ
+          DE
+          DK
+          DO
+          DZ
+          EE
+          ES
+          FI
+          FR
+          GB
+          GR
+          HR
+          HT
+          HU
+          ID
+          IE
+          IL
+          IN
+          IR
+          IS
+          IT
+          JP
+          KE
+          KR
+          LI
+          LK
+          LT
+          LU
+          LV
+          MG
+          MT
+          MX
+          MY
+          NL
+          NO
+          NP
+          NZ
+          PL
+          PR
+          PT
+          RO
+          RU
+          SA
+          SE
+          SG
+          SI
+          SK
+          TH
+          TN
+          TW
+          UA
+          US
+          ZA
+          ZM 
+          any 
+        ```
+
+        If `any` is used, endpoint will check if any of the locales match.
       tags:
-        - Utils
+        - Validation
       security:
         - ApiKey: []
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: object
-                        properties:
-                          id:
-                            type: string
-                            format: uuid
-                          original_url:
-                            type: string
-                          short_url:
-                            type: string
-                          code:
-                            type: string
-                          clicks:
-                            type: integer
-                            format: int32
-                          created_at:
-                            type: string
-                            format: date-time
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '401':
-          description: Unauthorized Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /urlshortener:
-    post:
-      summary: Shorts a given URL
-      operationId: shortUrl
-      description: |
-        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
-
-        If `x-api-key` is supplied, then the short-urls are assigned to the user who owns the api-key. So you can query all short-urls and get more information, like the number of clicks. You can also remove them with the delete endpoint.
-
-        Available shortener domains are: "xfive.de", "xtc5.de"
-
-        If "custom_id" is passed with payload, random id will not be generated and your custom id will be used, if its available.
-
-        Returns the short url.
-      tags:
-        - Utils
       requestBody:
         required: true
         content:
@@ -1482,15 +4693,10 @@ paths:
             schema:
               type: object
               properties:
-                original_url:
-                  type: string
-                domain:
-                  type: string
-                custom_id:
+                postalcode:
                   type: string
               required:
-                - original_url
-                - domain
+                - postalcode
       responses:
         '200':
           description: Expected Response
@@ -1511,11 +4717,26 @@ paths:
                   - type: object
                     properties:
                       data:
-                        type: string
-                        format: url
-                        description: Returns the shorten url
+                        type: boolean
         '400':
           description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
           content:
             application/json:
               schema:
@@ -1565,28 +4786,328 @@ paths:
                     type: string
                   note:
                     type: string
-  '/urlshortener/{id}':
-    delete:
-      summary: Deletes a given url shortener object.
+  /semver:
+    post:
+      summary: Check if the given Semver (Semantic Versioning Specification) is valid.
+      operationId: semver
       description: |
         `Member` & `Subscriber` Endpoint. API-Key is needed.
       tags:
-        - Utils
+        - Validation
       security:
         - ApiKey: []
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: string
-            format: uuid
-          description: UUID of the shorten url
-          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                semver:
+                  type: string
+              required:
+                - semver
       responses:
-        '204':
-          description: Null Response
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
         '400':
           description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /tax:
+    post:
+      summary: Check if the given Tax Identification Number is valid.
+      operationId: tax
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Supported locales: 
+        ```
+          bg-BG
+          cs-CZ
+          de-AT
+          de-DE
+          dk-DK
+          el-CY
+          el-GR
+          en-CA
+          en-GB
+          en-IE
+          en-US
+          es-ES
+          et-EE
+          fi-FI
+          fr-BE
+          fr-CA
+          fr-FR
+          fr-LU
+          hr-HR
+          hu-HU
+          it-IT
+          lb-LU
+          lt-LT
+          lv-LV
+          mt-MT
+          nl-BE
+          nl-NL
+          pl-PL
+          pt-BR
+          pt-PT
+          ro-RO
+          sk-SK
+          sl-SI
+          sv-SE
+        ```
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tax:
+                  type: string
+                locale:
+                  type: string
+              required:
+                - tax
+                - locale
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /uuid:
+    post:
+      summary: 'Check if the given UUID (version 1, 2, 3, 4 or 5) is valid.'
+      operationId: uuid
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Validation
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+              required:
+                - uuid
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
           content:
             application/json:
               schema:

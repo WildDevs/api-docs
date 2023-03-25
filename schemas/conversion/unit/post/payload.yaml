@@ -1,0 +1,16 @@
+type: object
+properties:
+  from:
+    type: string
+    example: m/s
+  to:
+    type: string
+    example: m/h
+  amount:
+    type: number
+    format: float
+    example: 10.65
+required:
+  - from
+  - to
+  - amount

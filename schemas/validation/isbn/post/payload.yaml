@@ -1,0 +1,6 @@
+type: object
+properties:
+  isbn:
+    type: string
+required:
+  - isbn

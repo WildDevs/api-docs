@@ -39,31 +39,86 @@ servers:
   - url: https://api.wild-devs.net/v1
     description: API Production Server
 paths:
+# Conversion
+  /currency:
+    $ref: "./resources/conversion/currency/post.yaml"
+  /unit:
+    $ref: "./resources/conversion/unit/post.yaml"
+# Games
+  /epicgames/free:
+    $ref: "./resources/games/epicgames/get.yaml"
 # Random
   /string:
     $ref: "./resources/random/string/post.yaml"
   /number:
     $ref: "./resources/random/number/post.yaml"
+# UrlShortener
+  /urlshorteners:
+    $ref: "./resources/urlshortener/get.yaml"
+  /urlshortener:
+    $ref: "./resources/urlshortener/post.yaml"
+  /urlshortener/{id}:
+    $ref: "./resources/urlshortener/delete.yaml"
 # Utils
-  /encode:
-    $ref: "./resources/utils/encode/post.yaml"
-  /decode:
-    $ref: "./resources/utils/decode/post.yaml"
-  /hash:
-    $ref: "./resources/utils/hash/post.yaml"
-  /geoip/{ip}:
-    $ref: "./resources/utils/geoip/post.yaml"
-  /qrcode:
-    $ref: "./resources/utils/qrcode/post.yaml"
   /compile:
     $ref: "./resources/utils/compile/post.yaml"
-  /urlshorteners:
-    $ref: "./resources/utils/urlshortener/get.yaml"
-  /urlshortener:
-    $ref: "./resources/utils/urlshortener/post.yaml"
-  /urlshortener/{id}:
-    $ref: "./resources/utils/urlshortener/delete.yaml"
-
+  /decode:
+    $ref: "./resources/utils/decode/post.yaml"
+  /encode:
+    $ref: "./resources/utils/encode/post.yaml"
+  /geoip/{ip}:
+    $ref: "./resources/utils/geoip/post.yaml"
+  /hash:
+    $ref: "./resources/utils/hash/post.yaml"
+  /qrcode:
+    $ref: "./resources/utils/qrcode/post.yaml"
+# Validation
+  /bic:
+    $ref: "./resources/validation/bic/post.yaml"
+  /btc:
+    $ref: "./resources/validation/btc/post.yaml"
+  /creditcard:
+    $ref: "./resources/validation/creditcard/post.yaml"
+  /ean:
+    $ref: "./resources/validation/ean/post.yaml"
+  /email:
+    $ref: "./resources/validation/email/post.yaml"
+  /eth:
+    $ref: "./resources/validation/eth/post.yaml"
+  /fqdn:
+    $ref: "./resources/validation/fqdn/post.yaml"
+  /iban:
+    $ref: "./resources/validation/iban/post.yaml"
+  /identitycard:
+    $ref: "./resources/validation/identitycard/post.yaml"
+  /imei:
+    $ref: "./resources/validation/imei/post.yaml"
+  /ip:
+    $ref: "./resources/validation/ip/post.yaml"
+  /isbn:
+    $ref: "./resources/validation/isbn/post.yaml"
+  /isin:
+    $ref: "./resources/validation/isin/post.yaml"
+  /issn:
+    $ref: "./resources/validation/issn/post.yaml"
+  /licenseplate:
+    $ref: "./resources/validation/licenseplate/post.yaml"
+  /mac:
+    $ref: "./resources/validation/mac/post.yaml"
+  /magnet:
+    $ref: "./resources/validation/magnet/post.yaml"
+  /mimetype:
+    $ref: "./resources/validation/mimetype/post.yaml"
+  /password:
+    $ref: "./resources/validation/password/post.yaml"
+  /postalcode:
+    $ref: "./resources/validation/postalcode/post.yaml"
+  /semver:
+    $ref: "./resources/validation/semver/post.yaml"
+  /tax:
+    $ref: "./resources/validation/tax/post.yaml"
+  /uuid:
+    $ref: "./resources/validation/uuid/post.yaml"
 components:
   securitySchemes:
     $ref: "./schemas/security.yaml"

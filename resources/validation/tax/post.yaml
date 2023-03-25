@@ -1,0 +1,64 @@
+post:
+  summary: Check if the given Tax Identification Number is valid.
+  operationId: tax
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+    Supported locales: 
+    ```
+      bg-BG
+      cs-CZ
+      de-AT
+      de-DE
+      dk-DK
+      el-CY
+      el-GR
+      en-CA
+      en-GB
+      en-IE
+      en-US
+      es-ES
+      et-EE
+      fi-FI
+      fr-BE
+      fr-CA
+      fr-FR
+      fr-LU
+      hr-HR
+      hu-HU
+      it-IT
+      lb-LU
+      lt-LT
+      lv-LV
+      mt-MT
+      nl-BE
+      nl-NL
+      pl-PL
+      pt-BR
+      pt-PT
+      ro-RO
+      sk-SK
+      sl-SI
+      sv-SE
+    ```
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/tax/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/tax/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

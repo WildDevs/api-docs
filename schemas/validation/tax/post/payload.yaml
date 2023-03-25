@@ -1,0 +1,9 @@
+type: object
+properties:
+  tax:
+    type: string
+  locale:
+    type: string
+required:
+  - tax
+  - locale

@@ -1,0 +1,26 @@
+post:
+  summary: Check if the given UUID (version 1, 2, 3, 4 or 5) is valid.
+  operationId: uuid
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+  tags:
+    - Validation
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/validation/uuid/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/validation/uuid/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

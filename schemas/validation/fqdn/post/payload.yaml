@@ -1,0 +1,6 @@
+type: object
+properties:
+  fqdn:
+    type: string
+required:
+  - fqdn

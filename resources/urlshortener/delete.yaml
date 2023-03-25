@@ -1,0 +1,20 @@
+delete:
+  summary: Deletes a given url shortener object.
+  operationId: deleteShortUrl
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+  tags:
+    - UrlShortener
+  security:
+    - ApiKey: []
+  parameters:
+    $ref: "../../parameters/path/urlshortener.yaml"
+  responses:
+    '204':
+      $ref: "../../responses/success/null.yaml"
+    '400':
+      $ref: "../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../responses/error/unexpected.yaml"

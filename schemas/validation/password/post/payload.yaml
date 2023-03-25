@@ -1,0 +1,42 @@
+type: object
+properties:
+  password:
+    type: string
+  minLength:
+    type: integer
+    format: int32
+  minLowercase:
+    type: integer
+    format: int32
+  minUppercase:
+    type: integer
+    format: int32
+  minNumbers:
+    type: integer
+    format: int32
+  minSymbols:
+    type: integer
+    format: int32
+  returnScore:
+    type: boolean
+    description: If is true, then the endpoint returns an integer score for the password rather than a boolean.
+  pointsPerUnique:
+    type: integer
+    format: int32
+  pointsPerRepeat:
+    type: integer
+    format: int32
+  pointsForContainingLower:
+    type: integer
+    format: int32
+  pointsForContainingUpper:
+    type: integer
+    format: int32
+  pointsForContainingNumber:
+    type: integer
+    format: int32
+  pointsForContainingSymbol:
+    type: integer
+    format: int32
+required:
+  - password
