@@ -728,9 +728,803 @@ paths:
                     type: string
                   note:
                     type: string
+  /address:
+    get:
+      summary: Provides mockup address related data
+      operationId: getMockupAddress
+      description: |
+        Generates mockup address data with several information.
+      tags:
+        - Mockup
+      parameters:
+        - in: query
+          name: locale
+          description: |
+            Supported locales:
+            <table><thead><tr><th style="text-align:left;">Locale</th><th style="text-align:left;">Name</th></tr></thead><tbody><tr><td style="text-align:left;">af_ZA</td><td style="text-align:left;">Afrikaans</td></tr><tr><td style="text-align:left;">ar</td><td style="text-align:left;">Arabic</td></tr><tr><td style="text-align:left;">az</td><td style="text-align:left;">Azerbaijani</td></tr><tr><td style="text-align:left;">cz</td><td style="text-align:left;">Czech</td></tr><tr><td style="text-align:left;">de</td><td style="text-align:left;">German</td></tr><tr><td style="text-align:left;">de_AT</td><td style="text-align:left;">German (Austria)</td></tr><tr><td style="text-align:left;">de_CH</td><td style="text-align:left;">German (Switzerland)</td></tr><tr><td style="text-align:left;">el</td><td style="text-align:left;">Greek</td></tr><tr><td style="text-align:left;">en</td><td style="text-align:left;">English</td></tr><tr><td style="text-align:left;">en_AU</td><td style="text-align:left;">English (Australia)</td></tr><tr><td style="text-align:left;">en_AU_ocker</td><td style="text-align:left;">English (Australia Ocker)</td></tr><tr><td style="text-align:left;">en_BORK</td><td style="text-align:left;">English (Bork)</td></tr><tr><td style="text-align:left;">en_CA</td><td style="text-align:left;">English (Canada)</td></tr><tr><td style="text-align:left;">en_GB</td><td style="text-align:left;">English (Great Britain)</td></tr><tr><td style="text-align:left;">en_GH</td><td style="text-align:left;">English (Ghana)</td></tr><tr><td style="text-align:left;">en_IE</td><td style="text-align:left;">English (Ireland)</td></tr><tr><td style="text-align:left;">en_IND</td><td style="text-align:left;">English (India)</td></tr><tr><td style="text-align:left;">en_NG</td><td style="text-align:left;">Nigeria (English)</td></tr><tr><td style="text-align:left;">en_US</td><td style="text-align:left;">English (United States)</td></tr><tr><td style="text-align:left;">en_ZA</td><td style="text-align:left;">English (South Africa)</td></tr><tr><td style="text-align:left;">es</td><td style="text-align:left;">Spanish</td></tr><tr><td style="text-align:left;">es_MX</td><td style="text-align:left;">Spanish (Mexico)</td></tr><tr><td style="text-align:left;">fa</td><td style="text-align:left;">Farsi</td></tr><tr><td style="text-align:left;">fi</td><td style="text-align:left;">Finnish</td></tr><tr><td style="text-align:left;">fr</td><td style="text-align:left;">French</td></tr><tr><td style="text-align:left;">fr_BE</td><td style="text-align:left;">Français (Belgique)</td></tr><tr><td style="text-align:left;">fr_CA</td><td style="text-align:left;">French (Canada)</td></tr><tr><td style="text-align:left;">fr_CH</td><td style="text-align:left;">French (Switzerland)</td></tr><tr><td style="text-align:left;">ge</td><td style="text-align:left;">Georgian</td></tr><tr><td style="text-align:left;">he</td><td style="text-align:left;">Hebrew</td></tr><tr><td style="text-align:left;">hr</td><td style="text-align:left;">Hrvatski</td></tr><tr><td style="text-align:left;">hu</td><td style="text-align:left;">Hungarian</td></tr><tr><td style="text-align:left;">hy</td><td style="text-align:left;">Armenian</td></tr><tr><td style="text-align:left;">id_ID</td><td style="text-align:left;">Indonesian</td></tr><tr><td style="text-align:left;">it</td><td style="text-align:left;">Italian</td></tr><tr><td style="text-align:left;">ja</td><td style="text-align:left;">Japanese</td></tr><tr><td style="text-align:left;">ko</td><td style="text-align:left;">Korean</td></tr><tr><td style="text-align:left;">lv</td><td style="text-align:left;">Latvian</td></tr><tr><td style="text-align:left;">mk</td><td style="text-align:left;">Macedonian</td></tr><tr><td style="text-align:left;">nb_NO</td><td style="text-align:left;">Norwegian</td></tr><tr><td style="text-align:left;">ne</td><td style="text-align:left;">Nepalese</td></tr><tr><td style="text-align:left;">nl</td><td style="text-align:left;">Dutch</td></tr><tr><td style="text-align:left;">nl_BE</td><td style="text-align:left;">Dutch (Belgium)</td></tr><tr><td style="text-align:left;">pl</td><td style="text-align:left;">Polish</td></tr><tr><td style="text-align:left;">pt_BR</td><td style="text-align:left;">Portuguese (Brazil)</td></tr><tr><td style="text-align:left;">pt_PT</td><td style="text-align:left;">Portuguese (Portugal)</td></tr><tr><td style="text-align:left;">ro</td><td style="text-align:left;">Romanian</td></tr><tr><td style="text-align:left;">ru</td><td style="text-align:left;">Russian</td></tr><tr><td style="text-align:left;">sk</td><td style="text-align:left;">Slovakian</td></tr><tr><td style="text-align:left;">sv</td><td style="text-align:left;">Swedish</td></tr><tr><td style="text-align:left;">tr</td><td style="text-align:left;">Turkish</td></tr><tr><td style="text-align:left;">uk</td><td style="text-align:left;">Ukrainian</td></tr><tr><td style="text-align:left;">ur</td><td style="text-align:left;">Urdu</td></tr><tr><td style="text-align:left;">vi</td><td style="text-align:left;">Vietnamese</td></tr><tr><td style="text-align:left;">zh_CN</td><td style="text-align:left;">Chinese</td></tr><tr><td style="text-align:left;">zh_TW</td><td style="text-align:left;">Chinese (Taiwan)</td></tr><tr><td style="text-align:left;">zu_ZA</td><td style="text-align:left;">Zulu (South Africa)</td></tr></tbody></table>
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: count
+          description: |
+            Set it to a value greater than `1` to receive multiple data.
+
+            Count is limited to your request method. 
+
+            - Users can set it upto `10`
+            - Members & Subscribers can set it upto `1000`
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          city:
+                            type: string
+                          country:
+                            type: string
+                          countryCode:
+                            type: string
+                          county:
+                            type: string
+                          state:
+                            type: string
+                          street:
+                            type: string
+                          zipCode:
+                            type: string
+                          timeZone:
+                            type: string
+                          latitude:
+                            type: string
+                          longitude:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /company:
+    get:
+      summary: Provides mockup company related data
+      operationId: getMockupCompany
+      description: |
+        Generates mockup company data with several information.
+      tags:
+        - Mockup
+      parameters:
+        - in: query
+          name: count
+          description: |
+            Set it to a value greater than `1` to receive multiple data.
+
+            Count is limited to your request method. 
+
+            - Users can set it upto `10`
+            - Members & Subscribers can set it upto `1000`
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          suffix:
+                            type: string
+                          catchPhrase:
+                            type: string
+                          bsPhrase:
+                            type: string
+                            description: business service phrase
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /finance:
+    get:
+      summary: Provides mockup finance related data
+      operationId: getMockupFinance
+      description: |
+        Generates mockup finance data with several information.
+      tags:
+        - Mockup
+      parameters:
+        - in: query
+          name: count
+          description: |
+            Set it to a value greater than `1` to receive multiple data.
+
+            Count is limited to your request method. 
+
+            - Users can set it upto `10`
+            - Members & Subscribers can set it upto `1000`
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          bank:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              number:
+                                type: string
+                              credit:
+                                type: string
+                              currency:
+                                type: string
+                              bic:
+                                type: string
+                              iban:
+                                type: string
+                              pin:
+                                type: string
+                          crypto:
+                            type: object
+                            properties:
+                              bitcoinAddress:
+                                type: string
+                              ethereumAddress:
+                                type: string
+                              litecoinAddress:
+                                type: string
+                          creditCard:
+                            type: object
+                            properties:
+                              issuer:
+                                type: string
+                              number:
+                                type: string
+                              cvv:
+                                type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /git:
+    get:
+      summary: Provides mockup git related data
+      operationId: getMockupGit
+      description: |
+        Generates mockup git data with several information.
+      tags:
+        - Mockup
+      parameters:
+        - in: query
+          name: count
+          description: |
+            Set it to a value greater than `1` to receive multiple data.
+
+            Count is limited to your request method. 
+
+            - Users can set it upto `10`
+            - Members & Subscribers can set it upto `1000`
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          branch:
+                            type: string
+                          commitEntry:
+                            type: string
+                          commitMessage:
+                            type: string
+                          commitShaLong:
+                            type: string
+                          commitShaShort:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /internet:
+    get:
+      summary: Provides mockup internet related data
+      operationId: getMockupInternet
+      description: |
+        Generates mockup internet data with several information.
+      tags:
+        - Mockup
+      parameters:
+        - in: query
+          name: count
+          description: |
+            Set it to a value greater than `1` to receive multiple data.
+
+            Count is limited to your request method. 
+
+            - Users can set it upto `10`
+            - Members & Subscribers can set it upto `1000`
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          domain:
+                            type: string
+                          suffix:
+                            type: string
+                          email:
+                            type: string
+                          emoji:
+                            type: string
+                          protocol:
+                            type: string
+                          url:
+                            type: string
+                          httpMethod:
+                            type: string
+                          httpStatusCode:
+                            type: string
+                          userAgent:
+                            type: string
+                          ipv4:
+                            type: string
+                          ipv6:
+                            type: string
+                          mac:
+                            type: string
+                          port:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /product:
+    get:
+      summary: Provides mockup product related data
+      operationId: getMockupProduct
+      description: |
+        Generates mockup product data with several information.
+      tags:
+        - Mockup
+      parameters:
+        - in: query
+          name: count
+          description: |
+            Set it to a value greater than `1` to receive multiple data.
+
+            Count is limited to your request method. 
+
+            - Users can set it upto `10`
+            - Members & Subscribers can set it upto `1000`
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          product:
+                            type: string
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          material:
+                            type: string
+                          color:
+                            type: string
+                          department:
+                            type: string
+                          price:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /user:
     get:
-      summary: Provides mockup user data
+      summary: Provides mockup user related data
       operationId: getMockupUser
       description: |
         Generates mockup user data with several information.
@@ -970,152 +1764,12 @@ paths:
                     type: string
                   note:
                     type: string
-  /address:
+  /vehicle:
     get:
-      summary: Provides mockup address data
-      operationId: getMockupAddress
+      summary: Provides mockup vehicle related data
+      operationId: getMockupVehicle
       description: |
-        Generates mockup address data with several information.
-      tags:
-        - Mockup
-      parameters:
-        - in: query
-          name: locale
-          description: |
-            Supported locales:
-            <table><thead><tr><th style="text-align:left;">Locale</th><th style="text-align:left;">Name</th></tr></thead><tbody><tr><td style="text-align:left;">af_ZA</td><td style="text-align:left;">Afrikaans</td></tr><tr><td style="text-align:left;">ar</td><td style="text-align:left;">Arabic</td></tr><tr><td style="text-align:left;">az</td><td style="text-align:left;">Azerbaijani</td></tr><tr><td style="text-align:left;">cz</td><td style="text-align:left;">Czech</td></tr><tr><td style="text-align:left;">de</td><td style="text-align:left;">German</td></tr><tr><td style="text-align:left;">de_AT</td><td style="text-align:left;">German (Austria)</td></tr><tr><td style="text-align:left;">de_CH</td><td style="text-align:left;">German (Switzerland)</td></tr><tr><td style="text-align:left;">el</td><td style="text-align:left;">Greek</td></tr><tr><td style="text-align:left;">en</td><td style="text-align:left;">English</td></tr><tr><td style="text-align:left;">en_AU</td><td style="text-align:left;">English (Australia)</td></tr><tr><td style="text-align:left;">en_AU_ocker</td><td style="text-align:left;">English (Australia Ocker)</td></tr><tr><td style="text-align:left;">en_BORK</td><td style="text-align:left;">English (Bork)</td></tr><tr><td style="text-align:left;">en_CA</td><td style="text-align:left;">English (Canada)</td></tr><tr><td style="text-align:left;">en_GB</td><td style="text-align:left;">English (Great Britain)</td></tr><tr><td style="text-align:left;">en_GH</td><td style="text-align:left;">English (Ghana)</td></tr><tr><td style="text-align:left;">en_IE</td><td style="text-align:left;">English (Ireland)</td></tr><tr><td style="text-align:left;">en_IND</td><td style="text-align:left;">English (India)</td></tr><tr><td style="text-align:left;">en_NG</td><td style="text-align:left;">Nigeria (English)</td></tr><tr><td style="text-align:left;">en_US</td><td style="text-align:left;">English (United States)</td></tr><tr><td style="text-align:left;">en_ZA</td><td style="text-align:left;">English (South Africa)</td></tr><tr><td style="text-align:left;">es</td><td style="text-align:left;">Spanish</td></tr><tr><td style="text-align:left;">es_MX</td><td style="text-align:left;">Spanish (Mexico)</td></tr><tr><td style="text-align:left;">fa</td><td style="text-align:left;">Farsi</td></tr><tr><td style="text-align:left;">fi</td><td style="text-align:left;">Finnish</td></tr><tr><td style="text-align:left;">fr</td><td style="text-align:left;">French</td></tr><tr><td style="text-align:left;">fr_BE</td><td style="text-align:left;">Français (Belgique)</td></tr><tr><td style="text-align:left;">fr_CA</td><td style="text-align:left;">French (Canada)</td></tr><tr><td style="text-align:left;">fr_CH</td><td style="text-align:left;">French (Switzerland)</td></tr><tr><td style="text-align:left;">ge</td><td style="text-align:left;">Georgian</td></tr><tr><td style="text-align:left;">he</td><td style="text-align:left;">Hebrew</td></tr><tr><td style="text-align:left;">hr</td><td style="text-align:left;">Hrvatski</td></tr><tr><td style="text-align:left;">hu</td><td style="text-align:left;">Hungarian</td></tr><tr><td style="text-align:left;">hy</td><td style="text-align:left;">Armenian</td></tr><tr><td style="text-align:left;">id_ID</td><td style="text-align:left;">Indonesian</td></tr><tr><td style="text-align:left;">it</td><td style="text-align:left;">Italian</td></tr><tr><td style="text-align:left;">ja</td><td style="text-align:left;">Japanese</td></tr><tr><td style="text-align:left;">ko</td><td style="text-align:left;">Korean</td></tr><tr><td style="text-align:left;">lv</td><td style="text-align:left;">Latvian</td></tr><tr><td style="text-align:left;">mk</td><td style="text-align:left;">Macedonian</td></tr><tr><td style="text-align:left;">nb_NO</td><td style="text-align:left;">Norwegian</td></tr><tr><td style="text-align:left;">ne</td><td style="text-align:left;">Nepalese</td></tr><tr><td style="text-align:left;">nl</td><td style="text-align:left;">Dutch</td></tr><tr><td style="text-align:left;">nl_BE</td><td style="text-align:left;">Dutch (Belgium)</td></tr><tr><td style="text-align:left;">pl</td><td style="text-align:left;">Polish</td></tr><tr><td style="text-align:left;">pt_BR</td><td style="text-align:left;">Portuguese (Brazil)</td></tr><tr><td style="text-align:left;">pt_PT</td><td style="text-align:left;">Portuguese (Portugal)</td></tr><tr><td style="text-align:left;">ro</td><td style="text-align:left;">Romanian</td></tr><tr><td style="text-align:left;">ru</td><td style="text-align:left;">Russian</td></tr><tr><td style="text-align:left;">sk</td><td style="text-align:left;">Slovakian</td></tr><tr><td style="text-align:left;">sv</td><td style="text-align:left;">Swedish</td></tr><tr><td style="text-align:left;">tr</td><td style="text-align:left;">Turkish</td></tr><tr><td style="text-align:left;">uk</td><td style="text-align:left;">Ukrainian</td></tr><tr><td style="text-align:left;">ur</td><td style="text-align:left;">Urdu</td></tr><tr><td style="text-align:left;">vi</td><td style="text-align:left;">Vietnamese</td></tr><tr><td style="text-align:left;">zh_CN</td><td style="text-align:left;">Chinese</td></tr><tr><td style="text-align:left;">zh_TW</td><td style="text-align:left;">Chinese (Taiwan)</td></tr><tr><td style="text-align:left;">zu_ZA</td><td style="text-align:left;">Zulu (South Africa)</td></tr></tbody></table>
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: count
-          description: |
-            Set it to a value greater than `1` to receive multiple data.
-
-            Count is limited to your request method. 
-
-            - Users can set it upto `10`
-            - Members & Subscribers can set it upto `1000`
-          required: false
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: object
-                        properties:
-                          city:
-                            type: string
-                          country:
-                            type: string
-                          countryCode:
-                            type: string
-                          county:
-                            type: string
-                          state:
-                            type: string
-                          street:
-                            type: string
-                          zipCode:
-                            type: string
-                          timeZone:
-                            type: string
-                          latitude:
-                            type: string
-                          longitude:
-                            type: string
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '401':
-          description: Unauthorized Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /finance:
-    get:
-      summary: Provides mockup finance data
-      operationId: getMockupFinance
-      description: |
-        Generates mockup finance data with several information.
+        Generates mockup vehicle data with several information.
       tags:
         - Mockup
       parameters:
@@ -1154,41 +1808,24 @@ paths:
                       data:
                         type: object
                         properties:
-                          bank:
-                            type: object
-                            properties:
-                              name:
-                                type: string
-                              number:
-                                type: string
-                              credit:
-                                type: string
-                              currency:
-                                type: string
-                              bic:
-                                type: string
-                              iban:
-                                type: string
-                              pin:
-                                type: string
-                          crypto:
-                            type: object
-                            properties:
-                              bitcoinAddress:
-                                type: string
-                              ethereumAddress:
-                                type: string
-                              litecoinAddress:
-                                type: string
-                          creditCard:
-                            type: object
-                            properties:
-                              issuer:
-                                type: string
-                              number:
-                                type: string
-                              cvv:
-                                type: string
+                          manufacturer:
+                            type: string
+                          vehicle:
+                            type: string
+                          type:
+                            type: string
+                          model:
+                            type: string
+                          fuel:
+                            type: string
+                          color:
+                            type: string
+                          vin:
+                            type: string
+                            description: Vehicle Identification Number
+                          vrm:
+                            type: string
+                            description: Vehicle Registration Mark
         '400':
           description: Bad Request Error
           content:
