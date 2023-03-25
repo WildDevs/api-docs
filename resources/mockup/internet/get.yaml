@@ -12,8 +12,6 @@ get:
       $ref: "../../../responses/mockup/internet/get.yaml"
     '400':
       $ref: "../../../responses/error/badrequest.yaml"
-    '401':
-      $ref: "../../../responses/error/unauthorized.yaml"
     '429':
       $ref: "../../../responses/error/toomanyrequests.yaml"
     '500':
