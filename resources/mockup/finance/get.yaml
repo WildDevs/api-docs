@@ -1,17 +1,17 @@
 get:
-  summary: Get geolocation information about an IPv4 or IPv6 address.
-  operationId: geoip
+  summary: Provides mockup finance data
+  operationId: getMockupFinance
   description: |
-    `Member` & `Subscriber` Endpoint. API-Key is needed.
+    Generates mockup finance data with several information.
   tags:
-    - Utility
+    - Mockup
+  parameters:
+    $ref: "../../../parameters/query/mockup/finance.yaml"
   security:
     - ApiKey: []
-  parameters:
-    $ref: "../../../parameters/path/geoip.yaml"
   responses:
     '200':
-      $ref: "../../../responses/utils/geoip/post.yaml"
+      $ref: "../../../responses/mockup/finance/get.yaml"
     '400':
       $ref: "../../../responses/error/badrequest.yaml"
     '401':

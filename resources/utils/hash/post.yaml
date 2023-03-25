@@ -4,7 +4,7 @@ post:
   description: |
     Hashes given text into various formats
   tags:
-    - Utils
+    - Utility
   requestBody:
     required: true
     content:

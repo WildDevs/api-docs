@@ -1,0 +1,22 @@
+type: object
+properties:
+  city:
+    type: string
+  country:
+    type: string
+  countryCode:
+    type: string
+  county:
+    type: string
+  state:
+    type: string
+  street:
+    type: string
+  zipCode:
+    type: string
+  timeZone:
+    type: string
+  latitude:
+    type: string
+  longitude:
+    type: string

@@ -6,7 +6,7 @@ post:
 
     Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
   tags:
-    - Utils
+    - Utility
   requestBody:
     required: true
     content:
