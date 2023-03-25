@@ -1,0 +1,20 @@
+type: object
+properties:
+  manufacturer:
+    type: string
+  vehicle:
+    type: string
+  type:
+    type: string
+  model:
+    type: string
+  fuel:
+    type: string
+  color:
+    type: string
+  vin:
+    type: string
+    description: Vehicle Identification Number
+  vrm:
+    type: string
+    description: Vehicle Registration Mark

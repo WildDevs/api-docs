@@ -1,15 +1,15 @@
 get:
-  summary: Provides mockup address related data
-  operationId: getMockupAddress
+  summary: Provides mockup vehicle related data
+  operationId: getMockupVehicle
   description: |
-    Generates mockup address data with several information.
+    Generates mockup vehicle data with several information.
   tags:
     - Mockup
   parameters:
-    $ref: "../../../parameters/query/mockup/address.yaml"
+    $ref: "../../../parameters/query/mockup/vehicle.yaml"
   responses:
     '200':
-      $ref: "../../../responses/mockup/address/get.yaml"
+      $ref: "../../../responses/mockup/vehicle/get.yaml"
     '400':
       $ref: "../../../responses/error/badrequest.yaml"
     '401':

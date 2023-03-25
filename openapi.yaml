@@ -66,12 +66,22 @@ paths:
   /epicgames/free:
     $ref: "./resources/games/epicgames/get.yaml"
 # Mockup
-  /user:
-    $ref: "./resources/mockup/user/get.yaml"
   /address:
     $ref: "./resources/mockup/address/get.yaml"
+  /company:
+    $ref: "./resources/mockup/company/get.yaml"
   /finance:
     $ref: "./resources/mockup/finance/get.yaml"
+  /git:
+    $ref: "./resources/mockup/git/get.yaml"
+  /internet:
+    $ref: "./resources/mockup/internet/get.yaml"
+  /product:
+    $ref: "./resources/mockup/product/get.yaml"
+  /user:
+    $ref: "./resources/mockup/user/get.yaml"
+  /vehicle:
+    $ref: "./resources/mockup/vehicle/get.yaml"
 # Random
   /string:
     $ref: "./resources/random/string/post.yaml"

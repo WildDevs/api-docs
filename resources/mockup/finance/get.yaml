@@ -1,5 +1,5 @@
 get:
-  summary: Provides mockup finance data
+  summary: Provides mockup finance related data
   operationId: getMockupFinance
   description: |
     Generates mockup finance data with several information.

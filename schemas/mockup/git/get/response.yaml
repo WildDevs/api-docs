@@ -1,0 +1,12 @@
+type: object
+properties:
+  branch:
+    type: string
+  commitEntry:
+    type: string
+  commitMessage:
+    type: string
+  commitShaLong:
+    type: string
+  commitShaShort:
+    type: string

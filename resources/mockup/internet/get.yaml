@@ -1,15 +1,15 @@
 get:
-  summary: Provides mockup address related data
-  operationId: getMockupAddress
+  summary: Provides mockup internet related data
+  operationId: getMockupInternet
   description: |
-    Generates mockup address data with several information.
+    Generates mockup internet data with several information.
   tags:
     - Mockup
   parameters:
-    $ref: "../../../parameters/query/mockup/address.yaml"
+    $ref: "../../../parameters/query/mockup/internet.yaml"
   responses:
     '200':
-      $ref: "../../../responses/mockup/address/get.yaml"
+      $ref: "../../../responses/mockup/internet/get.yaml"
     '400':
       $ref: "../../../responses/error/badrequest.yaml"
     '401':

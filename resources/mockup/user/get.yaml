@@ -1,5 +1,5 @@
 get:
-  summary: Provides mockup user data
+  summary: Provides mockup user related data
   operationId: getMockupUser
   description: |
     Generates mockup user data with several information.

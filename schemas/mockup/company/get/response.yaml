@@ -1,0 +1,11 @@
+type: object
+properties:
+  name:
+    type: string
+  suffix:
+    type: string
+  catchPhrase:
+    type: string
+  bsPhrase:
+    type: string
+    description: business service phrase
