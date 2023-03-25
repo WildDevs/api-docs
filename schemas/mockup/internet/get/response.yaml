@@ -2,7 +2,7 @@ type: object
 properties:
   domain:
     type: string
-  suffix:
+  tld:
     type: string
   email:
     type: string
