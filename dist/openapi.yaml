@@ -817,23 +817,6 @@ paths:
                     type: string
                   note:
                     type: string
-        '401':
-          description: Unauthorized Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
         '429':
           description: Too Many Requests Error
           content:
@@ -923,23 +906,6 @@ paths:
                             description: business service phrase
         '400':
           description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '401':
-          description: Unauthorized Error
           content:
             application/json:
               schema:
@@ -1085,23 +1051,6 @@ paths:
                     type: string
                   note:
                     type: string
-        '401':
-          description: Unauthorized Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
         '429':
           description: Too Many Requests Error
           content:
@@ -1207,23 +1156,6 @@ paths:
                     type: string
                   note:
                     type: string
-        '401':
-          description: Unauthorized Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
         '429':
           description: Too Many Requests Error
           content:
@@ -1304,7 +1236,7 @@ paths:
                         properties:
                           domain:
                             type: string
-                          suffix:
+                          tld:
                             type: string
                           email:
                             type: string
@@ -1330,23 +1262,6 @@ paths:
                             type: string
         '400':
           description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '401':
-          description: Unauthorized Error
           content:
             application/json:
               schema:
@@ -1456,23 +1371,6 @@ paths:
                             type: string
         '400':
           description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '401':
-          description: Unauthorized Error
           content:
             application/json:
               schema:
@@ -1713,23 +1611,6 @@ paths:
                     type: string
                   note:
                     type: string
-        '401':
-          description: Unauthorized Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
         '429':
           description: Too Many Requests Error
           content:
@@ -1828,23 +1709,6 @@ paths:
                             description: Vehicle Registration Mark
         '400':
           description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '401':
-          description: Unauthorized Error
           content:
             application/json:
               schema:
