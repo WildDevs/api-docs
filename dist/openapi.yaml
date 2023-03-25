@@ -5,32 +5,49 @@ info:
   description: |
     High Performance & High Security API by [Wild-Devs](https://wild-devs.net). 
 
-    This API is open for everyone without providing any api-key, but includes member and subscriber endpoints. For those you need an api-key to query the desired endpoints, they are also marked with a lock in this API documentation.
+    <h3>API For Everyone</h3>
+    <div style="border: 1px dashed grey; padding: 10px; background-color: #f0f0f0;">
+      This API is open for everyone without providing any api-key, but also includes member and subscriber endpoints. For those you need an api-key to query the desired endpoints, they are also marked with a lock in this API documentation.
 
-    You can [sign up](https://wild-devs.net/register) and generate own api key for free, which also increases your rate-limit.
+      You can <a href='https://wild-devs.net/register' target='_blank'>sign up</a> and generate own api key for free, which also increases your rate-limit.
+      
+      To communicate with some endpoints of our api, you must combine your "key" with your "secret" separated by a colon and encode it with base64. Provide the base64 string as `x-api-key` with the request header.
+    </div>
 
-    To communicate with our api, you must combine your "key" with your "secret" separated by a colon and encode it with base64.
-    Provide the base64 string as `x-api-key` with the request header.
-
-    ---
     <h3>Rate-Limits</h3>
-    | Scope                   | Limit                 |
-    |-------------------------|-----------------------|
-    | Public                  | 100 requests / 24h    |
-    | Member                  | 300 requests / 24h    |
-    | Subscriber: Silver      | 2.500 requests / 24h  |
-    | Subscriber: Gold        | 6.000 requests / 24h  |
-    | Subscriber: Platinum    | 18.000 requests / 24h |
-    ---
-    Every endpoint will report the current state of your rate. Following information can be found in the response header:
+    <div style="border: 1px dashed grey; padding: 10px; background-color: #f0f0f0;">
+      A rate limit is the number of API calls an app or user can make within a given time period. If this limit is exceeded or if CPU or total time limits are exceeded, the app or user may be throttled. API requests made by a throttled user or app will fail. All API requests are subject to rate limits.
+      Our rates are quite fair and divided into 3 categories.
+
+      **All limits last 24h, starting from the first request**
+
+      - Public: **100** requests
+      - Member: **300** requests
+      - Subscriber: Silver: **2.500** requests
+      - Subscriber: Gold: **6.000** requests
+      - Subscriber: Platinum: **18.000** requests
+
+      Every endpoint will report the current state of your rate. Following information can be found in the response header:
+      
       - x-ratelimit-retry-after
       - x-ratelimit-limit
       - x-ratelimit-remaining
       - x-ratelimit-reset
-    ---
-    All responses are in `JSON` format, **subscribers** also can get them in `XML` format. Just add `xml` as query parameter to the request url.
-    E.g. `https://api.wild-devs.net/v1/geoip/37.120.190.250?xml`
-    ---
+    </div>
+
+    <h3>Response Formats</h3>
+    <div style="border: 1px dashed grey; padding: 10px; background-color: #f0f0f0;">
+      We support two response formats:
+
+      In general, all responses are in `JSON` format, **subscribers** also can get them in `XML` format. Just add `xml` as query parameter to the request url.
+      
+      Example: `https://api.wild-devs.net/v1/geoip/37.120.190.250?xml`
+    </div>
+
+    <h3>Support</h3>
+    <div style="border: 1px dashed grey; padding: 10px; background-color: #f0f0f0;">
+      If you need any support, you can join our <a href='https://discord.wild-devs.net' target='_blank'>Discord</a>. Here, you can connect with other developers who are also using our API and get help with any issues you may be experiencing. Our community is full of knowledgeable developers who are eager to share their expertise and help you succeed. Of course we also offer support via <a href='mailto:support@wild-devs.net'>email</a> or our <a href='https://help.wild-devs.net' target='_blank'>support ticket center</a> and are available to answer your questions.
+    </div>
   contact:
     name: API Support
     url: 'https://help.wild-devs.net/'
