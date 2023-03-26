@@ -1,0 +1,18 @@
+get:
+  summary: Provides vehicle related mockup data
+  operationId: getMockupVehicle
+  description: |
+    Generates vehicle mockup data with several information.
+  tags:
+    - Mockup
+  parameters:
+    $ref: "../../../parameters/query/mockup/vehicle.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/mockup/vehicle/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

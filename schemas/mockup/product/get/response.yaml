@@ -1,0 +1,16 @@
+type: object
+properties:
+  product:
+    type: string
+  name:
+    type: string
+  description:
+    type: string
+  material:
+    type: string
+  color:
+    type: string
+  department:
+    type: string
+  price:
+    type: string

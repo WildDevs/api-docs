@@ -1,0 +1,103 @@
+type: object
+properties:
+  id: 
+    type: string
+    format: uuid
+  prefix:
+    type: string
+  suffix: 
+    type: string
+  firstName: 
+    type: string
+  lastName:
+    type: string
+  fullName:
+    type: string
+  username:
+    type: string
+  sex:
+    type: string
+  gender:
+    type: string
+  avatar:
+    type: string
+    format: url
+  birthday:
+    type: string
+  email:
+    type: object
+    properties:
+      address:
+        type: string
+      password:
+        type: string
+  phone: 
+    type: object
+    properties:
+      number:
+        type: string
+      imei:
+        type: string
+  subscription:
+    type: string
+  address:
+    type: object
+    properties:
+      city:
+        type: string
+      country:
+        type: string
+      countryCode:
+        type: string
+      county:
+        type: string
+      state:
+        type: string
+      street:
+        type: string
+      zipCode:
+        type: string
+      timeZone:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+  finance:
+    type: object
+    properties:
+      bank:
+        type: object
+        properties:
+          name:
+            type: string
+          number:
+            type: string
+          credit:
+            type: string
+          currency:
+            type: string
+          bic:
+            type: string
+          iban:
+            type: string
+          pin:
+            type: string
+      crypto:
+        type: object
+        properties:
+          bitcoinAddress:
+            type: string
+          ethereumAddress:
+            type: string
+          litecoinAddress:
+            type: string
+      creditCard:
+        type: object
+        properties:
+          issuer:
+            type: string
+          number:
+            type: string
+          cvv: 
+            type: string

@@ -1,0 +1,28 @@
+type: object
+properties:
+  domain:
+    type: string
+  tld:
+    type: string
+  email:
+    type: string
+  emoji:
+    type: string
+  protocol:
+    type: string
+  url:
+    type: string
+  httpMethod:
+    type: string
+  httpStatusCode:
+    type: string
+  userAgent:
+    type: string
+  ipv4:
+    type: string
+  ipv6:
+    type: string
+  mac:
+    type: string
+  port:
+    type: string

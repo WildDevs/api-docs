@@ -19,7 +19,7 @@ post:
     | backgroundImage				      | undefined		| URL															                              |
     | backgroundImageAlpha		    | 1.0			    | Background image transparency. Ranges: 0 - 1.0				        |
   tags:
-    - Utils
+    - Utility
   security:
     - ApiKey: []
   requestBody:

@@ -1,6 +1,6 @@
 openapi: "3.0.0"
 info:
-  version: 1.0.0
+  version: 1.0.1
   title: Wild Devs API
   description: | 
     High Performance & High Security API by [Wild-Devs](https://wild-devs.net). 
@@ -48,7 +48,7 @@ info:
     <div style="border: 1px dashed grey; padding: 10px; background-color: #f0f0f0;">
       If you need any support, you can join our <a href='https://discord.wild-devs.net' target='_blank'>Discord</a>. Here, you can connect with other developers who are also using our API and get help with any issues you may be experiencing. Our community is full of knowledgeable developers who are eager to share their expertise and help you succeed. Of course we also offer support via <a href='mailto:support@wild-devs.net'>email</a> or our <a href='https://help.wild-devs.net' target='_blank'>support ticket center</a> and are available to answer your questions.
     </div>
-
+    
   contact:
     name: API Support
     url: https://help.wild-devs.net/
@@ -65,6 +65,23 @@ paths:
 # Games
   /epicgames/free:
     $ref: "./resources/games/epicgames/get.yaml"
+# Mockup
+  /address:
+    $ref: "./resources/mockup/address/get.yaml"
+  /company:
+    $ref: "./resources/mockup/company/get.yaml"
+  /finance:
+    $ref: "./resources/mockup/finance/get.yaml"
+  /git:
+    $ref: "./resources/mockup/git/get.yaml"
+  /internet:
+    $ref: "./resources/mockup/internet/get.yaml"
+  /product:
+    $ref: "./resources/mockup/product/get.yaml"
+  /user:
+    $ref: "./resources/mockup/user/get.yaml"
+  /vehicle:
+    $ref: "./resources/mockup/vehicle/get.yaml"
 # Random
   /string:
     $ref: "./resources/random/string/post.yaml"
@@ -77,7 +94,7 @@ paths:
     $ref: "./resources/urlshortener/post.yaml"
   /urlshortener/{id}:
     $ref: "./resources/urlshortener/delete.yaml"
-# Utils
+# Utility
   /compile:
     $ref: "./resources/utils/compile/post.yaml"
   /decode:

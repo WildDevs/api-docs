@@ -1,0 +1,13 @@
+- in: query
+  name: count
+  description: |
+    Set it to a value greater than `1` to receive an array of objects instead of a single object..
+
+    Count is limited to your request method. 
+    
+    - Users can set it upto `10`
+    - Members & Subscribers can set it upto `1000`
+  required: false
+  schema:
+    type: integer
+    format: int32

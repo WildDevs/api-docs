@@ -1,0 +1,18 @@
+get:
+  summary: Provides user related mockup data
+  operationId: getMockupUser
+  description: |
+    Generates user mockup data with several information.
+  tags:
+    - Mockup
+  parameters:
+    $ref: "../../../parameters/query/mockup/user.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/mockup/user/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

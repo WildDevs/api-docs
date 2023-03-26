@@ -30,7 +30,7 @@ post:
     | version          | Sets the python version, default is: 3                        |
     Available **version** values are: 2, 3                                           
   tags:
-    - Utils
+    - Utility
   security:
     - ApiKey: []
   requestBody:
