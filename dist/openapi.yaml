@@ -730,10 +730,10 @@ paths:
                     type: string
   /address:
     get:
-      summary: Provides mockup address related data
+      summary: Provides address related mockup data
       operationId: getMockupAddress
       description: |
-        Generates mockup address data with several information.
+        Generates address mockup data with several information.
       tags:
         - Mockup
       parameters:
@@ -853,10 +853,10 @@ paths:
                     type: string
   /company:
     get:
-      summary: Provides mockup company related data
+      summary: Provides company related mockup data
       operationId: getMockupCompany
       description: |
-        Generates mockup company data with several information.
+        Generates company mockup data with several information.
       tags:
         - Mockup
       parameters:
@@ -957,10 +957,10 @@ paths:
                     type: string
   /finance:
     get:
-      summary: Provides mockup finance related data
+      summary: Provides finance related mockup data
       operationId: getMockupFinance
       description: |
-        Generates mockup finance data with several information.
+        Generates finance mockup data with several information.
       tags:
         - Mockup
       parameters:
@@ -1087,10 +1087,10 @@ paths:
                     type: string
   /git:
     get:
-      summary: Provides mockup git related data
+      summary: Provides git related mockup data
       operationId: getMockupGit
       description: |
-        Generates mockup git data with several information.
+        Generates git data mockup with several information.
       tags:
         - Mockup
       parameters:
@@ -1192,10 +1192,10 @@ paths:
                     type: string
   /internet:
     get:
-      summary: Provides mockup internet related data
+      summary: Provides internet related mockup data
       operationId: getMockupInternet
       description: |
-        Generates mockup internet data with several information.
+        Generates internet mockup data with several information.
       tags:
         - Mockup
       parameters:
@@ -1313,10 +1313,10 @@ paths:
                     type: string
   /product:
     get:
-      summary: Provides mockup product related data
+      summary: Provides product related mockup data
       operationId: getMockupProduct
       description: |
-        Generates mockup product data with several information.
+        Generates product mockup data with several information.
       tags:
         - Mockup
       parameters:
@@ -1422,10 +1422,10 @@ paths:
                     type: string
   /user:
     get:
-      summary: Provides mockup user related data
+      summary: Provides user related mockup data
       operationId: getMockupUser
       description: |
-        Generates mockup user data with several information.
+        Generates user mockup data with several information.
       tags:
         - Mockup
       parameters:
@@ -1647,10 +1647,10 @@ paths:
                     type: string
   /vehicle:
     get:
-      summary: Provides mockup vehicle related data
+      summary: Provides vehicle related mockup data
       operationId: getMockupVehicle
       description: |
-        Generates mockup vehicle data with several information.
+        Generates vehicle mockup data with several information.
       tags:
         - Mockup
       parameters:
