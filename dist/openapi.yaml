@@ -748,7 +748,7 @@ paths:
         - in: query
           name: count
           description: |
-            Set it to a value greater than `1` to receive multiple data.
+            Set it to a value greater than `1` to receive an array of objects instead of a single object..
 
             Count is limited to your request method. 
 
@@ -863,7 +863,7 @@ paths:
         - in: query
           name: count
           description: |
-            Set it to a value greater than `1` to receive multiple data.
+            Set it to a value greater than `1` to receive an array of objects instead of a single object..
 
             Count is limited to your request method. 
 
@@ -967,7 +967,7 @@ paths:
         - in: query
           name: count
           description: |
-            Set it to a value greater than `1` to receive multiple data.
+            Set it to a value greater than `1` to receive an array of objects instead of a single object..
 
             Count is limited to your request method. 
 
@@ -1097,7 +1097,7 @@ paths:
         - in: query
           name: count
           description: |
-            Set it to a value greater than `1` to receive multiple data.
+            Set it to a value greater than `1` to receive an array of objects instead of a single object..
 
             Count is limited to your request method. 
 
@@ -1202,7 +1202,7 @@ paths:
         - in: query
           name: count
           description: |
-            Set it to a value greater than `1` to receive multiple data.
+            Set it to a value greater than `1` to receive an array of objects instead of a single object..
 
             Count is limited to your request method. 
 
@@ -1323,7 +1323,7 @@ paths:
         - in: query
           name: count
           description: |
-            Set it to a value greater than `1` to receive multiple data.
+            Set it to a value greater than `1` to receive an array of objects instead of a single object..
 
             Count is limited to your request method. 
 
@@ -1447,7 +1447,7 @@ paths:
         - in: query
           name: count
           description: |
-            Set it to a value greater than `1` to receive multiple data.
+            Set it to a value greater than `1` to receive an array of objects instead of a single object..
 
             Count is limited to your request method. 
 
@@ -1657,7 +1657,7 @@ paths:
         - in: query
           name: count
           description: |
-            Set it to a value greater than `1` to receive multiple data.
+            Set it to a value greater than `1` to receive an array of objects instead of a single object..
 
             Count is limited to your request method. 
 
