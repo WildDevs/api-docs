@@ -1,8 +1,8 @@
 get:
-  summary: Provides mockup internet related data
+  summary: Provides internet related mockup data
   operationId: getMockupInternet
   description: |
-    Generates mockup internet data with several information.
+    Generates internet mockup data with several information.
   tags:
     - Mockup
   parameters:

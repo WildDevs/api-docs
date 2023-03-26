@@ -1,8 +1,8 @@
 get:
-  summary: Provides mockup company related data
+  summary: Provides company related mockup data
   operationId: getMockupCompany
   description: |
-    Generates mockup company data with several information.
+    Generates company mockup data with several information.
   tags:
     - Mockup
   parameters:

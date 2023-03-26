@@ -1,8 +1,8 @@
 get:
-  summary: Provides mockup git related data
+  summary: Provides git related mockup data
   operationId: getMockupGit
   description: |
-    Generates mockup git data with several information.
+    Generates git data mockup with several information.
   tags:
     - Mockup
   parameters:

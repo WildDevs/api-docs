@@ -1,8 +1,8 @@
 get:
-  summary: Provides mockup vehicle related data
+  summary: Provides vehicle related mockup data
   operationId: getMockupVehicle
   description: |
-    Generates mockup vehicle data with several information.
+    Generates vehicle mockup data with several information.
   tags:
     - Mockup
   parameters:

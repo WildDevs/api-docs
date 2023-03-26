@@ -1,8 +1,8 @@
 get:
-  summary: Provides mockup address related data
+  summary: Provides address related mockup data
   operationId: getMockupAddress
   description: |
-    Generates mockup address data with several information.
+    Generates address mockup data with several information.
   tags:
     - Mockup
   parameters:

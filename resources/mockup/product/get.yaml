@@ -1,8 +1,8 @@
 get:
-  summary: Provides mockup product related data
+  summary: Provides product related mockup data
   operationId: getMockupProduct
   description: |
-    Generates mockup product data with several information.
+    Generates product mockup data with several information.
   tags:
     - Mockup
   parameters:

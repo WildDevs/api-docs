@@ -1,8 +1,8 @@
 get:
-  summary: Provides mockup user related data
+  summary: Provides user related mockup data
   operationId: getMockupUser
   description: |
-    Generates mockup user data with several information.
+    Generates user mockup data with several information.
   tags:
     - Mockup
   parameters:

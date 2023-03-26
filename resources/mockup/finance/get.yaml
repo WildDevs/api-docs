@@ -1,8 +1,8 @@
 get:
-  summary: Provides mockup finance related data
+  summary: Provides finance related mockup data
   operationId: getMockupFinance
   description: |
-    Generates mockup finance data with several information.
+    Generates finance mockup data with several information.
   tags:
     - Mockup
   parameters:
