@@ -1758,6 +1758,91 @@ paths:
                     type: string
                   note:
                     type: string
+  /joke:
+    get:
+      summary: Random Joke Delivery
+      operationId: joke
+      description: |
+        Delivers a random joke from a pool of ~5000. 
+
+        <h3>Disclaimer</h3>
+        <div style="border: 1px dashed red; padding: 10px; background-color: #f0f0f0;">
+          It has been attempted to keep the jokes as clean as possible. Since the data has been collected by scraping websites, it is possible that there may be a few jokes that are inappropriate or offensive to some people.
+        </div>
+      tags:
+        - Random
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /string:
     post:
       summary: Random String Generator

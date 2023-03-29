@@ -83,6 +83,8 @@ paths:
   /vehicle:
     $ref: "./resources/mockup/vehicle/get.yaml"
 # Random
+  /joke:
+    $ref: "./resources/random/joke/get.yaml"
   /string:
     $ref: "./resources/random/string/post.yaml"
   /number:
