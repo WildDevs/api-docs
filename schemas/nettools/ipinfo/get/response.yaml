@@ -1,0 +1,69 @@
+type: object
+properties:
+  ip: 
+    type: string
+  range:
+    type: string
+  source:
+    type: string
+  org:
+    type: string
+  netname:
+    type: string
+  isp:
+    type: string
+  description:
+    type: string
+  country:
+    type: string
+  status:
+    type: string
+  "mnt-by":
+    type: array
+    items:
+      type: string
+  "mnt-ref":
+    type: array
+    items:
+      type: string
+  "nic-hdl":
+    type: array
+    items:
+      type: string
+  "admin-c":
+    type: string
+  "tech-c":
+    type: string
+  "abuse-c":
+    type: string
+  person:
+    type: array
+    items:
+      type: string
+  address:
+    type: array
+    items:
+      type: string
+  phone:
+    type: string
+  
+  location:
+    type: object
+    properties:
+      continent:
+        type: string
+      country:
+        type: string
+      city:
+        type: string
+      postal:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+
+  createdAt:
+    type: string
+  lastModifiedAt:
+    type: string

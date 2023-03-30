@@ -82,7 +82,14 @@ paths:
     $ref: "./resources/mockup/user/get.yaml"
   /vehicle:
     $ref: "./resources/mockup/vehicle/get.yaml"
-# Random
+# Net Tools
+  /dnslookup:
+    $ref: "./resources/nettools/dnslookup/get.yaml"
+  /ipinfo:
+    $ref: "./resources/nettools/ipinfo/get.yaml"
+  /whatsmyip:
+    $ref: "./resources/nettools/whatsmyip/get.yaml"
+# Net Tools
   /joke:
     $ref: "./resources/random/joke/get.yaml"
   /string:

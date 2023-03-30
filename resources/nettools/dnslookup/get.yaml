@@ -1,0 +1,23 @@
+get:
+  summary: Provides dns information about given FQDN
+  operationId: getDnsLookup
+  description: |
+    Provides DNS (Domain Name Service) information about the given FQDN (Full Qualified Domain Name).
+    IPv4 (if available) and IPv6 (if available) along with their DNS Records.
+  tags:
+    - Net Tools
+  security:
+    - ApiKey: []
+  parameters:
+    $ref: "../../../parameters/query/nettools/dnslookup.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/nettools/dnslookup/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

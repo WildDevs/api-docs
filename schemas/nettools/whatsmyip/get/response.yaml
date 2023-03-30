@@ -1,0 +1,12 @@
+type: object
+properties:
+  ip:
+    type: string
+    format: $ip
+    description: IPv4 or IPv6 address
+  isp:
+    type: string
+    description: Internet Service Provider
+  country:
+    type: string
+    description: Country code
