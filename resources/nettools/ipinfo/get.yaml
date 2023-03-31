@@ -1,0 +1,22 @@
+get:
+  summary: Provides comprehensive IP information
+  operationId: getIpInfo
+  description: |
+    Provides a huge amount of IP information, from ISP to location data.
+  tags:
+    - Net Tools
+  security:
+    - ApiKey: []
+  parameters:
+    $ref: "../../../parameters/query/nettools/ipinfo.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/nettools/ipinfo/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

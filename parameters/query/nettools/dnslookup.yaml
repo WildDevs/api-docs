@@ -1,0 +1,8 @@
+- in: query
+  name: source
+  description: |
+    Must be a valid FQDN (without protocol). Do not provide IPv4 or IPv6 address.
+  required: true
+  schema:
+    type: string
+    example: wild-devs.net

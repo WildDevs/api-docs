@@ -1758,6 +1758,406 @@ paths:
                     type: string
                   note:
                     type: string
+  /dnslookup:
+    get:
+      summary: Provides dns information about given FQDN
+      operationId: getDnsLookup
+      description: |
+        Provides DNS (Domain Name Service) information about the given FQDN (Full Qualified Domain Name).
+        IPv4 (if available) and IPv6 (if available) along with their DNS Records.
+      tags:
+        - Net Tools
+      security:
+        - ApiKey: []
+      parameters:
+        - in: query
+          name: source
+          description: |
+            Must be a valid FQDN (without protocol). Do not provide IPv4 or IPv6 address.
+          required: true
+          schema:
+            type: string
+            example: wild-devs.net
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          ipv4:
+                            type: string
+                            format: $ipv4
+                          ipv6:
+                            type: string
+                            format: $ipv6
+                          records:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                ttl:
+                                  type: string
+                                class:
+                                  type: string
+                                value:
+                                  oneOf:
+                                    - type: string
+                                    - type: object
+                                      properties:
+                                        priority:
+                                          type: string
+                                        server:
+                                          type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /ipinfo:
+    get:
+      summary: Provides comprehensive IP information
+      operationId: getIpInfo
+      description: |
+        Provides a huge amount of IP information, from ISP to location data.
+      tags:
+        - Net Tools
+      security:
+        - ApiKey: []
+      parameters:
+        - in: query
+          name: source
+          description: |
+            Must be a valid IPv4 or IPv6 address. Do not provide FQDN.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          ip:
+                            type: string
+                          range:
+                            type: string
+                          source:
+                            type: string
+                          org:
+                            type: string
+                          netname:
+                            type: string
+                          isp:
+                            type: string
+                          description:
+                            type: string
+                          country:
+                            type: string
+                          status:
+                            type: string
+                          mnt-by:
+                            type: array
+                            items:
+                              type: string
+                          mnt-ref:
+                            type: array
+                            items:
+                              type: string
+                          nic-hdl:
+                            type: array
+                            items:
+                              type: string
+                          admin-c:
+                            type: string
+                          tech-c:
+                            type: string
+                          abuse-c:
+                            type: string
+                          person:
+                            type: array
+                            items:
+                              type: string
+                          address:
+                            type: array
+                            items:
+                              type: string
+                          phone:
+                            type: string
+                          location:
+                            type: object
+                            properties:
+                              continent:
+                                type: string
+                              country:
+                                type: string
+                              city:
+                                type: string
+                              postal:
+                                type: string
+                              latitude:
+                                type: string
+                              longitude:
+                                type: string
+                          createdAt:
+                            type: string
+                          lastModifiedAt:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /whatsmyip:
+    get:
+      summary: Provides IP address and ISP information about the issuer
+      operationId: getWhatsMyIp
+      description: |
+        IPv4 or IPv6 along with the ISP (Internet Service Provider) and country code.
+      tags:
+        - Net Tools
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          ip:
+                            type: string
+                            format: $ip
+                            description: IPv4 or IPv6 address
+                          isp:
+                            type: string
+                            description: Internet Service Provider
+                          country:
+                            type: string
+                            description: Country code
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /joke:
     get:
       summary: Random Joke Delivery

@@ -1,0 +1,28 @@
+type: object
+properties:
+  ipv4:
+    type: string
+    format: $ipv4
+  ipv6:
+    type: string
+    format: $ipv6
+  records:
+    type: array
+    items:
+      type: object
+      properties:
+        type:
+          type: string
+        ttl:
+          type: string
+        class:
+          type: string
+        value: 
+          oneOf:
+            - type: string
+            - type: object
+              properties:
+                priority:
+                  type: string
+                server: 
+                  type: string

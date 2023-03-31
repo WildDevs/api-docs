@@ -1,0 +1,7 @@
+- in: query
+  name: source
+  description: |
+    Must be a valid IPv4 or IPv6 address. Do not provide FQDN.
+  required: true
+  schema:
+    type: string
