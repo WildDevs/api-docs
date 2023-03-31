@@ -1,0 +1,10 @@
+type: object
+properties:
+  word:
+    type: string
+    description: Any word, no phrase!
+    example: "Car"
+  language:
+    type: string
+    description: Choose one of the over 100 supported languages. The word should be in the same language.
+    example: English

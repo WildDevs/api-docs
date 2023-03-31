@@ -1,0 +1,142 @@
+post:
+  summary: Finds synonyms for the given word
+  operationId: synonyms
+  description: |
+    `Subscriber` Only Endpoint. API-Key is needed. This endpoint consumes AI tokens (depends on the output length).
+
+    Provide a word + language and the AI will find synonyms for the word. The output is in the same language as the word.
+
+    Supported languages:
+    ```
+    Afrikaans
+    Albanian
+    Arabic
+    Armenian
+    Assamese
+    Azerbaijani
+    Basque
+    Belarusian
+    Bengali
+    Bosnian
+    Bulgarian
+    Burmese
+    Cantonese
+    Catalan
+    Cebuano
+    Chichewa
+    Chinese
+    Corsican
+    Croatian
+    Czech
+    Danish
+    Dutch
+    English
+    Esperanto
+    Estonian
+    Filipino
+    Finnish
+    French
+    Frisian
+    Galician
+    Georgian
+    German
+    Greek
+    Gujarati
+    Haitian Creole
+    Hausa
+    Hawaiian
+    Hebrew
+    Hindi
+    Hmong
+    Hungarian
+    Icelandic
+    Igbo
+    Indonesian
+    Irish
+    Italian
+    Japanese
+    Javanese
+    Kannada
+    Kazakh
+    Khmer
+    Kinyarwanda
+    Korean
+    Kurdish
+    Kyrgyz
+    Lao
+    Latin
+    Latvian
+    Lithuanian
+    Luxembourgish
+    Macedonian
+    Malagasy
+    Malay
+    Malayalam
+    Maltese
+    Maori
+    Marathi
+    Mongolian
+    Myanmar
+    Nepali
+    Norwegian
+    Nyanja
+    Odia
+    Pashto
+    Persian
+    Polish
+    Portuguese
+    Punjabi
+    Romanian
+    Russian
+    Samoan
+    Scots Gaelic
+    Serbian
+    Sesotho
+    Shona
+    Sindhi
+    Sinhala
+    Slovak
+    Slovenian
+    Somali
+    Spanish
+    Sundanese
+    Swahili
+    Swedish
+    Tajik
+    Tamil
+    Tatar
+    Telugu
+    Thai
+    Turkish
+    Turkmen
+    Ukrainian
+    Urdu
+    Uyghur
+    Uzbek
+    Vietnamese
+    Welsh
+    Xhosa
+    Yiddish
+    Yoruba
+    Zulu
+    ```
+  tags:
+    - AI
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/ai/synonyms/post/payload.yaml"
+
+  responses:
+    '200':
+      $ref: "../../../responses/ai/synonyms/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

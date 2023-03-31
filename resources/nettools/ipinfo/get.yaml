@@ -2,6 +2,8 @@ get:
   summary: Provides comprehensive IP information
   operationId: getIpInfo
   description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
     Provides a huge amount of IP information, from ISP to location data.
   tags:
     - Net Tools

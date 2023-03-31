@@ -57,6 +57,11 @@ servers:
   - url: https://api.wild-devs.net/v1
     description: API Production Server
 paths:
+# AI
+  /dictionary:
+    $ref: "./resources/ai/dictionary/post.yaml"
+  /synonyms:
+    $ref: "./resources/ai/synonyms/post.yaml"
 # Conversion
   /currency:
     $ref: "./resources/conversion/currency/post.yaml"
