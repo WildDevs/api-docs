@@ -56,6 +56,434 @@ servers:
   - url: 'https://api.wild-devs.net/v1'
     description: API Production Server
 paths:
+  /dictionary:
+    post:
+      summary: Describes a given word for a desired language
+      operationId: dictionary
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed. This endpoint consumes AI tokens (depends on the output length).
+
+        Provide a word + language and the AI will describe the word. The output is in the same language as the word.
+
+        Supported languages:
+        ```
+        Afrikaans
+        Albanian
+        Arabic
+        Armenian
+        Assamese
+        Azerbaijani
+        Basque
+        Belarusian
+        Bengali
+        Bosnian
+        Bulgarian
+        Burmese
+        Cantonese
+        Catalan
+        Cebuano
+        Chichewa
+        Chinese
+        Corsican
+        Croatian
+        Czech
+        Danish
+        Dutch
+        English
+        Esperanto
+        Estonian
+        Filipino
+        Finnish
+        French
+        Frisian
+        Galician
+        Georgian
+        German
+        Greek
+        Gujarati
+        Haitian Creole
+        Hausa
+        Hawaiian
+        Hebrew
+        Hindi
+        Hmong
+        Hungarian
+        Icelandic
+        Igbo
+        Indonesian
+        Irish
+        Italian
+        Japanese
+        Javanese
+        Kannada
+        Kazakh
+        Khmer
+        Kinyarwanda
+        Korean
+        Kurdish
+        Kyrgyz
+        Lao
+        Latin
+        Latvian
+        Lithuanian
+        Luxembourgish
+        Macedonian
+        Malagasy
+        Malay
+        Malayalam
+        Maltese
+        Maori
+        Marathi
+        Mongolian
+        Myanmar
+        Nepali
+        Norwegian
+        Nyanja
+        Odia
+        Pashto
+        Persian
+        Polish
+        Portuguese
+        Punjabi
+        Romanian
+        Russian
+        Samoan
+        Scots Gaelic
+        Serbian
+        Sesotho
+        Shona
+        Sindhi
+        Sinhala
+        Slovak
+        Slovenian
+        Somali
+        Spanish
+        Sundanese
+        Swahili
+        Swedish
+        Tajik
+        Tamil
+        Tatar
+        Telugu
+        Thai
+        Turkish
+        Turkmen
+        Ukrainian
+        Urdu
+        Uyghur
+        Uzbek
+        Vietnamese
+        Welsh
+        Xhosa
+        Yiddish
+        Yoruba
+        Zulu
+        ```
+      tags:
+        - AI
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                word:
+                  type: string
+                  description: 'Any word, no phrase!'
+                  example: Car
+                language:
+                  type: string
+                  description: Choose one of the over 100 supported languages. The word should be in the same language.
+                  example: English
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /synonyms:
+    post:
+      summary: Finds synonyms for the given word
+      operationId: synonyms
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed. This endpoint consumes AI tokens (depends on the output length).
+
+        Provide a word + language and the AI will find synonyms for the word. The output is in the same language as the word.
+
+        Supported languages:
+        ```
+        Afrikaans
+        Albanian
+        Arabic
+        Armenian
+        Assamese
+        Azerbaijani
+        Basque
+        Belarusian
+        Bengali
+        Bosnian
+        Bulgarian
+        Burmese
+        Cantonese
+        Catalan
+        Cebuano
+        Chichewa
+        Chinese
+        Corsican
+        Croatian
+        Czech
+        Danish
+        Dutch
+        English
+        Esperanto
+        Estonian
+        Filipino
+        Finnish
+        French
+        Frisian
+        Galician
+        Georgian
+        German
+        Greek
+        Gujarati
+        Haitian Creole
+        Hausa
+        Hawaiian
+        Hebrew
+        Hindi
+        Hmong
+        Hungarian
+        Icelandic
+        Igbo
+        Indonesian
+        Irish
+        Italian
+        Japanese
+        Javanese
+        Kannada
+        Kazakh
+        Khmer
+        Kinyarwanda
+        Korean
+        Kurdish
+        Kyrgyz
+        Lao
+        Latin
+        Latvian
+        Lithuanian
+        Luxembourgish
+        Macedonian
+        Malagasy
+        Malay
+        Malayalam
+        Maltese
+        Maori
+        Marathi
+        Mongolian
+        Myanmar
+        Nepali
+        Norwegian
+        Nyanja
+        Odia
+        Pashto
+        Persian
+        Polish
+        Portuguese
+        Punjabi
+        Romanian
+        Russian
+        Samoan
+        Scots Gaelic
+        Serbian
+        Sesotho
+        Shona
+        Sindhi
+        Sinhala
+        Slovak
+        Slovenian
+        Somali
+        Spanish
+        Sundanese
+        Swahili
+        Swedish
+        Tajik
+        Tamil
+        Tatar
+        Telugu
+        Thai
+        Turkish
+        Turkmen
+        Ukrainian
+        Urdu
+        Uyghur
+        Uzbek
+        Vietnamese
+        Welsh
+        Xhosa
+        Yiddish
+        Yoruba
+        Zulu
+        ```
+      tags:
+        - AI
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                word:
+                  type: string
+                  description: 'Any word, no phrase!'
+                  example: Car
+                language:
+                  type: string
+                  description: Choose one of the over 100 supported languages. The word should be in the same language.
+                  example: English
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                      message:
+                        type: string
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /currency:
     post:
       summary: Convert an amount from one currency to another currency
@@ -1763,6 +2191,8 @@ paths:
       summary: Provides dns information about given FQDN
       operationId: getDnsLookup
       description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
         Provides DNS (Domain Name Service) information about the given FQDN (Full Qualified Domain Name).
         IPv4 (if available) and IPv6 (if available) along with their DNS Records.
       tags:
@@ -1899,6 +2329,8 @@ paths:
       summary: Provides comprehensive IP information
       operationId: getIpInfo
       description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
         Provides a huge amount of IP information, from ISP to location data.
       tags:
         - Net Tools

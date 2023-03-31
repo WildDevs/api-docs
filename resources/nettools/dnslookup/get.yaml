@@ -2,6 +2,8 @@ get:
   summary: Provides dns information about given FQDN
   operationId: getDnsLookup
   description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
     Provides DNS (Domain Name Service) information about the given FQDN (Full Qualified Domain Name).
     IPv4 (if available) and IPv6 (if available) along with their DNS Records.
   tags:

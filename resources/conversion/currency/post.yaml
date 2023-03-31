@@ -181,7 +181,7 @@ post:
   tags:
     - Conversion
   security:
-  - ApiKey: []
+    - ApiKey: []
   requestBody:
     required: false
     content:
