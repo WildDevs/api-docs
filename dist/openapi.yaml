@@ -3148,6 +3148,267 @@ paths:
                     type: string
                   note:
                     type: string
+  '/geoip/{ip}':
+    get:
+      summary: Get geolocation information about an IPv4 or IPv6 address.
+      operationId: geoip
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - Utility
+      security:
+        - ApiKey: []
+      parameters:
+        - in: path
+          name: ip
+          schema:
+            type: string
+            format: ip
+          description: IPv4 or IPv6 address
+          required: true
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          city:
+                            type: object
+                            properties:
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+                          continent:
+                            type: object
+                            properties:
+                              code:
+                                type: string
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+                          country:
+                            type: object
+                            properties:
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              is_in_european_union:
+                                type: boolean
+                              iso_code:
+                                type: string
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+                          location:
+                            type: object
+                            properties:
+                              accuracy_radius:
+                                type: integer
+                                format: int32
+                              latitude:
+                                type: integer
+                                format: int32
+                              longitude:
+                                type: integer
+                                format: int32
+                              time_zone:
+                                type: string
+                          registered_country:
+                            type: object
+                            properties:
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              is_in_european_union:
+                                type: boolean
+                              iso_code:
+                                type: string
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+                          subdivisions:
+                            type: object
+                            properties:
+                              geoname_id:
+                                type: integer
+                                format: int32
+                              iso_code:
+                                type: string
+                              names:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  fr:
+                                    type: string
+                                  ja:
+                                    type: string
+                                  pt_BR:
+                                    type: string
+                                  ru:
+                                    type: string
+                                  zh-CN:
+                                    type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /whatsmyip:
     get:
       summary: Provides IP address and ISP information about the issuer
@@ -4584,267 +4845,6 @@ paths:
                     type: string
                   note:
                     type: string
-  '/geoip/{ip}':
-    get:
-      summary: Get geolocation information about an IPv4 or IPv6 address.
-      operationId: geoip
-      description: |
-        `Member` & `Subscriber` Endpoint. API-Key is needed.
-      tags:
-        - Utility
-      security:
-        - ApiKey: []
-      parameters:
-        - in: path
-          name: ip
-          schema:
-            type: string
-            format: ip
-          description: IPv4 or IPv6 address
-          required: true
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                        example: 200
-                      message:
-                        type: string
-                        example: OK
-                  - type: object
-                    properties:
-                      data:
-                        type: object
-                        properties:
-                          city:
-                            type: object
-                            properties:
-                              geoname_id:
-                                type: integer
-                                format: int32
-                              names:
-                                type: object
-                                properties:
-                                  de:
-                                    type: string
-                                  en:
-                                    type: string
-                                  es:
-                                    type: string
-                                  fr:
-                                    type: string
-                                  ja:
-                                    type: string
-                                  pt_BR:
-                                    type: string
-                                  ru:
-                                    type: string
-                                  zh-CN:
-                                    type: string
-                          continent:
-                            type: object
-                            properties:
-                              code:
-                                type: string
-                              geoname_id:
-                                type: integer
-                                format: int32
-                              names:
-                                type: object
-                                properties:
-                                  de:
-                                    type: string
-                                  en:
-                                    type: string
-                                  es:
-                                    type: string
-                                  fr:
-                                    type: string
-                                  ja:
-                                    type: string
-                                  pt_BR:
-                                    type: string
-                                  ru:
-                                    type: string
-                                  zh-CN:
-                                    type: string
-                          country:
-                            type: object
-                            properties:
-                              geoname_id:
-                                type: integer
-                                format: int32
-                              is_in_european_union:
-                                type: boolean
-                              iso_code:
-                                type: string
-                              names:
-                                type: object
-                                properties:
-                                  de:
-                                    type: string
-                                  en:
-                                    type: string
-                                  es:
-                                    type: string
-                                  fr:
-                                    type: string
-                                  ja:
-                                    type: string
-                                  pt_BR:
-                                    type: string
-                                  ru:
-                                    type: string
-                                  zh-CN:
-                                    type: string
-                          location:
-                            type: object
-                            properties:
-                              accuracy_radius:
-                                type: integer
-                                format: int32
-                              latitude:
-                                type: integer
-                                format: int32
-                              longitude:
-                                type: integer
-                                format: int32
-                              time_zone:
-                                type: string
-                          registered_country:
-                            type: object
-                            properties:
-                              geoname_id:
-                                type: integer
-                                format: int32
-                              is_in_european_union:
-                                type: boolean
-                              iso_code:
-                                type: string
-                              names:
-                                type: object
-                                properties:
-                                  de:
-                                    type: string
-                                  en:
-                                    type: string
-                                  es:
-                                    type: string
-                                  fr:
-                                    type: string
-                                  ja:
-                                    type: string
-                                  pt_BR:
-                                    type: string
-                                  ru:
-                                    type: string
-                                  zh-CN:
-                                    type: string
-                          subdivisions:
-                            type: object
-                            properties:
-                              geoname_id:
-                                type: integer
-                                format: int32
-                              iso_code:
-                                type: string
-                              names:
-                                type: object
-                                properties:
-                                  de:
-                                    type: string
-                                  en:
-                                    type: string
-                                  es:
-                                    type: string
-                                  fr:
-                                    type: string
-                                  ja:
-                                    type: string
-                                  pt_BR:
-                                    type: string
-                                  ru:
-                                    type: string
-                                  zh-CN:
-                                    type: string
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '401':
-          description: Unauthorized Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
   /hash:
     post:
       summary: Hashes a text into various formats
@@ -5218,7 +5218,7 @@ paths:
         JSON:
           - url: Provide the url to the image (Supported formats are: BMP, JPEG, PNG)
 
-        Multipart/form-data: 
+        multipart/form-data: 
           - image: Provide the image as binary (upload)
       tags:
         - Utility
