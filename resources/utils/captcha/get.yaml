@@ -1,0 +1,25 @@
+get:
+  summary: Create unique captcha
+  operationId: captcha
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+    Creates a captcha image and delivers it as base64 string along with its value. So you can just show the image to your user and check their input against the delivered captcha value.
+
+  tags:
+    - Utility
+  security:
+    - ApiKey: []
+  parameters:
+    $ref: "../../../parameters/query/utils/captcha.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/utils/captcha/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

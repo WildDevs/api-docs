@@ -1,0 +1,41 @@
+- in: query
+  name: length
+  description: |
+    Length of the captcha. Must be greater than `1`. 
+    
+    Specifies how many characters to select from the character set pool.
+
+    Default is: 6
+  required: false
+  schema:
+    type: integer
+    format: int32
+- in: query
+  name: height
+  description: |
+    Height of the captcha in pixels. Must be greater than `1`. 
+    
+    Default is: 100
+  required: false
+  schema:
+    type: integer
+    format: int32
+- in: query
+  name: width
+  description: |
+    Width of the captcha in pixels. Must be greater than `1`. 
+    
+    Default is: 200
+  required: false
+  schema:
+    type: integer
+    format: int32
+- in: query
+  name: charset
+  description: |
+    Charset for the captcha. Must contain at least `1` character. 
+    
+    Default is: 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+  required: false
+  schema:
+    type: string

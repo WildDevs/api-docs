@@ -4027,6 +4027,163 @@ paths:
                     type: string
                   note:
                     type: string
+  /captcha:
+    get:
+      summary: Create unique captcha
+      operationId: captcha
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Creates a captcha image and delivers it as base64 string along with its value. So you can just show the image to your user and check their input against the delivered captcha value.
+      tags:
+        - Utility
+      security:
+        - ApiKey: []
+      parameters:
+        - in: query
+          name: length
+          description: |
+            Length of the captcha. Must be greater than `1`. 
+
+            Specifies how many characters to select from the character set pool.
+
+            Default is: 6
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: height
+          description: |
+            Height of the captcha in pixels. Must be greater than `1`. 
+
+            Default is: 100
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: width
+          description: |
+            Width of the captcha in pixels. Must be greater than `1`. 
+
+            Default is: 200
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: charset
+          description: |
+            Charset for the captcha. Must contain at least `1` character. 
+
+            Default is: 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                          width:
+                            type: integer
+                            format: int32
+                          height:
+                            type: integer
+                            format: int32
+                          image:
+                            type: string
+                            format: base64
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /compile:
     post:
       summary: Compile code and get the output

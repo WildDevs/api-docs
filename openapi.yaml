@@ -119,6 +119,8 @@ paths:
   /urlshortener/{id}:
     $ref: "./resources/urlshortener/delete.yaml"
 # Utility
+  /captcha:
+    $ref: "./resources/utils/captcha/get.yaml"
   /compile:
     $ref: "./resources/utils/compile/post.yaml"
   /decode:
