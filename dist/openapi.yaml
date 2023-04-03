@@ -5204,6 +5204,153 @@ paths:
                     type: string
                   note:
                     type: string
+  /nsfw:
+    post:
+      summary: NSFW (Not Safe For Work) Image Checker
+      operationId: nsfw
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        This endpoint is powered by machine learning and uses a trained model to rate the image.
+
+        You have two options to provide the image.
+
+        JSON:
+          - url: Provide the url to the image (Supported formats are: BMP, JPEG, PNG)
+
+        Multipart/form-data: 
+          - image: Provide the image as binary (upload)
+      tags:
+        - Utility
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: |
+                    The URL to the image. Supported formats are: BMP, JPEG, PNG
+              required:
+                - url
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          Neutral:
+                            type: number
+                            format: float
+                          Drawing:
+                            type: number
+                            format: float
+                          Hentai:
+                            type: number
+                            format: float
+                          Porn:
+                            type: number
+                            format: float
+                          Sexy:
+                            type: number
+                            format: float
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /bic:
     post:
       summary: Check if the given bic (Bank Identification Code) or SWIFT code is valid.

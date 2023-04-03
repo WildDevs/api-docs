@@ -133,6 +133,8 @@ paths:
     $ref: "./resources/utils/hash/post.yaml"
   /qrcode:
     $ref: "./resources/utils/qrcode/post.yaml"
+  /nsfw:
+    $ref: "./resources/utils/nsfw/post.yaml"
 # Validation
   /bic:
     $ref: "./resources/validation/bic/post.yaml"
