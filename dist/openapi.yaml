@@ -3241,11 +3241,116 @@ paths:
                     type: string
                   note:
                     type: string
+  /domains:
+    get:
+      summary: Provides a list of official top level domains
+      operationId: domains
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        A list of all valid top-level domains is maintained by the IANA and is updated from time to time.
+
+        Source: <a href='https://www.icann.org/resources/pages/tlds-2012-02-25-en'>ICANN</a>
+
+        Last update: 2012-02-25
+      tags:
+        - Open Data
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            domain:
+                              type: string
+                              description: Top Level Domain
+                              example: .de
+                            type:
+                              type: string
+                              description: country-code or generic
+                              example: country-code
+                            manager:
+                              type: string
+                              description: Registrar
+                              example: DENIC eG
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /joke:
     get:
       summary: Random Joke Delivery
       operationId: joke
       description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
         Delivers a random joke from a pool of ~5000. 
 
         <h3>Disclaimer</h3>

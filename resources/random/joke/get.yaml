@@ -2,6 +2,8 @@ get:
   summary: Random Joke Delivery
   operationId: joke
   description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+  
     Delivers a random joke from a pool of ~5000. 
 
     <h3>Disclaimer</h3>

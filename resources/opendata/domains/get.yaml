@@ -1,0 +1,22 @@
+get:
+  summary: Provides a list of official top level domains
+  operationId: domains
+  description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+    A list of all valid top-level domains is maintained by the IANA and is updated from time to time.
+
+    Source: <a href='https://www.icann.org/resources/pages/tlds-2012-02-25-en'>ICANN</a>
+
+    Last update: 2012-02-25
+  tags:
+    - Open Data
+  responses:
+    '200':
+      $ref: "../../../responses/opendata/domains/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

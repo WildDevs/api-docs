@@ -101,6 +101,9 @@ paths:
     $ref: "./resources/nettools/ipinfo/get.yaml"
   /whatsmyip:
     $ref: "./resources/nettools/whatsmyip/get.yaml"
+# Open Data
+  /domains:
+    $ref: "./resources/opendata/domains/get.yaml"
 # Random
   /joke:
     $ref: "./resources/random/joke/get.yaml"
