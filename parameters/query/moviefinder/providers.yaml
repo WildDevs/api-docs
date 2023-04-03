@@ -1,0 +1,8 @@
+- in: query
+  name: locale
+  description: |
+    Must be a valid and supported locale.
+  required: false
+  schema:
+    type: string
+    example: de_DE

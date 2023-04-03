@@ -213,8 +213,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -427,8 +429,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -705,8 +709,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -947,8 +953,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1047,8 +1055,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1201,8 +1211,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1316,8 +1328,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1420,8 +1434,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1550,8 +1566,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1655,8 +1673,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1776,8 +1796,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1914,8 +1936,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2110,8 +2134,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2137,6 +2163,625 @@ paths:
                             description: Vehicle Registration Mark
         '400':
           description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /moviefinder:
+    post:
+      summary: Finds a movie or show in a country
+      operationId: moviefinder
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This endpoint offers 5 movie / show suggestions that most closely match the entered title.
+
+        Supported types: `movie` and `show`
+
+        Supported locales:
+        ```
+        sq_AL (Albania)
+        ar_DZ (Algeria)
+        ca_AD (Andorra)
+        pt_AO (Angola)
+        en_AG (Antigua and Barbuda)
+        es_AR (Argentina)
+        en_AU (Australia)
+        de_AT (Austria)
+        az_AZ (Azerbaijan)
+        en_BS (Bahamas)
+        ar_BH (Bahrain)
+        en_BB (Barbados)
+        be_BY (Belarus)
+        fr_BE (Belgium)
+        en_BZ (Belize)
+        en_BM (Bermuda)
+        es_BO (Bolivia)
+        bs_BA (Bosnia and Herzegovina)
+        pt_BR (Brazil)
+        bg_BG (Bulgaria)
+        fr_BF (Burkina Faso)
+        en_CM (Cameroon)
+        en_CA (Canada)
+        pt_CV (Cape Verde)
+        ar_TD (Chad)
+        es_CL (Chile)
+        es_CO (Colombia)
+        es_CR (Costa Rica)
+        hr_HR (Croatia)
+        es_CU (Cuba)
+        el_CY (Cyprus)
+        cs_CZ (Czech Republic)
+        en_DK (Denmark)
+        es_DO (Dominican Republic)
+        fr_CD (DR Congo)
+        es_EC (Ecuador)
+        ar_EG (Egypt)
+        es_SV (El Salvador)
+        es_GQ (Equatorial Guinea)
+        et_EE (Estonia)
+        en_FJ (Fiji)
+        fi_FI (Finland)
+        fr_FR (France)
+        fr_GF (French Guiana)
+        fr_PF (French Polynesia)
+        de_DE (Germany)
+        en_GH (Ghana)
+        en_GI (Gibraltar)
+        el_GR (Greece)
+        es_GT (Guatemala)
+        en_GG (Guernsey)
+        en_GY (Guyana)
+        es_HN (Honduras)
+        zh_HK (Hong Kong)
+        hu_HU (Hungary)
+        is_IS (Iceland)
+        en_IN (India)
+        en_ID (Indonesia)
+        ar_IQ (Iraq)
+        en_IE (Ireland)
+        he_IL (Israel)
+        it_IT (Italy)
+        fr_CI (Ivory Coast)
+        en_JM (Jamaica)
+        ja_JP (Japan)
+        ar_JO (Jordan)
+        en_KE (Kenya)
+        sq_XK (Kosovo)
+        ar_KW (Kuwait)
+        lv_LV (Latvia)
+        ar_LB (Lebanon)
+        ar_LY (Libya)
+        de_LI (Liechtenstein)
+        lt_LT (Lithuania)
+        fr_LU (Luxembourg)
+        mk_MK (Macedonia)
+        fr_MG (Madagascar)
+        en_MW (Malawi)
+        en_MY (Malaysia)
+        fr_ML (Mali)
+        mt_MT (Malta)
+        fr_MU (Mauritius)
+        es_MX (Mexico)
+        ro_MD (Moldova)
+        fr_MC (Monaco)
+        sr_ME (Montenegro)
+        ar_MA (Morocco)
+        pt_MZ (Mozambique)
+        en_NL (Netherlands)
+        en_NZ (New Zealand)
+        es_NI (Nicaragua)
+        fr_NE (Niger)
+        en_NG (Nigeria)
+        en_NO (Norway)
+        ar_OM (Oman)
+        ur_PK (Pakistan)
+        ar_PS (Palestine)
+        es_PA (Panama)
+        en_PG (Papua New Guinea)
+        es_PY (Paraguay)
+        es_PE (Peru)
+        en_PH (Philippines)
+        pl_PL (Poland)
+        pt_PT (Portugal)
+        ar_QA (Qatar)
+        ro_RO (Romania)
+        ru_RU (Russia)
+        en_LC (Saint Lucia)
+        it_SM (San Marino)
+        ar_SA (Saudi Arabia)
+        fr_SN (Senegal)
+        sr_RS (Serbia)
+        fr_SC (Seychelles)
+        en_SG (Singapore)
+        sk_SK (Slovakia)
+        sl_SI (Slovenia)
+        en_ZA (South Africa)
+        ko_KR (South Korea)
+        es_ES (Spain)
+        sv_SE (Sweden)
+        de_CH (Switzerland)
+        zh_TW (Taiwan)
+        sw_TZ (Tanzania)
+        en_TH (Thailand)
+        en_TT (Trinidad and Tobago)
+        ar_TN (Tunisia)
+        tr_TR (Turkey)
+        en_TC (Turks and Caicos Islands)
+        en_UG (Uganda)
+        uk_UA (Ukraine)
+        ar_AE (United Arab Emirates)
+        en_GB (United Kingdom)
+        en_US (United States)
+        es_UY (Uruguay)
+        it_VA (Vatican City)
+        es_VE (Venezuela)
+        ar_YE (Yemen)
+        en_ZM (Zambia)
+        en_ZW (Zimbabwe)
+        ```
+
+        Supported streaming providers:
+        ``` 
+        7plus, 9Now, A Spor, A&E, ABC, ABC iview, Acontra Plus, Acontra Plus Amazon Channel, Acorn TV, AcornTV Amazon Channel, Action Max Amazon Channel, Adult Swim, aha, AHCTV, Alamo on Demand, All 4, Alleskino, Alt Balaji, Amazon Arthaus Channel, Amazon DVD / Blu-ray, Amazon Prime Video, Amazon Video, AMC, AMC on Demand, AMC Plus Apple TV Channel , AMC Theatres, AMC+, AMC+ Amazon Channel, AMC+ Roku Premium Channel, Amediateka, Animal Planet, Animax Plus Amazon Channel, Anime Digital Networks, Aniverse Amazon Channel, Apple TV, Apple TV Plus, Argo, ARROW, Arrow Video Amazon Channel, Arte, Arthouse CNMA Amazon Channel, ArthouseCNMA, AsianCrush, Atres Player, AVA BGB, AVA CSAL, AVA HBZ, AVA VOBB, Azteca 7, Band Sports, BBC America, BBC Earth Amazon Channel, BBC iPlayer, BBC Player Amazon Channel, Bbox VOD, Be TV Go, Beamafilm, Behind the Tree, beIN SPORTS, Belas Artes à La Carte, Believe, Benshi Amazon Channel, Bet+, Bet+ Amazon Channel, BFI Player, BFI Player Amazon Channel, BINGE, Bioskop Online, Blim, Blockbuster, Bloody Movies Amazon Channel, blue TV, blutv, BluTV Amazon Channel, Boomerang, Boomerang Amazon Channel, BoxOffice, Bravo TV, BritBox, BritBox Amazon Channel, Britbox Apple TV Channel , British Pathé TV, BroadwayHD, BT Sport, BTV, C More, Canal VOD, Canal+, Canal+ Sport, Cartoon Network, Catchplay, CBC Gem, CBS, CG Collection Amazon channel, Chai Flicks, Chili, CINE, Cine Comico Amazon Channel, Cineasterna, Cinema of Hearts Amazon Channel, Cinemas a la Demande, Cinemax Amazon Channel, CineMember, Cineplex, Cinépolis KLIC, Claro video, Classix, Club Illico, Cohen Media Amazon Channel, Comedy Central, Comedy Central Plus Amazon Channel, CONTAR, CONtv, Cooking Channel, Courtside 1891, Crackle, Crave, Crave Starz, Criterion Channel, Crunchyroll, CTV, Cultpix, Curiosity Stream, CuriosityStream Amazon Channel, Curzon Amazon Channel, Curzon Home Cinema, CW Seed, Dansk Filmskat, Darkmatter TV, Das Erste Mediathek, Daum, DAZN, DAZN Amazon Channel, Dekkoo, Destination America, DIRECTV, DIRECTV GO, Discovery, Discovery Amazon Channel, Discovery Life, Discovery Plus, Discovery Plus Amazon Channel, Discovery Plus Sport Amazon Channel, Disney Plus, DisneyNOW, DIY Network, Dizi Amazon Channel, DocAlliance Films, DocPlay, DOCSVILLE, DocuBay Amazon Channel, Dogwoof On Demand, Dove Channel, Draken Films, DreamWorksTV Amazon Channel, DRTV, dTV, Edisonline, ELEVEN , Elisa Viihde, EPIC ON, Eros Now, Eros Now Amazon Channel, ESPN, ESPN 2, ESPN 3, ESPN 4, ESPN Deportes, ESPN Player, ESPN Plus, Eurosport, Eventive, Exxen, F1TV Pro, Fandor, Fandor Amazon Channel, Fetch TV, FFF tv, Film Movement Plus, Film Total Amazon Channel, Film1, FilmBox Live Amazon Channel, FilmBox+, Filme Filme, filmfriend, Filmin, Filmin Latino, Filmin Plus, filmingo, Filmlegenden Amazon Channel, FILMO, Filmo Amazon Channel, Filmoteket, Filmow, FILMRISE, Filmstriben, Filmtastic, Filmtastic Amazon Channel, Filmzie, Flimmit, Flix Premiere, FlixFling, FlixOlé, FlixOlé Amazon Channel, Flo Rugby, Food Network, Fox, FOX Soccer Plus, Fox Sports, Fox Sports 1, Foxtel Now, France TV, Free - All, Freeform, Freevee, fuboTV, Full Action Amazon Channel, Full Moon Amazon Channel, Funimation Now, FXNow, FXNow Canada, Gameflow TV, genflix, Global TV, Globoplay, Go3, Gol Mundial, Google Play Movies, GOSPEL PLAY, GRJNGO Amazon Channel, GuideDoc, Hallmark Movies, Hallmark Movies Now Amazon Channel, Hallmark TV Amazon Channel, Hayu, Hayu Amazon Channel, HBO Go, HBO Max, HBO Max Amazon Channel, HBO Max Free, Here TV, HGTV, Hi-YAH, HiDive, Historia y Actualidad Amazon Channel, History, History Play, History Vault, HistoryPlay Amazon Channel, Hoichoi, Hollywood Suite, Hollywood Suite Amazon Channel, Home of Horror, Home of Horror Amazon Channel, Hoopla, Hopster TV, Horizon, Horrify, Hotstar, HRTi, Hulu, Hungama Play, iBAKATV, iciTouTV, Icon Film Amazon Channel, IFC Amazon Channel, IFFR Unleashed, iflix, INA madelen Amazon Channel, IndieFlix, Infinity Selection Amazon Channel, Infinity+, Insomnia Amazon Channel, inSports TV, Investigation Discovery, IPLA, iQIYI, IROKOTV, ITV Amazon Channel, ITVX, Ivi, iWantTFC, iWonder Full Amazon channel, izzi, Jio Cinema, Joyn, Joyn Plus, Kanopy, Kino Now, Kino on Demand, Kinopoisk, KinoPop, Kirjastokino, Kividoo, KKTV, Klassiki, Klik Film, Knowledge Network, Kocowa, KoreaOnDemand, KPN, L Equipe, LaCinetek, Las Estrellas, Laugh Out Loud, Libreflix, Lifetime, Lifetime Movie Club, Ligue 1 Amazon Channel, LINE TV, Lionsgate Play, Lionsgate Plus, Logo TV, Looke, Looke Amazon Channel, Love and Passion Amazon Channel, Love Nature Amazon Channel, Magellan TV, Magenta TV, MagentaTV, Magnolia Selects, ManoramaMax, MARCA Claro, Martha Stewart TV, MAX Stream, Maxdome, maxdome Store, Mediaset Infinity, Megabox, meJane, Meo, Metrograph, MGM Amazon Channel, MGM Plus, MGM Plus Amazon Channel, MGM Plus Roku Premium Channel, Mhz Choice, Microsoft Store, Mitele , MLB Network, MLB TV, MLB.TV Amazon Channel, MLS Season Pass, MOLA TV, More Than Sports TV, More TV, Motor Trend, MotorTrend Amazon Channel, Moviedome Plus Amazon Channel, MovieSaints, Movietickets, Movistar Play, Movistar Plus, MTV, MTV Plus Amazon Channel, MUBI, MUBI Amazon Channel, MX Player, My5, MyOutdoorTV, MZ Choice Amazon Channel, Naver Store, NBA League Pass, NBA League Pass Amazon Channel, NBA TV Amazon Channel, NBC, Neon TV, Netflix, Netflix basic with Ads, Netflix Kids, NetMovies, Netzkino, Nexo Plus, NFB, NFL Game Pass, NFL Plus, NHL Network, NHL TV, Night Flight Plus, NLZIET, Noggin Amazon Channel, Noovo, Nova Play, NOW, Now TV, Now TV Cinema, NPO 1, NPO 2, NPO Start, NPO Zapp, NRK TV, O2 TV, OCS Amazon Channel , OCS Go, Oi Play, Okko, Oldflix, OneFootball, Orange VOD, OSN, Otta, OUTtv Amazon Channel, OVID, OXYGEN, OzFlix, Pantaflix, Pantaya, Pantaya Amazon Channel, Paramount Network, Paramount Plus, Paramount Plus Apple TV Channel , Paramount+ Amazon Channel, Paramount+ Roku Premium Channel, Paramount+ Showtime, Pash Amazon Channel, Pass Warner Amazon Channel, Pathé Thuis, Paus, PBS, PBS Kids Amazon Channel, PBS Masterpiece Amazon Channel, Peacock, Peacock Premium, Pickbox NOW, Pickx Sports, Picl, Planet Horror Amazon Channel, Play Sports, Play Suisse, Player, Plex, Pluto TV, Pokémon Amazon Channel, Pongalo Amazon Channel , Popcorn, Popcornflix, Popcorntimes, Popflick, Premier, Premier Sports, PRTV, Public Domain Movies, puhutv, Pure Flix, QFT Player, QubitTV, Rai News, Rai Play, Rai Sport, Rakuten TV, Rakuten Viki, Rambler, Ran, RDS, realeyz, Realeyz Amazon Channel, Redbox, Retrocrush, Revry, RMC Sport, Rooster Teeth, RTBF, RTL Passion Amazon Channel, RTL Play, RTL+, RTPplay, rtve, Runtime, Ruutu, S Sport Plus, Sat 1, SBS On Demand, SBT Sports, Science Channel, Screambox, Screambox Amazon Channel, Serially, SF Anytime, SFR Play, Shadowz, Shadowz Amazon Channel, Shahid VIP, ShemarooMe, ShortsTV Amazon Channel, Shout! Factory Amazon Channel, Shout! Factory TV, ShowMax, Showtime, Showtime Amazon Channel, Showtime Apple TV Channel, Showtime Roku Premium Channel, Shudder, Shudder Amazon Channel, Silverline Amazon Channel, Sixplay, Sky, Sky Go, Sky Sports, Sky Store, Sky X, SkyShowtime, Sling TV Blue, Sling TV Orange, Sling TV Orange and Blue, Sling TV Sports Extra, Smithsonian Channel, Smithsonian Channel Amazon Channel, SN Now, Sony AXN Amazon Channel, Sony Liv, Sooner, South Park, Spamflix, Spectrum On Demand, Sport TV, Sport1, Sport1+, Sportall, Sportdigital, Sportitalia, Sportschau, Spuul, StackTV Amazon Channel, Stan, Star Plus, Starz, Starz Amazon Channel, Starz Apple TV Channel, Starz Play Amazon Channel, Starz Roku Premium Channel, STARZPLAY, Strim, Studiocanal Presents ALLSTARS Amazon Channel, Studiocanal Presents Amazon Channel, STUDIOCANAL PRESENTS Apple TV Channel, Studiocanal Presents MOVIECULT Amazon Channel, STV Player, Sun Nxt, Sundance Now, Sundance Now Amazon Channel, Super Channel Amazon Channel, Superfresh Amazon Channel, SuperTennis, SVT, Syfy, Takflix, Talk Talk TV, Tata Play, TBS, TCM, Tele2 Play, Telenet, TELETOON+ Amazon Channel, Telia Play, Telstra TV, Tenk, Tennis Channel, Tennis TV, tenplay, TF1, The CW, The FA Player, The Film Detective, The Great Courses Signature Collection Amazon Channel, The Oprah Winfrey Network, The Roku Channel, ThreeNow, Timvision, Tivibu, Tivify, TLC, tln, TNT, TNT Sports Go, TNTGo, TOD, TOD TV, Topic, Travel Channel, TriArt Play, TRT SPOR, TRT1, tru TV, True Story, TSN, TSN Plus, TSN1, TSN2, TSN3, TSN4, TSN5, Tubi TV, Tubi TV Sports, TUDN, Turk On Video Amazon Channel, TV 2, TV 2 Play, TV Land, TV8, TVCortos Amazon Channel, TVF Play, TvIgle, TVNZ, tvo, TVPublica, tvzavr, Twitch, TyC Sports, U-NEXT, UAM TV, UCIcinemas, UKTV Play, UMC Amazon Channel, Univer Video, Universal Pictures, Universcine, Universcine Amazon Channel, UPC TV, Urban Movie Channel, URC TV, USA Network, VH1, VI movies and tv, Viaplay, Viaplay Sports, Vice TV , Viddla, Videobuster, Videoland, Vidio, Viewster Amazon Channel, Viu, VIX , Vix+ Amazon Channel, VOD Club, VOD Poland, Volta, Voot, Voyo, VRT MAX, VRV, Vudu, VUDU Free, VVVVID, W4free, W9, WAKANIM, Watcha, Watchbox, wavve, wedotv, WeTV, WOW, WOW Presents Plus, WTA TV, WWE Network, YeloTV, Yle Areena, Yorck on Demand, YouTube, YouTube Free, YouTube Premium, YouTube Sports, Yupp TV, ZDF, ZDF Herzkino Amazon Channel, Zee5, Ziggo TV
+        ```
+      tags:
+        - MovieFinder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locale:
+                  type: string
+                  example: en_US
+                type:
+                  type: string
+                  description: movie or show
+                  example: movie
+                title:
+                  type: string
+                  description: Title of the movie or show
+                  example: The Matrix
+              required:
+                - locale
+                - type
+                - title
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            locale:
+                              type: string
+                            country:
+                              type: string
+                            title:
+                              type: string
+                            release_year:
+                              type: integer
+                              format: int32
+                            poster:
+                              type: string
+                              format: base64
+                              description: Cover image as base64
+                            offers:
+                              type: object
+                              properties:
+                                buy:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the streaming provider
+                                      url:
+                                        type: string
+                                        description: Direct link to the movie/show
+                                      retail_price:
+                                        type: number
+                                        format: float
+                                        description: Price of the movie/show
+                                      currency:
+                                        type: string
+                                        description: Currency based on the locale
+                                      seasons:
+                                        type: integer
+                                        format: int32
+                                        description: 'Season count, 0 if its a movie'
+                                      icon:
+                                        type: string
+                                        format: base64
+                                        description: Icon of the streaming provider in base64
+                                rent:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the streaming provider
+                                      url:
+                                        type: string
+                                        description: Direct link to the movie/show
+                                      retail_price:
+                                        type: number
+                                        format: float
+                                        description: Price of the movie/show
+                                      currency:
+                                        type: string
+                                        description: Currency based on the locale
+                                      seasons:
+                                        type: integer
+                                        format: int32
+                                        description: 'Season count, 0 if its a movie'
+                                      icon:
+                                        type: string
+                                        format: base64
+                                        description: Icon of the streaming provider in base64
+                                ads:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the streaming provider
+                                      url:
+                                        type: string
+                                        description: Direct link to the movie/show
+                                      retail_price:
+                                        type: number
+                                        format: float
+                                        description: Price of the movie/show
+                                      currency:
+                                        type: string
+                                        description: Currency based on the locale
+                                      seasons:
+                                        type: integer
+                                        format: int32
+                                        description: 'Season count, 0 if its a movie'
+                                      icon:
+                                        type: string
+                                        format: base64
+                                        description: Icon of the streaming provider in base64
+                                flatrate:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the streaming provider
+                                      url:
+                                        type: string
+                                        description: Direct link to the movie/show
+                                      retail_price:
+                                        type: number
+                                        format: float
+                                        description: Price of the movie/show
+                                      currency:
+                                        type: string
+                                        description: Currency based on the locale
+                                      seasons:
+                                        type: integer
+                                        format: int32
+                                        description: 'Season count, 0 if its a movie'
+                                      icon:
+                                        type: string
+                                        format: base64
+                                        description: Icon of the streaming provider in base64
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /moviefinder/locales:
+    get:
+      summary: Gets all supported locales
+      operationId: getAllMovieFinderLocales
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This is an endpoint to retrieve all supported locales. 
+      tags:
+        - MovieFinder
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          locale:
+                            type: string
+                          country:
+                            type: string
+                          currency:
+                            type: string
+                          currency_name:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /moviefinder/providers:
+    get:
+      summary: Gets all supported streaming providers
+      operationId: getAllMovieFinderProviders
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This is an endpoint to retrieve all supported streaming providers. 
+
+        You can filter them by passing the `locale` query parameter.
+      tags:
+        - MovieFinder
+      parameters:
+        - in: query
+          name: locale
+          description: |
+            Must be a valid and supported locale.
+          required: false
+          schema:
+            type: string
+            example: de_DE
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          short_name:
+                            type: string
+                            description: Short name (code) of the provider
+                          name:
+                            type: string
+                            description: Providers full name
+                          monetization_types:
+                            type: string
+                            description: |
+                              Comma sperated values like: buy, rent, ads, flaterate
+                          locale:
+                            type: string
+                            description: locale of the provider
+                          icon:
+                            type: string
+                            format: base64
+                            description: Icon/Image of the provider as base64
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
           content:
             application/json:
               schema:
@@ -2223,8 +2868,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2359,8 +3006,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2499,1162 +3148,6 @@ paths:
                     type: string
                   note:
                     type: string
-  /whatsmyip:
-    get:
-      summary: Provides IP address and ISP information about the issuer
-      operationId: getWhatsMyIp
-      description: |
-        IPv4 or IPv6 along with the ISP (Internet Service Provider) and country code.
-      tags:
-        - Net Tools
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: object
-                        properties:
-                          ip:
-                            type: string
-                            format: $ip
-                            description: IPv4 or IPv6 address
-                          isp:
-                            type: string
-                            description: Internet Service Provider
-                          country:
-                            type: string
-                            description: Country code
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /joke:
-    get:
-      summary: Random Joke Delivery
-      operationId: joke
-      description: |
-        Delivers a random joke from a pool of ~5000. 
-
-        <h3>Disclaimer</h3>
-        <div style="border: 1px dashed red; padding: 10px; background-color: #f0f0f0;">
-          It has been attempted to keep the jokes as clean as possible. Since the data has been collected by scraping websites, it is possible that there may be a few jokes that are inappropriate or offensive to some people.
-        </div>
-      tags:
-        - Random
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: string
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /string:
-    post:
-      summary: Random String Generator
-      operationId: string
-      description: |
-        Generate random strings for passwords, product keys, vouchers or uuids as identifiers.
-
-        Allowed methods: string, bytes, base32, base62, uuidv4, uuidv5
-
-        Options for method **string**:
-
-        | Key              | Description                                                       |
-        | ---------------- | ------------------------------------------------------------------|
-        | min              | The minimum length of the string (ignored if length is given)     |
-        | max              | The maximum length of the API key (ignored if length is given)    |
-        | length           | The length of the string                                          |
-        | pool             | The characters used for the string generation                     |
-        | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |
-
-        Options for method **bytes**:
-
-        | Key              | Description                                                       |
-        | ---------------- | ------------------------------------------------------------------|
-        | min              | The minimum length of the string (ignored if length is given)     |
-        | max              | The maximum length of the API key (ignored if length is given)    |
-        | length           | The length of the string                                          |
-        | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |
-
-        Options for method **base32**:
-
-        | Key              | Description                                                       |
-        | ---------------- | ------------------------------------------------------------------|
-        | dashes           | Adds dashes (-) to the string                                     |
-        | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |
-
-        Options for method **base62**:
-
-        | Key              | Description                                                       |
-        | ---------------- | ------------------------------------------------------------------|
-        | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |
-
-        Options for method **uuidv4**:
-
-        | Key              | Description                                                       |
-        | ---------------- | ------------------------------------------------------------------|
-        | dashes           | Adds dashes (-) to the string                                     |
-        | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |
-
-        Options for method **uuidv5**:
-
-        | Key              | Description                                                       |
-        | ---------------- | ------------------------------------------------------------------|
-        | name             | A unique name to use for the generation                           |
-        | namespace        | The UUID to use for the generation (ignored if batch is given)    |
-        | dashes           | Adds dashes (-) to the string                                     |
-        | batch            | The number of strings to generate                                 |
-        | prefix           | A prefix for the string, a period (.) will be added automatically |
-      tags:
-        - Random
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                method:
-                  type: string
-                  description: 'Allowed methods are `string`, `bytes`, `base32`, `base62`, `uuidv4`, `uuidv5`'
-                  example: bytes
-                length:
-                  type: integer
-                  format: int32
-                  minimum: 1
-                  maximum: 128
-                  description: The length must be between `1` and `128`
-                  example: 8
-                min:
-                  type: integer
-                  format: int32
-                  minimum: 1
-                  description: Must be greater than `0` AND less than or equal to `max`
-                  example: 1
-                max:
-                  type: integer
-                  format: int32
-                  maximum: 128
-                  description: Must be greater than or equal to `1` or `min` AND less than or equal to `128`
-                  example: 42
-                pool:
-                  type: string
-                  description: The characters used for the string generation
-                  example: ABCDEF123456789
-                prefix:
-                  type: string
-                  description: 'A prefix for the string, a period (.) will be added automatically'
-                  example: wd
-                batch:
-                  type: integer
-                  format: int32
-                  description: Must be greater than or equal to `1` AND less than or equal to `100`
-                  example: 5
-                dashes:
-                  type: boolean
-                  description: Adds dashes (-) to the string
-                  example: true
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: string
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /number:
-    post:
-      summary: Random Number Generator
-      operationId: number
-      description: Generate random numbers.
-      tags:
-        - Random
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                min:
-                  type: integer
-                  format: int32
-                  minimum: 1
-                  description: Must be greater than `0` AND less than or equal to `max`
-                  example: 1
-                max:
-                  type: integer
-                  format: int32
-                  maximum: 9007199254740991
-                  description: Must be greater than or equal to `1` or `min` AND less than or equal to `9.007.199.254.740.991`
-                  example: 42
-                batch:
-                  type: integer
-                  format: int32
-                  description: Must be greater than or equal to `1` AND less than or equal to `100`
-                  example: 5
-              required:
-                - min
-                - max
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: integer
-                        format: int32
-                        example: 42
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /urlshorteners:
-    get:
-      summary: Gets all url shorteners
-      operationId: getShortUrls
-      description: |
-        `Member` & `Subscriber` Endpoint. API-Key is needed.
-
-        Shorten urls are bound to the user who owns the api-key. This is an endpoint to retrieve all these shorten urls.
-      tags:
-        - UrlShortener
-      security:
-        - ApiKey: []
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: object
-                        properties:
-                          id:
-                            type: string
-                            format: uuid
-                          original_url:
-                            type: string
-                          short_url:
-                            type: string
-                          code:
-                            type: string
-                          clicks:
-                            type: integer
-                            format: int32
-                          created_at:
-                            type: string
-                            format: date-time
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '401':
-          description: Unauthorized Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /urlshortener:
-    post:
-      summary: Shorts a given URL
-      operationId: shortUrl
-      description: |
-        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
-
-        If `x-api-key` is supplied, then the short-urls are assigned to the user who owns the api-key. So you can query all short-urls and get more information, like the number of clicks. You can also remove them with the delete endpoint.
-
-        Available shortener domains are: "xfive.de", "xtc5.de"
-
-        If "custom_id" is passed with payload, random id will not be generated and your custom id will be used, if its available.
-
-        Returns the short url.
-      tags:
-        - UrlShortener
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                original_url:
-                  type: string
-                domain:
-                  type: string
-                custom_id:
-                  type: string
-              required:
-                - original_url
-                - domain
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: string
-                        format: url
-                        description: Returns the shorten url
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  '/urlshortener/{id}':
-    delete:
-      summary: Deletes a given url shortener object.
-      operationId: deleteShortUrl
-      description: |
-        `Member` & `Subscriber` Endpoint. API-Key is needed.
-      tags:
-        - UrlShortener
-      security:
-        - ApiKey: []
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: string
-            format: uuid
-          description: UUID of the shorten url
-          required: true
-      responses:
-        '204':
-          description: Null Response
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /compile:
-    post:
-      summary: Compile code and get the output
-      operationId: compile
-      description: |
-        `Subscriber` Only Endpoint. API-Key is needed.
-
-        Supported languages are: "c", "cpp", "js", "python"
-
-        For each language are some options available:
-
-        **c**
-        | Key              | Description                                                   |
-        | ---------------- | --------------------------------------------------------------|
-        | std              | Sets the standard library for the compilation                 |
-        Available **std** values are: "c99", "c11","c17", "c18"                          
-
-        ---
-
-        **cpp**
-        | Key              | Description                                                   |
-        | ---------------- | --------------------------------------------------------------|
-        | std              | Sets the standard library for the compilation                 |
-        Available **std** values are: "c++98","c++03", "c++11", "c++14", "c++17"         
-
-        ---
-
-        **python**
-        | Key              | Description                                                   |
-        | ---------------- | --------------------------------------------------------------|
-        | version          | Sets the python version, default is: 3                        |
-        Available **version** values are: 2, 3                                           
-      tags:
-        - Utility
-      security:
-        - ApiKey: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                language:
-                  type: string
-                  description: 'Available languages are `c`, `cpp`, `js` and `python`'
-                code:
-                  type: string
-                  format: base64
-                  description: Provide the code as base64 string to avoid character escapes.
-                std:
-                  type: string
-                  description: For `C` and `C++` only.
-                version:
-                  type: integer
-                  format: int32
-                  description: For `Python` only.
-              required:
-                - language
-                - code
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: object
-                        properties:
-                          source:
-                            type: string
-                            description: Defines the source of the response. Can be `compiler` or `runtime`
-                          result:
-                            type: string
-                            description: Output of the given code.
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '401':
-          description: Unauthorized Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /decode:
-    post:
-      summary: 'Decode text to base64, utf8, utf16le, hex, ascii and latin1'
-      operationId: decode
-      description: |
-        Decodes given text into various formats
-
-        Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
-      tags:
-        - Utility
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                text:
-                  type: string
-                  description: Any string to decode into various formats
-                  example: My string to decode
-                from:
-                  type: string
-                  description: 'Define what type your string is -> "base64", "utf8", "utf16le", "latin1", "hex" or "ascii"'
-                  example: base64
-              required:
-                - text
-                - from
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: object
-                        properties:
-                          base64:
-                            type: string
-                            format: base64
-                          utf8:
-                            type: string
-                            format: utf8
-                          utf16le:
-                            type: string
-                            format: utf16le
-                          latin1:
-                            type: string
-                            format: latin1
-                          hex:
-                            type: string
-                            format: hex
-                          ascii:
-                            type: string
-                            format: ascii
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /encode:
-    post:
-      summary: 'Encode text to base64, utf8, utf16le, hex, ascii and latin1'
-      operationId: encode
-      description: |
-        Encodes given text into various formats
-
-        Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
-      tags:
-        - Utility
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                text:
-                  type: string
-                  description: Any string to encode into various formats
-                  example: My string to encode
-                from:
-                  type: string
-                  description: 'Define what type your string is -> "base64", "utf8", "utf16le", "latin1", "hex" or "ascii"'
-                  example: ascii
-              required:
-                - text
-                - from
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                      message:
-                        type: string
-                  - type: object
-                    properties:
-                      data:
-                        type: object
-                        properties:
-                          base64:
-                            type: string
-                            format: base64
-                          utf8:
-                            type: string
-                            format: utf8
-                          utf16le:
-                            type: string
-                            format: utf16le
-                          latin1:
-                            type: string
-                            format: latin1
-                          hex:
-                            type: string
-                            format: hex
-                          ascii:
-                            type: string
-                            format: ascii
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
   '/geoip/{ip}':
     get:
       summary: Get geolocation information about an IPv4 or IPv6 address.
@@ -3662,7 +3155,7 @@ paths:
       description: |
         `Member` & `Subscriber` Endpoint. API-Key is needed.
       tags:
-        - Utility
+        - Net Tools
       security:
         - ApiKey: []
       parameters:
@@ -3688,8 +3181,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -3914,6 +3409,1442 @@ paths:
                     type: string
                   note:
                     type: string
+  /whatsmyip:
+    get:
+      summary: Provides IP address and ISP information about the issuer
+      operationId: getWhatsMyIp
+      description: |
+        IPv4 or IPv6 along with the ISP (Internet Service Provider) and country code.
+      tags:
+        - Net Tools
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          ip:
+                            type: string
+                            format: $ip
+                            description: IPv4 or IPv6 address
+                          isp:
+                            type: string
+                            description: Internet Service Provider
+                          country:
+                            type: string
+                            description: Country code
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /domains:
+    get:
+      summary: Provides a list of official top level domains
+      operationId: domains
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        A list of all valid top-level domains is maintained by the IANA and is updated from time to time.
+
+        Source: <a href='https://www.icann.org/resources/pages/tlds-2012-02-25-en'>ICANN</a>
+
+        Last update: 2012-02-25
+      tags:
+        - Open Data
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            domain:
+                              type: string
+                              description: Top Level Domain
+                              example: .de
+                            type:
+                              type: string
+                              description: country-code or generic
+                              example: country-code
+                            manager:
+                              type: string
+                              description: Registrar
+                              example: DENIC eG
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /joke:
+    get:
+      summary: Random Joke Delivery
+      operationId: joke
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        Delivers a random joke from a pool of ~5000. 
+
+        <h3>Disclaimer</h3>
+        <div style="border: 1px dashed red; padding: 10px; background-color: #f0f0f0;">
+          It has been attempted to keep the jokes as clean as possible. Since the data has been collected by scraping websites, it is possible that there may be a few jokes that are inappropriate or offensive to some people.
+        </div>
+      tags:
+        - Random
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /string:
+    post:
+      summary: Random String Generator
+      operationId: string
+      description: |
+        Generate random strings for passwords, product keys, vouchers or uuids as identifiers.
+
+        Allowed methods: string, bytes, base32, base62, uuidv4, uuidv5
+
+        Options for method **string**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | min              | The minimum length of the string (ignored if length is given)     |
+        | max              | The maximum length of the API key (ignored if length is given)    |
+        | length           | The length of the string                                          |
+        | pool             | The characters used for the string generation                     |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
+
+        Options for method **bytes**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | min              | The minimum length of the string (ignored if length is given)     |
+        | max              | The maximum length of the API key (ignored if length is given)    |
+        | length           | The length of the string                                          |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
+
+        Options for method **base32**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | dashes           | Adds dashes (-) to the string                                     |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
+
+        Options for method **base62**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
+
+        Options for method **uuidv4**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | dashes           | Adds dashes (-) to the string                                     |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
+
+        Options for method **uuidv5**:
+
+        | Key              | Description                                                       |
+        | ---------------- | ------------------------------------------------------------------|
+        | name             | A unique name to use for the generation                           |
+        | namespace        | The UUID to use for the generation (ignored if batch is given)    |
+        | dashes           | Adds dashes (-) to the string                                     |
+        | batch            | The number of strings to generate                                 |
+        | prefix           | A prefix for the string, a period (.) will be added automatically |
+      tags:
+        - Random
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  description: 'Allowed methods are `string`, `bytes`, `base32`, `base62`, `uuidv4`, `uuidv5`'
+                  example: bytes
+                length:
+                  type: integer
+                  format: int32
+                  minimum: 1
+                  maximum: 128
+                  description: The length must be between `1` and `128`
+                  example: 8
+                min:
+                  type: integer
+                  format: int32
+                  minimum: 1
+                  description: Must be greater than `0` AND less than or equal to `max`
+                  example: 1
+                max:
+                  type: integer
+                  format: int32
+                  maximum: 128
+                  description: Must be greater than or equal to `1` or `min` AND less than or equal to `128`
+                  example: 42
+                pool:
+                  type: string
+                  description: The characters used for the string generation
+                  example: ABCDEF123456789
+                prefix:
+                  type: string
+                  description: 'A prefix for the string, a period (.) will be added automatically'
+                  example: wd
+                batch:
+                  type: integer
+                  format: int32
+                  description: Must be greater than or equal to `1` AND less than or equal to `100`
+                  example: 5
+                dashes:
+                  type: boolean
+                  description: Adds dashes (-) to the string
+                  example: true
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /number:
+    post:
+      summary: Random Number Generator
+      operationId: number
+      description: Generate random numbers.
+      tags:
+        - Random
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                min:
+                  type: integer
+                  format: int32
+                  minimum: 1
+                  description: Must be greater than `0` AND less than or equal to `max`
+                  example: 1
+                max:
+                  type: integer
+                  format: int32
+                  maximum: 9007199254740991
+                  description: Must be greater than or equal to `1` or `min` AND less than or equal to `9.007.199.254.740.991`
+                  example: 42
+                batch:
+                  type: integer
+                  format: int32
+                  description: Must be greater than or equal to `1` AND less than or equal to `100`
+                  example: 5
+              required:
+                - min
+                - max
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: integer
+                        format: int32
+                        example: 42
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /urlshorteners:
+    get:
+      summary: Gets all url shorteners
+      operationId: getShortUrls
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Shorten urls are bound to the user who owns the api-key. This is an endpoint to retrieve all these shorten urls.
+      tags:
+        - UrlShortener
+      security:
+        - ApiKey: []
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          original_url:
+                            type: string
+                          short_url:
+                            type: string
+                          code:
+                            type: string
+                          clicks:
+                            type: integer
+                            format: int32
+                          created_at:
+                            type: string
+                            format: date-time
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /urlshortener:
+    post:
+      summary: Shorts a given URL
+      operationId: shortUrl
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        If `x-api-key` is supplied, then the short-urls are assigned to the user who owns the api-key. So you can query all short-urls and get more information, like the number of clicks. You can also remove them with the delete endpoint.
+
+        Available shortener domains are: "xfive.de", "xtc5.de"
+
+        If "custom_id" is passed with payload, random id will not be generated and your custom id will be used, if its available.
+
+        Returns the short url.
+      tags:
+        - UrlShortener
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                original_url:
+                  type: string
+                domain:
+                  type: string
+                custom_id:
+                  type: string
+              required:
+                - original_url
+                - domain
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+                        format: url
+                        description: Returns the shorten url
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  '/urlshortener/{id}':
+    delete:
+      summary: Deletes a given url shortener object.
+      operationId: deleteShortUrl
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+      tags:
+        - UrlShortener
+      security:
+        - ApiKey: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: UUID of the shorten url
+          required: true
+      responses:
+        '204':
+          description: Null Response
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /captcha:
+    get:
+      summary: Create unique captcha
+      operationId: captcha
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Creates a captcha image and delivers it as base64 string along with its value. So you can just show the image to your user and check their input against the delivered captcha value.
+      tags:
+        - Utility
+      security:
+        - ApiKey: []
+      parameters:
+        - in: query
+          name: length
+          description: |
+            Length of the captcha. Must be greater than `1`. 
+
+            Specifies how many characters to select from the character set pool.
+
+            Default is: 6
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: height
+          description: |
+            Height of the captcha in pixels. Must be greater than `1`. 
+
+            Default is: 100
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: width
+          description: |
+            Width of the captcha in pixels. Must be greater than `1`. 
+
+            Default is: 200
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: charset
+          description: |
+            Charset for the captcha. Must contain at least `1` character. 
+
+            Default is: 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                          width:
+                            type: integer
+                            format: int32
+                          height:
+                            type: integer
+                            format: int32
+                          image:
+                            type: string
+                            format: base64
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /compile:
+    post:
+      summary: Compile code and get the output
+      operationId: compile
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed.
+
+        Supported languages are: "c", "cpp", "js", "python"
+
+        For each language are some options available:
+
+        **c**
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | std              | Sets the standard library for the compilation                 |
+        Available **std** values are: "c99", "c11","c17", "c18"                          
+
+        ---
+
+        **cpp**
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | std              | Sets the standard library for the compilation                 |
+        Available **std** values are: "c++98","c++03", "c++11", "c++14", "c++17"         
+
+        ---
+
+        **python**
+        | Key              | Description                                                   |
+        | ---------------- | --------------------------------------------------------------|
+        | version          | Sets the python version, default is: 3                        |
+        Available **version** values are: 2, 3                                           
+      tags:
+        - Utility
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  description: 'Available languages are `c`, `cpp`, `js` and `python`'
+                code:
+                  type: string
+                  format: base64
+                  description: Provide the code as base64 string to avoid character escapes.
+                std:
+                  type: string
+                  description: For `C` and `C++` only.
+                version:
+                  type: integer
+                  format: int32
+                  description: For `Python` only.
+              required:
+                - language
+                - code
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          source:
+                            type: string
+                            description: Defines the source of the response. Can be `compiler` or `runtime`
+                          result:
+                            type: string
+                            description: Output of the given code.
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /decode:
+    post:
+      summary: 'Decode text to base64, utf8, utf16le, hex, ascii and latin1'
+      operationId: decode
+      description: |
+        Decodes given text into various formats
+
+        Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
+      tags:
+        - Utility
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Any string to decode into various formats
+                  example: My string to decode
+                from:
+                  type: string
+                  description: 'Define what type your string is -> "base64", "utf8", "utf16le", "latin1", "hex" or "ascii"'
+                  example: base64
+              required:
+                - text
+                - from
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          base64:
+                            type: string
+                            format: base64
+                          utf8:
+                            type: string
+                            format: utf8
+                          utf16le:
+                            type: string
+                            format: utf16le
+                          latin1:
+                            type: string
+                            format: latin1
+                          hex:
+                            type: string
+                            format: hex
+                          ascii:
+                            type: string
+                            format: ascii
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /encode:
+    post:
+      summary: 'Encode text to base64, utf8, utf16le, hex, ascii and latin1'
+      operationId: encode
+      description: |
+        Encodes given text into various formats
+
+        Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1
+      tags:
+        - Utility
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Any string to encode into various formats
+                  example: My string to encode
+                from:
+                  type: string
+                  description: 'Define what type your string is -> "base64", "utf8", "utf16le", "latin1", "hex" or "ascii"'
+                  example: ascii
+              required:
+                - text
+                - from
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          base64:
+                            type: string
+                            format: base64
+                          utf8:
+                            type: string
+                            format: utf8
+                          utf16le:
+                            type: string
+                            format: utf16le
+                          latin1:
+                            type: string
+                            format: latin1
+                          hex:
+                            type: string
+                            format: hex
+                          ascii:
+                            type: string
+                            format: ascii
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /hash:
     post:
       summary: Hashes a text into various formats
@@ -3950,8 +4881,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4193,14 +5126,163 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
                         type: string
                         format: base64
                         description: QRCode will be provided as base64.
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /nsfw:
+    post:
+      summary: NSFW (Not Safe For Work) Image Checker
+      operationId: nsfw
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        This endpoint is powered by machine learning and uses a trained model to rate the image.
+
+        You have two options to provide the image.
+
+        JSON:
+          - url: Provide the url to the image (Supported formats are: BMP, JPEG, PNG)
+
+        multipart/form-data: 
+          - image: Provide the image as binary (upload)
+      tags:
+        - Utility
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: |
+                    The URL to the image. Supported formats are: BMP, JPEG, PNG
+              required:
+                - url
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          Neutral:
+                            type: number
+                            format: float
+                          Drawing:
+                            type: number
+                            format: float
+                          Hentai:
+                            type: number
+                            format: float
+                          Porn:
+                            type: number
+                            format: float
+                          Sexy:
+                            type: number
+                            format: float
         '400':
           description: Bad Request Error
           content:
@@ -4305,8 +5387,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4416,8 +5500,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4526,8 +5612,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4639,8 +5727,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4803,8 +5893,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4926,8 +6018,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5036,8 +6130,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5146,8 +6242,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5256,8 +6354,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5378,8 +6478,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5488,8 +6590,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5602,8 +6706,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5712,8 +6818,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5824,8 +6932,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5954,8 +7064,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6071,8 +7183,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6185,8 +7299,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6334,8 +7450,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6489,8 +7607,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6672,8 +7792,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6782,8 +7904,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6933,8 +8057,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -7043,8 +8169,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:

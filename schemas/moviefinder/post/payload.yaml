@@ -1,0 +1,17 @@
+type: object
+properties:
+  locale:
+    type: string
+    example: en_US
+  type:
+    type: string
+    description: movie or show
+    example: movie
+  title:
+    type: string
+    description: Title of the movie or show
+    example: The Matrix
+required:
+  - locale
+  - type
+  - title

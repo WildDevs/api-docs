@@ -1,0 +1,39 @@
+post:
+  summary: NSFW (Not Safe For Work) Image Checker
+  operationId: nsfw
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+    This endpoint is powered by machine learning and uses a trained model to rate the image.
+  
+    You have two options to provide the image.
+
+    JSON:
+      - url: Provide the url to the image (Supported formats are: BMP, JPEG, PNG)
+    
+    multipart/form-data: 
+      - image: Provide the image as binary (upload)
+  tags:
+    - Utility
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/utils/nsfw/post/payload.yaml"
+      multipart/form-data:
+        schema:
+          $ref: "../../../schemas/utils/nsfw/post/multipart.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/utils/nsfw/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

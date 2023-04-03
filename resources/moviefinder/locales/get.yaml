@@ -1,17 +1,15 @@
 get:
-  summary: Get geolocation information about an IPv4 or IPv6 address.
-  operationId: geoip
+  summary: Gets all supported locales
+  operationId: getAllMovieFinderLocales
   description: |
-    `Member` & `Subscriber` Endpoint. API-Key is needed.
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+    
+    This is an endpoint to retrieve all supported locales. 
   tags:
-    - Utility
-  security:
-    - ApiKey: []
-  parameters:
-    $ref: "../../../parameters/path/geoip.yaml"
+    - MovieFinder
   responses:
     '200':
-      $ref: "../../../responses/utils/geoip/post.yaml"
+      $ref: "../../../responses/moviefinder/locales/get.yaml"
     '400':
       $ref: "../../../responses/error/badrequest.yaml"
     '401':

@@ -1,0 +1,17 @@
+type: object
+properties:
+  Neutral:
+    type: number
+    format: float
+  Drawing:
+    type: number
+    format: float
+  Hentai:
+    type: number
+    format: float
+  Porn:
+    type: number
+    format: float
+  Sexy:
+    type: number
+    format: float

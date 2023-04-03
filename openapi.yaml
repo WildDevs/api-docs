@@ -87,14 +87,26 @@ paths:
     $ref: "./resources/mockup/user/get.yaml"
   /vehicle:
     $ref: "./resources/mockup/vehicle/get.yaml"
+# MovieFinder
+  /moviefinder:
+    $ref: "./resources/moviefinder/post.yaml"
+  /moviefinder/locales:
+    $ref: "./resources/moviefinder/locales/get.yaml"
+  /moviefinder/providers:
+    $ref: "./resources/moviefinder/providers/get.yaml"
 # Net Tools
   /dnslookup:
     $ref: "./resources/nettools/dnslookup/get.yaml"
   /ipinfo:
     $ref: "./resources/nettools/ipinfo/get.yaml"
+  /geoip/{ip}:
+    $ref: "./resources/nettools/geoip/post.yaml"
   /whatsmyip:
     $ref: "./resources/nettools/whatsmyip/get.yaml"
-# Net Tools
+# Open Data
+  /domains:
+    $ref: "./resources/opendata/domains/get.yaml"
+# Random
   /joke:
     $ref: "./resources/random/joke/get.yaml"
   /string:
@@ -109,18 +121,20 @@ paths:
   /urlshortener/{id}:
     $ref: "./resources/urlshortener/delete.yaml"
 # Utility
+  /captcha:
+    $ref: "./resources/utils/captcha/get.yaml"
   /compile:
     $ref: "./resources/utils/compile/post.yaml"
   /decode:
     $ref: "./resources/utils/decode/post.yaml"
   /encode:
     $ref: "./resources/utils/encode/post.yaml"
-  /geoip/{ip}:
-    $ref: "./resources/utils/geoip/post.yaml"
   /hash:
     $ref: "./resources/utils/hash/post.yaml"
   /qrcode:
     $ref: "./resources/utils/qrcode/post.yaml"
+  /nsfw:
+    $ref: "./resources/utils/nsfw/post.yaml"
 # Validation
   /bic:
     $ref: "./resources/validation/bic/post.yaml"

@@ -1,0 +1,8 @@
+type: object
+properties:
+  url:
+    type: string
+    description: |
+      The URL to the image. Supported formats are: BMP, JPEG, PNG
+required:
+  - url

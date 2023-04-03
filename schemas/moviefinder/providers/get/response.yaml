@@ -1,0 +1,19 @@
+type: object
+properties:
+  short_name:
+    type: string
+    description: Short name (code) of the provider
+  name:
+    type: string
+    description: Providers full name
+  monetization_types:
+    type: string
+    description: |
+      Comma sperated values like: buy, rent, ads, flaterate
+  locale:
+    type: string
+    description: locale of the provider
+  icon:
+    type: string
+    format: base64
+    description: Icon/Image of the provider as base64

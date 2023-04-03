@@ -1,12 +1,13 @@
 type: object
 properties:
-  status:
+  value:
     type: string
-    example: success
-  code:
+  width:
     type: integer
     format: int32
-    example: 200
-  message:
+  height:
+    type: integer
+    format: int32
+  image:
     type: string
-    example: OK
+    format: base64
