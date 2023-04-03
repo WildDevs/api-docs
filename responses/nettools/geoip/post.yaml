@@ -8,4 +8,4 @@ content:
       - type: object
         properties:
           data:
-            $ref: "../../../schemas/utils/geoip/post/response.yaml"
+            $ref: "../../../schemas/nettools/geoip/post/response.yaml"

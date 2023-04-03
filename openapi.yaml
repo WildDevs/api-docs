@@ -99,6 +99,8 @@ paths:
     $ref: "./resources/nettools/dnslookup/get.yaml"
   /ipinfo:
     $ref: "./resources/nettools/ipinfo/get.yaml"
+  /geoip/{ip}:
+    $ref: "./resources/nettools/geoip/post.yaml"
   /whatsmyip:
     $ref: "./resources/nettools/whatsmyip/get.yaml"
 # Open Data
@@ -127,8 +129,6 @@ paths:
     $ref: "./resources/utils/decode/post.yaml"
   /encode:
     $ref: "./resources/utils/encode/post.yaml"
-  /geoip/{ip}:
-    $ref: "./resources/utils/geoip/post.yaml"
   /hash:
     $ref: "./resources/utils/hash/post.yaml"
   /qrcode:

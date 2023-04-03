@@ -11,7 +11,7 @@ get:
     $ref: "../../../parameters/path/geoip.yaml"
   responses:
     '200':
-      $ref: "../../../responses/utils/geoip/post.yaml"
+      $ref: "../../../responses/nettools/geoip/post.yaml"
     '400':
       $ref: "../../../responses/error/badrequest.yaml"
     '401':
