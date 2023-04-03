@@ -1,0 +1,20 @@
+get:
+  summary: Gets all supported locales
+  operationId: getAllMovieFinderLocales
+  description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+    
+    This is an endpoint to retrieve all supported locales. 
+  tags:
+    - MovieFinder
+  responses:
+    '200':
+      $ref: "../../../responses/moviefinder/locales/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

@@ -213,8 +213,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -427,8 +429,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -705,8 +709,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -947,8 +953,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1047,8 +1055,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1201,8 +1211,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1316,8 +1328,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1420,8 +1434,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1550,8 +1566,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1655,8 +1673,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1776,8 +1796,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -1914,8 +1936,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2110,8 +2134,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2137,6 +2163,625 @@ paths:
                             description: Vehicle Registration Mark
         '400':
           description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /moviefinder:
+    post:
+      summary: Finds a movie or show in a country
+      operationId: moviefinder
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This endpoint offers 5 movie / show suggestions that most closely match the entered title.
+
+        Supported types: `movie` and `show`
+
+        Supported locales:
+        ```
+        sq_AL (Albania)
+        ar_DZ (Algeria)
+        ca_AD (Andorra)
+        pt_AO (Angola)
+        en_AG (Antigua and Barbuda)
+        es_AR (Argentina)
+        en_AU (Australia)
+        de_AT (Austria)
+        az_AZ (Azerbaijan)
+        en_BS (Bahamas)
+        ar_BH (Bahrain)
+        en_BB (Barbados)
+        be_BY (Belarus)
+        fr_BE (Belgium)
+        en_BZ (Belize)
+        en_BM (Bermuda)
+        es_BO (Bolivia)
+        bs_BA (Bosnia and Herzegovina)
+        pt_BR (Brazil)
+        bg_BG (Bulgaria)
+        fr_BF (Burkina Faso)
+        en_CM (Cameroon)
+        en_CA (Canada)
+        pt_CV (Cape Verde)
+        ar_TD (Chad)
+        es_CL (Chile)
+        es_CO (Colombia)
+        es_CR (Costa Rica)
+        hr_HR (Croatia)
+        es_CU (Cuba)
+        el_CY (Cyprus)
+        cs_CZ (Czech Republic)
+        en_DK (Denmark)
+        es_DO (Dominican Republic)
+        fr_CD (DR Congo)
+        es_EC (Ecuador)
+        ar_EG (Egypt)
+        es_SV (El Salvador)
+        es_GQ (Equatorial Guinea)
+        et_EE (Estonia)
+        en_FJ (Fiji)
+        fi_FI (Finland)
+        fr_FR (France)
+        fr_GF (French Guiana)
+        fr_PF (French Polynesia)
+        de_DE (Germany)
+        en_GH (Ghana)
+        en_GI (Gibraltar)
+        el_GR (Greece)
+        es_GT (Guatemala)
+        en_GG (Guernsey)
+        en_GY (Guyana)
+        es_HN (Honduras)
+        zh_HK (Hong Kong)
+        hu_HU (Hungary)
+        is_IS (Iceland)
+        en_IN (India)
+        en_ID (Indonesia)
+        ar_IQ (Iraq)
+        en_IE (Ireland)
+        he_IL (Israel)
+        it_IT (Italy)
+        fr_CI (Ivory Coast)
+        en_JM (Jamaica)
+        ja_JP (Japan)
+        ar_JO (Jordan)
+        en_KE (Kenya)
+        sq_XK (Kosovo)
+        ar_KW (Kuwait)
+        lv_LV (Latvia)
+        ar_LB (Lebanon)
+        ar_LY (Libya)
+        de_LI (Liechtenstein)
+        lt_LT (Lithuania)
+        fr_LU (Luxembourg)
+        mk_MK (Macedonia)
+        fr_MG (Madagascar)
+        en_MW (Malawi)
+        en_MY (Malaysia)
+        fr_ML (Mali)
+        mt_MT (Malta)
+        fr_MU (Mauritius)
+        es_MX (Mexico)
+        ro_MD (Moldova)
+        fr_MC (Monaco)
+        sr_ME (Montenegro)
+        ar_MA (Morocco)
+        pt_MZ (Mozambique)
+        en_NL (Netherlands)
+        en_NZ (New Zealand)
+        es_NI (Nicaragua)
+        fr_NE (Niger)
+        en_NG (Nigeria)
+        en_NO (Norway)
+        ar_OM (Oman)
+        ur_PK (Pakistan)
+        ar_PS (Palestine)
+        es_PA (Panama)
+        en_PG (Papua New Guinea)
+        es_PY (Paraguay)
+        es_PE (Peru)
+        en_PH (Philippines)
+        pl_PL (Poland)
+        pt_PT (Portugal)
+        ar_QA (Qatar)
+        ro_RO (Romania)
+        ru_RU (Russia)
+        en_LC (Saint Lucia)
+        it_SM (San Marino)
+        ar_SA (Saudi Arabia)
+        fr_SN (Senegal)
+        sr_RS (Serbia)
+        fr_SC (Seychelles)
+        en_SG (Singapore)
+        sk_SK (Slovakia)
+        sl_SI (Slovenia)
+        en_ZA (South Africa)
+        ko_KR (South Korea)
+        es_ES (Spain)
+        sv_SE (Sweden)
+        de_CH (Switzerland)
+        zh_TW (Taiwan)
+        sw_TZ (Tanzania)
+        en_TH (Thailand)
+        en_TT (Trinidad and Tobago)
+        ar_TN (Tunisia)
+        tr_TR (Turkey)
+        en_TC (Turks and Caicos Islands)
+        en_UG (Uganda)
+        uk_UA (Ukraine)
+        ar_AE (United Arab Emirates)
+        en_GB (United Kingdom)
+        en_US (United States)
+        es_UY (Uruguay)
+        it_VA (Vatican City)
+        es_VE (Venezuela)
+        ar_YE (Yemen)
+        en_ZM (Zambia)
+        en_ZW (Zimbabwe)
+        ```
+
+        Supported streaming providers:
+        ``` 
+        7plus, 9Now, A Spor, A&E, ABC, ABC iview, Acontra Plus, Acontra Plus Amazon Channel, Acorn TV, AcornTV Amazon Channel, Action Max Amazon Channel, Adult Swim, aha, AHCTV, Alamo on Demand, All 4, Alleskino, Alt Balaji, Amazon Arthaus Channel, Amazon DVD / Blu-ray, Amazon Prime Video, Amazon Video, AMC, AMC on Demand, AMC Plus Apple TV Channel , AMC Theatres, AMC+, AMC+ Amazon Channel, AMC+ Roku Premium Channel, Amediateka, Animal Planet, Animax Plus Amazon Channel, Anime Digital Networks, Aniverse Amazon Channel, Apple TV, Apple TV Plus, Argo, ARROW, Arrow Video Amazon Channel, Arte, Arthouse CNMA Amazon Channel, ArthouseCNMA, AsianCrush, Atres Player, AVA BGB, AVA CSAL, AVA HBZ, AVA VOBB, Azteca 7, Band Sports, BBC America, BBC Earth Amazon Channel, BBC iPlayer, BBC Player Amazon Channel, Bbox VOD, Be TV Go, Beamafilm, Behind the Tree, beIN SPORTS, Belas Artes à La Carte, Believe, Benshi Amazon Channel, Bet+, Bet+ Amazon Channel, BFI Player, BFI Player Amazon Channel, BINGE, Bioskop Online, Blim, Blockbuster, Bloody Movies Amazon Channel, blue TV, blutv, BluTV Amazon Channel, Boomerang, Boomerang Amazon Channel, BoxOffice, Bravo TV, BritBox, BritBox Amazon Channel, Britbox Apple TV Channel , British Pathé TV, BroadwayHD, BT Sport, BTV, C More, Canal VOD, Canal+, Canal+ Sport, Cartoon Network, Catchplay, CBC Gem, CBS, CG Collection Amazon channel, Chai Flicks, Chili, CINE, Cine Comico Amazon Channel, Cineasterna, Cinema of Hearts Amazon Channel, Cinemas a la Demande, Cinemax Amazon Channel, CineMember, Cineplex, Cinépolis KLIC, Claro video, Classix, Club Illico, Cohen Media Amazon Channel, Comedy Central, Comedy Central Plus Amazon Channel, CONTAR, CONtv, Cooking Channel, Courtside 1891, Crackle, Crave, Crave Starz, Criterion Channel, Crunchyroll, CTV, Cultpix, Curiosity Stream, CuriosityStream Amazon Channel, Curzon Amazon Channel, Curzon Home Cinema, CW Seed, Dansk Filmskat, Darkmatter TV, Das Erste Mediathek, Daum, DAZN, DAZN Amazon Channel, Dekkoo, Destination America, DIRECTV, DIRECTV GO, Discovery, Discovery Amazon Channel, Discovery Life, Discovery Plus, Discovery Plus Amazon Channel, Discovery Plus Sport Amazon Channel, Disney Plus, DisneyNOW, DIY Network, Dizi Amazon Channel, DocAlliance Films, DocPlay, DOCSVILLE, DocuBay Amazon Channel, Dogwoof On Demand, Dove Channel, Draken Films, DreamWorksTV Amazon Channel, DRTV, dTV, Edisonline, ELEVEN , Elisa Viihde, EPIC ON, Eros Now, Eros Now Amazon Channel, ESPN, ESPN 2, ESPN 3, ESPN 4, ESPN Deportes, ESPN Player, ESPN Plus, Eurosport, Eventive, Exxen, F1TV Pro, Fandor, Fandor Amazon Channel, Fetch TV, FFF tv, Film Movement Plus, Film Total Amazon Channel, Film1, FilmBox Live Amazon Channel, FilmBox+, Filme Filme, filmfriend, Filmin, Filmin Latino, Filmin Plus, filmingo, Filmlegenden Amazon Channel, FILMO, Filmo Amazon Channel, Filmoteket, Filmow, FILMRISE, Filmstriben, Filmtastic, Filmtastic Amazon Channel, Filmzie, Flimmit, Flix Premiere, FlixFling, FlixOlé, FlixOlé Amazon Channel, Flo Rugby, Food Network, Fox, FOX Soccer Plus, Fox Sports, Fox Sports 1, Foxtel Now, France TV, Free - All, Freeform, Freevee, fuboTV, Full Action Amazon Channel, Full Moon Amazon Channel, Funimation Now, FXNow, FXNow Canada, Gameflow TV, genflix, Global TV, Globoplay, Go3, Gol Mundial, Google Play Movies, GOSPEL PLAY, GRJNGO Amazon Channel, GuideDoc, Hallmark Movies, Hallmark Movies Now Amazon Channel, Hallmark TV Amazon Channel, Hayu, Hayu Amazon Channel, HBO Go, HBO Max, HBO Max Amazon Channel, HBO Max Free, Here TV, HGTV, Hi-YAH, HiDive, Historia y Actualidad Amazon Channel, History, History Play, History Vault, HistoryPlay Amazon Channel, Hoichoi, Hollywood Suite, Hollywood Suite Amazon Channel, Home of Horror, Home of Horror Amazon Channel, Hoopla, Hopster TV, Horizon, Horrify, Hotstar, HRTi, Hulu, Hungama Play, iBAKATV, iciTouTV, Icon Film Amazon Channel, IFC Amazon Channel, IFFR Unleashed, iflix, INA madelen Amazon Channel, IndieFlix, Infinity Selection Amazon Channel, Infinity+, Insomnia Amazon Channel, inSports TV, Investigation Discovery, IPLA, iQIYI, IROKOTV, ITV Amazon Channel, ITVX, Ivi, iWantTFC, iWonder Full Amazon channel, izzi, Jio Cinema, Joyn, Joyn Plus, Kanopy, Kino Now, Kino on Demand, Kinopoisk, KinoPop, Kirjastokino, Kividoo, KKTV, Klassiki, Klik Film, Knowledge Network, Kocowa, KoreaOnDemand, KPN, L Equipe, LaCinetek, Las Estrellas, Laugh Out Loud, Libreflix, Lifetime, Lifetime Movie Club, Ligue 1 Amazon Channel, LINE TV, Lionsgate Play, Lionsgate Plus, Logo TV, Looke, Looke Amazon Channel, Love and Passion Amazon Channel, Love Nature Amazon Channel, Magellan TV, Magenta TV, MagentaTV, Magnolia Selects, ManoramaMax, MARCA Claro, Martha Stewart TV, MAX Stream, Maxdome, maxdome Store, Mediaset Infinity, Megabox, meJane, Meo, Metrograph, MGM Amazon Channel, MGM Plus, MGM Plus Amazon Channel, MGM Plus Roku Premium Channel, Mhz Choice, Microsoft Store, Mitele , MLB Network, MLB TV, MLB.TV Amazon Channel, MLS Season Pass, MOLA TV, More Than Sports TV, More TV, Motor Trend, MotorTrend Amazon Channel, Moviedome Plus Amazon Channel, MovieSaints, Movietickets, Movistar Play, Movistar Plus, MTV, MTV Plus Amazon Channel, MUBI, MUBI Amazon Channel, MX Player, My5, MyOutdoorTV, MZ Choice Amazon Channel, Naver Store, NBA League Pass, NBA League Pass Amazon Channel, NBA TV Amazon Channel, NBC, Neon TV, Netflix, Netflix basic with Ads, Netflix Kids, NetMovies, Netzkino, Nexo Plus, NFB, NFL Game Pass, NFL Plus, NHL Network, NHL TV, Night Flight Plus, NLZIET, Noggin Amazon Channel, Noovo, Nova Play, NOW, Now TV, Now TV Cinema, NPO 1, NPO 2, NPO Start, NPO Zapp, NRK TV, O2 TV, OCS Amazon Channel , OCS Go, Oi Play, Okko, Oldflix, OneFootball, Orange VOD, OSN, Otta, OUTtv Amazon Channel, OVID, OXYGEN, OzFlix, Pantaflix, Pantaya, Pantaya Amazon Channel, Paramount Network, Paramount Plus, Paramount Plus Apple TV Channel , Paramount+ Amazon Channel, Paramount+ Roku Premium Channel, Paramount+ Showtime, Pash Amazon Channel, Pass Warner Amazon Channel, Pathé Thuis, Paus, PBS, PBS Kids Amazon Channel, PBS Masterpiece Amazon Channel, Peacock, Peacock Premium, Pickbox NOW, Pickx Sports, Picl, Planet Horror Amazon Channel, Play Sports, Play Suisse, Player, Plex, Pluto TV, Pokémon Amazon Channel, Pongalo Amazon Channel , Popcorn, Popcornflix, Popcorntimes, Popflick, Premier, Premier Sports, PRTV, Public Domain Movies, puhutv, Pure Flix, QFT Player, QubitTV, Rai News, Rai Play, Rai Sport, Rakuten TV, Rakuten Viki, Rambler, Ran, RDS, realeyz, Realeyz Amazon Channel, Redbox, Retrocrush, Revry, RMC Sport, Rooster Teeth, RTBF, RTL Passion Amazon Channel, RTL Play, RTL+, RTPplay, rtve, Runtime, Ruutu, S Sport Plus, Sat 1, SBS On Demand, SBT Sports, Science Channel, Screambox, Screambox Amazon Channel, Serially, SF Anytime, SFR Play, Shadowz, Shadowz Amazon Channel, Shahid VIP, ShemarooMe, ShortsTV Amazon Channel, Shout! Factory Amazon Channel, Shout! Factory TV, ShowMax, Showtime, Showtime Amazon Channel, Showtime Apple TV Channel, Showtime Roku Premium Channel, Shudder, Shudder Amazon Channel, Silverline Amazon Channel, Sixplay, Sky, Sky Go, Sky Sports, Sky Store, Sky X, SkyShowtime, Sling TV Blue, Sling TV Orange, Sling TV Orange and Blue, Sling TV Sports Extra, Smithsonian Channel, Smithsonian Channel Amazon Channel, SN Now, Sony AXN Amazon Channel, Sony Liv, Sooner, South Park, Spamflix, Spectrum On Demand, Sport TV, Sport1, Sport1+, Sportall, Sportdigital, Sportitalia, Sportschau, Spuul, StackTV Amazon Channel, Stan, Star Plus, Starz, Starz Amazon Channel, Starz Apple TV Channel, Starz Play Amazon Channel, Starz Roku Premium Channel, STARZPLAY, Strim, Studiocanal Presents ALLSTARS Amazon Channel, Studiocanal Presents Amazon Channel, STUDIOCANAL PRESENTS Apple TV Channel, Studiocanal Presents MOVIECULT Amazon Channel, STV Player, Sun Nxt, Sundance Now, Sundance Now Amazon Channel, Super Channel Amazon Channel, Superfresh Amazon Channel, SuperTennis, SVT, Syfy, Takflix, Talk Talk TV, Tata Play, TBS, TCM, Tele2 Play, Telenet, TELETOON+ Amazon Channel, Telia Play, Telstra TV, Tenk, Tennis Channel, Tennis TV, tenplay, TF1, The CW, The FA Player, The Film Detective, The Great Courses Signature Collection Amazon Channel, The Oprah Winfrey Network, The Roku Channel, ThreeNow, Timvision, Tivibu, Tivify, TLC, tln, TNT, TNT Sports Go, TNTGo, TOD, TOD TV, Topic, Travel Channel, TriArt Play, TRT SPOR, TRT1, tru TV, True Story, TSN, TSN Plus, TSN1, TSN2, TSN3, TSN4, TSN5, Tubi TV, Tubi TV Sports, TUDN, Turk On Video Amazon Channel, TV 2, TV 2 Play, TV Land, TV8, TVCortos Amazon Channel, TVF Play, TvIgle, TVNZ, tvo, TVPublica, tvzavr, Twitch, TyC Sports, U-NEXT, UAM TV, UCIcinemas, UKTV Play, UMC Amazon Channel, Univer Video, Universal Pictures, Universcine, Universcine Amazon Channel, UPC TV, Urban Movie Channel, URC TV, USA Network, VH1, VI movies and tv, Viaplay, Viaplay Sports, Vice TV , Viddla, Videobuster, Videoland, Vidio, Viewster Amazon Channel, Viu, VIX , Vix+ Amazon Channel, VOD Club, VOD Poland, Volta, Voot, Voyo, VRT MAX, VRV, Vudu, VUDU Free, VVVVID, W4free, W9, WAKANIM, Watcha, Watchbox, wavve, wedotv, WeTV, WOW, WOW Presents Plus, WTA TV, WWE Network, YeloTV, Yle Areena, Yorck on Demand, YouTube, YouTube Free, YouTube Premium, YouTube Sports, Yupp TV, ZDF, ZDF Herzkino Amazon Channel, Zee5, Ziggo TV
+        ```
+      tags:
+        - MovieFinder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locale:
+                  type: string
+                  example: en_US
+                type:
+                  type: string
+                  description: movie or show
+                  example: movie
+                title:
+                  type: string
+                  description: Title of the movie or show
+                  example: The Matrix
+              required:
+                - locale
+                - type
+                - title
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            locale:
+                              type: string
+                            country:
+                              type: string
+                            title:
+                              type: string
+                            release_year:
+                              type: integer
+                              format: int32
+                            poster:
+                              type: string
+                              format: base64
+                              description: Cover image as base64
+                            offers:
+                              type: object
+                              properties:
+                                buy:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the streaming provider
+                                      url:
+                                        type: string
+                                        description: Direct link to the movie/show
+                                      retail_price:
+                                        type: number
+                                        format: float
+                                        description: Price of the movie/show
+                                      currency:
+                                        type: string
+                                        description: Currency based on the locale
+                                      seasons:
+                                        type: integer
+                                        format: int32
+                                        description: 'Season count, 0 if its a movie'
+                                      icon:
+                                        type: string
+                                        format: base64
+                                        description: Icon of the streaming provider in base64
+                                rent:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the streaming provider
+                                      url:
+                                        type: string
+                                        description: Direct link to the movie/show
+                                      retail_price:
+                                        type: number
+                                        format: float
+                                        description: Price of the movie/show
+                                      currency:
+                                        type: string
+                                        description: Currency based on the locale
+                                      seasons:
+                                        type: integer
+                                        format: int32
+                                        description: 'Season count, 0 if its a movie'
+                                      icon:
+                                        type: string
+                                        format: base64
+                                        description: Icon of the streaming provider in base64
+                                ads:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the streaming provider
+                                      url:
+                                        type: string
+                                        description: Direct link to the movie/show
+                                      retail_price:
+                                        type: number
+                                        format: float
+                                        description: Price of the movie/show
+                                      currency:
+                                        type: string
+                                        description: Currency based on the locale
+                                      seasons:
+                                        type: integer
+                                        format: int32
+                                        description: 'Season count, 0 if its a movie'
+                                      icon:
+                                        type: string
+                                        format: base64
+                                        description: Icon of the streaming provider in base64
+                                flatrate:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        description: Name of the streaming provider
+                                      url:
+                                        type: string
+                                        description: Direct link to the movie/show
+                                      retail_price:
+                                        type: number
+                                        format: float
+                                        description: Price of the movie/show
+                                      currency:
+                                        type: string
+                                        description: Currency based on the locale
+                                      seasons:
+                                        type: integer
+                                        format: int32
+                                        description: 'Season count, 0 if its a movie'
+                                      icon:
+                                        type: string
+                                        format: base64
+                                        description: Icon of the streaming provider in base64
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /moviefinder/locales:
+    get:
+      summary: Gets all supported locales
+      operationId: getAllMovieFinderLocales
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This is an endpoint to retrieve all supported locales. 
+      tags:
+        - MovieFinder
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          locale:
+                            type: string
+                          country:
+                            type: string
+                          currency:
+                            type: string
+                          currency_name:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /moviefinder/providers:
+    get:
+      summary: Gets all supported streaming providers
+      operationId: getAllMovieFinderProviders
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This is an endpoint to retrieve all supported streaming providers. 
+
+        You can filter them by passing the `locale` query parameter.
+      tags:
+        - MovieFinder
+      parameters:
+        - in: query
+          name: locale
+          description: |
+            Must be a valid and supported locale.
+          required: false
+          schema:
+            type: string
+            example: de_DE
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          short_name:
+                            type: string
+                            description: Short name (code) of the provider
+                          name:
+                            type: string
+                            description: Providers full name
+                          monetization_types:
+                            type: string
+                            description: |
+                              Comma sperated values like: buy, rent, ads, flaterate
+                          locale:
+                            type: string
+                            description: locale of the provider
+                          icon:
+                            type: string
+                            format: base64
+                            description: Icon/Image of the provider as base64
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '401':
+          description: Unauthorized Error
           content:
             application/json:
               schema:
@@ -2223,8 +2868,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2359,8 +3006,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2522,8 +3171,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2618,8 +3269,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2801,8 +3454,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2907,8 +3562,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -2993,8 +3650,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -3130,8 +3789,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -3336,8 +3997,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -3460,8 +4123,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -3579,8 +4244,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -3688,8 +4355,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -3950,8 +4619,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4193,8 +4864,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4305,8 +4978,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4416,8 +5091,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4526,8 +5203,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4639,8 +5318,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4803,8 +5484,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -4926,8 +5609,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5036,8 +5721,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5146,8 +5833,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5256,8 +5945,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5378,8 +6069,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5488,8 +6181,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5602,8 +6297,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5712,8 +6409,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5824,8 +6523,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -5954,8 +6655,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6071,8 +6774,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6185,8 +6890,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6334,8 +7041,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6489,8 +7198,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6672,8 +7383,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6782,8 +7495,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -6933,8 +7648,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:
@@ -7043,8 +7760,10 @@ paths:
                       code:
                         type: integer
                         format: int32
+                        example: 200
                       message:
                         type: string
+                        example: OK
                   - type: object
                     properties:
                       data:

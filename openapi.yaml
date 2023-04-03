@@ -87,6 +87,13 @@ paths:
     $ref: "./resources/mockup/user/get.yaml"
   /vehicle:
     $ref: "./resources/mockup/vehicle/get.yaml"
+# MovieFinder
+  /moviefinder:
+    $ref: "./resources/moviefinder/post.yaml"
+  /moviefinder/locales:
+    $ref: "./resources/moviefinder/locales/get.yaml"
+  /moviefinder/providers:
+    $ref: "./resources/moviefinder/providers/get.yaml"
 # Net Tools
   /dnslookup:
     $ref: "./resources/nettools/dnslookup/get.yaml"
@@ -94,7 +101,7 @@ paths:
     $ref: "./resources/nettools/ipinfo/get.yaml"
   /whatsmyip:
     $ref: "./resources/nettools/whatsmyip/get.yaml"
-# Net Tools
+# Random
   /joke:
     $ref: "./resources/random/joke/get.yaml"
   /string:

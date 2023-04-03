@@ -1,0 +1,124 @@
+type: array
+items:
+  type: object
+  properties:
+    locale:
+      type: string
+    country:
+      type: string
+    title:
+      type: string
+    release_year:
+      type: integer
+      format: int32
+    poster:
+      type: string
+      format: base64
+      description: Cover image as base64
+    offers:
+      type: object
+      properties:
+        buy:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the streaming provider
+              url: 
+                type: string
+                description: Direct link to the movie/show
+              retail_price:
+                type: number
+                format: float
+                description: Price of the movie/show
+              currency:
+                type: string
+                description: Currency based on the locale
+              seasons:
+                type: integer
+                format: int32
+                description: Season count, 0 if its a movie
+              icon: 
+                type: string
+                format: base64
+                description: Icon of the streaming provider in base64
+        rent:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the streaming provider
+              url: 
+                type: string
+                description: Direct link to the movie/show
+              retail_price:
+                type: number
+                format: float
+                description: Price of the movie/show
+              currency:
+                type: string
+                description: Currency based on the locale
+              seasons:
+                type: integer
+                format: int32
+                description: Season count, 0 if its a movie
+              icon: 
+                type: string
+                format: base64
+                description: Icon of the streaming provider in base64
+        ads:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the streaming provider
+              url: 
+                type: string
+                description: Direct link to the movie/show
+              retail_price:
+                type: number
+                format: float
+                description: Price of the movie/show
+              currency:
+                type: string
+                description: Currency based on the locale
+              seasons:
+                type: integer
+                format: int32
+                description: Season count, 0 if its a movie
+              icon: 
+                type: string
+                format: base64
+                description: Icon of the streaming provider in base64
+        flatrate:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the streaming provider
+              url: 
+                type: string
+                description: Direct link to the movie/show
+              retail_price:
+                type: number
+                format: float
+                description: Price of the movie/show
+              currency:
+                type: string
+                description: Currency based on the locale
+              seasons:
+                type: integer
+                format: int32
+                description: Season count, 0 if its a movie
+              icon: 
+                type: string
+                format: base64
+                description: Icon of the streaming provider in base64
