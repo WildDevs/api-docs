@@ -4,7 +4,7 @@ get:
   description: |
     `Member` & `Subscriber` Endpoint. API-Key is needed.
   tags:
-    - Utility
+    - Net Tools
   security:
     - ApiKey: []
   parameters:
