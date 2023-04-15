@@ -1,0 +1,6 @@
+type: object
+properties:
+  affirmation:
+    type: string    
+  tag:
+    type: string

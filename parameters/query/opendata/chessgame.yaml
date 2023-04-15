@@ -1,0 +1,64 @@
+- in: query
+  name: limit
+  description: |
+    Must be a value greater or equals to `1`
+  required: false
+  schema:
+    type: integer
+    format: int32
+    example: 1
+
+- in: query
+  name: offset
+  description: |
+    Must be a value greater or equals to `0`
+  required: false
+  schema:
+    type: integer
+    format: int32
+    example: 1
+
+- in: query
+  name: rated
+  description: |
+    Filter for rated. Set this to `true` to receive only rated games.
+  required: false
+  schema:
+    type: boolean
+    example: true
+
+- in: query
+  name: opening_code
+  description: |
+    Filter for opening_code.
+  required: false
+  schema:
+    type: string
+    example: A04
+
+- in: query
+  name: victory_status
+  description: |
+    Filter by victory status. Available values are `Resign`, `Out of Time`, `Draw`, `Mate`
+  required: false
+  schema:
+    type: string
+    example: Mate
+
+- in: query
+  name: winner
+  description: |
+    Filter by winner. Set this to `white` or `black` to receive only games with the given winner.
+  required: false
+  schema:
+    type: string
+    example: black
+
+- in: query
+  name: random
+  description: |
+    Set `random` to `true` to get a random exercise.
+  required: false
+  schema:
+    type: boolean
+    example: true

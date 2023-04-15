@@ -1,0 +1,24 @@
+type: object
+properties:
+  text:
+    type: string
+    description: Your text
+    example: Hello. Welcome to the Wild Devs Community.
+  voice:
+    type: string
+    description: |
+      Provide the voice with locale, code and speaker in following format: locale/code#speaker, see example.
+    example: en_US/vctk#p256
+  link:
+    type: boolean
+    description: |
+      If this set to `true` a link for the sound file will be sent, which is available for 15 minutes.
+      
+      If this set to `false`, binary data will be sent for direct download.
+    example: true
+  ssml:
+    type: boolean
+    description: This is still in experimental state. Speech Synthesis Markup Language Support.
+    example: false
+required:
+  - text

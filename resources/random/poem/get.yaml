@@ -1,0 +1,18 @@
+get:
+  summary: Famous and loved poems
+  operationId: poem
+  description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+  
+    This endpoint provides a random poem from a pool of ~26.5k poems.
+  tags:
+    - Random
+  responses:
+    '200':
+      $ref: "../../../responses/random/poem/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

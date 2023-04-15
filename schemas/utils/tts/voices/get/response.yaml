@@ -1,0 +1,10 @@
+type: object
+properties:
+  voice:
+    type: string
+    example: en_US/cmu-arctic_low
+  speakers:
+    type: array
+    items:
+      type: string
+      example: rxr

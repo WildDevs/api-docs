@@ -1,0 +1,28 @@
+type: object
+properties:
+  isbn13:
+    type: string 
+  isbn10:
+    type: string 
+  title:
+    type: string 
+  subtitle:
+    type: string 
+  authors:
+    type: string 
+  categories:
+    type: string 
+  thumbnail:
+    type: string 
+  description:
+    type: string 
+  published_year:
+    type: integer
+    format: int32
+  average_rating:
+    type: number
+    format: float
+  num_pages:
+    type: integer
+    format: int32
+

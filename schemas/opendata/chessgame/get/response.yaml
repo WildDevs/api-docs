@@ -1,0 +1,28 @@
+type: object
+properties: 
+  rated:
+    type: boolean 
+  turns:
+    type: integer
+    format: int32 
+  victory_status:
+    type: string 
+  time_increment:
+    type: string 
+  winner:
+    type: string 
+  white_rating:
+    type: integer
+    format: int32 
+  black_rating:
+    type: integer
+    format: int32  
+  moves:
+    type: string 
+  opening_code:
+    type: string 
+  opening_moves:
+    type: integer
+    format: int32 
+  opening_fullname:
+    type: string

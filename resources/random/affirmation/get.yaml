@@ -1,0 +1,20 @@
+get:
+  summary: Positive affirmations! Because we love you!
+  operationId: affirmation
+  description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+  
+    This endpoint provides a random affirmation from a pool of ~500 affirmations with tags/categories.
+  tags:
+    - Random
+  parameters:
+    $ref: "../../../parameters/query/random/affirmation.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/random/affirmation/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

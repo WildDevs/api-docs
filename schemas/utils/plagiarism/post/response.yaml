@@ -1,0 +1,14 @@
+type: object
+properties:
+  url:
+    type: string
+    format: url
+    description: The url where the similarity was found
+  similarity:
+    type: number
+    format: float
+    description: |
+      Similarity score: Above `1` means "Very high probability of plagiarism". Below `1` means "Plagiarism probability"
+
+      Example: A score of 0.33791045307978496 would mean, that may not be plagiarism. Only 33% of the given text is similar to the reference texts.
+    example: 0.33791045307978496

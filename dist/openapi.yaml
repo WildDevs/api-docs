@@ -56,438 +56,6 @@ servers:
   - url: 'https://api.wild-devs.net/v1'
     description: API Production Server
 paths:
-  /dictionary:
-    post:
-      summary: Describes a given word for a desired language
-      operationId: dictionary
-      description: |
-        `Subscriber` Only Endpoint. API-Key is needed. This endpoint consumes AI tokens (depends on the output length).
-
-        Provide a word + language and the AI will describe the word. The output is in the same language as the word.
-
-        Supported languages:
-        ```
-        Afrikaans
-        Albanian
-        Arabic
-        Armenian
-        Assamese
-        Azerbaijani
-        Basque
-        Belarusian
-        Bengali
-        Bosnian
-        Bulgarian
-        Burmese
-        Cantonese
-        Catalan
-        Cebuano
-        Chichewa
-        Chinese
-        Corsican
-        Croatian
-        Czech
-        Danish
-        Dutch
-        English
-        Esperanto
-        Estonian
-        Filipino
-        Finnish
-        French
-        Frisian
-        Galician
-        Georgian
-        German
-        Greek
-        Gujarati
-        Haitian Creole
-        Hausa
-        Hawaiian
-        Hebrew
-        Hindi
-        Hmong
-        Hungarian
-        Icelandic
-        Igbo
-        Indonesian
-        Irish
-        Italian
-        Japanese
-        Javanese
-        Kannada
-        Kazakh
-        Khmer
-        Kinyarwanda
-        Korean
-        Kurdish
-        Kyrgyz
-        Lao
-        Latin
-        Latvian
-        Lithuanian
-        Luxembourgish
-        Macedonian
-        Malagasy
-        Malay
-        Malayalam
-        Maltese
-        Maori
-        Marathi
-        Mongolian
-        Myanmar
-        Nepali
-        Norwegian
-        Nyanja
-        Odia
-        Pashto
-        Persian
-        Polish
-        Portuguese
-        Punjabi
-        Romanian
-        Russian
-        Samoan
-        Scots Gaelic
-        Serbian
-        Sesotho
-        Shona
-        Sindhi
-        Sinhala
-        Slovak
-        Slovenian
-        Somali
-        Spanish
-        Sundanese
-        Swahili
-        Swedish
-        Tajik
-        Tamil
-        Tatar
-        Telugu
-        Thai
-        Turkish
-        Turkmen
-        Ukrainian
-        Urdu
-        Uyghur
-        Uzbek
-        Vietnamese
-        Welsh
-        Xhosa
-        Yiddish
-        Yoruba
-        Zulu
-        ```
-      tags:
-        - AI
-      security:
-        - ApiKey: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                word:
-                  type: string
-                  description: 'Any word, no phrase!'
-                  example: Car
-                language:
-                  type: string
-                  description: Choose one of the over 100 supported languages. The word should be in the same language.
-                  example: English
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                        example: 200
-                      message:
-                        type: string
-                        example: OK
-                  - type: object
-                    properties:
-                      data:
-                        type: string
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-  /synonyms:
-    post:
-      summary: Finds synonyms for the given word
-      operationId: synonyms
-      description: |
-        `Subscriber` Only Endpoint. API-Key is needed. This endpoint consumes AI tokens (depends on the output length).
-
-        Provide a word + language and the AI will find synonyms for the word. The output is in the same language as the word.
-
-        Supported languages:
-        ```
-        Afrikaans
-        Albanian
-        Arabic
-        Armenian
-        Assamese
-        Azerbaijani
-        Basque
-        Belarusian
-        Bengali
-        Bosnian
-        Bulgarian
-        Burmese
-        Cantonese
-        Catalan
-        Cebuano
-        Chichewa
-        Chinese
-        Corsican
-        Croatian
-        Czech
-        Danish
-        Dutch
-        English
-        Esperanto
-        Estonian
-        Filipino
-        Finnish
-        French
-        Frisian
-        Galician
-        Georgian
-        German
-        Greek
-        Gujarati
-        Haitian Creole
-        Hausa
-        Hawaiian
-        Hebrew
-        Hindi
-        Hmong
-        Hungarian
-        Icelandic
-        Igbo
-        Indonesian
-        Irish
-        Italian
-        Japanese
-        Javanese
-        Kannada
-        Kazakh
-        Khmer
-        Kinyarwanda
-        Korean
-        Kurdish
-        Kyrgyz
-        Lao
-        Latin
-        Latvian
-        Lithuanian
-        Luxembourgish
-        Macedonian
-        Malagasy
-        Malay
-        Malayalam
-        Maltese
-        Maori
-        Marathi
-        Mongolian
-        Myanmar
-        Nepali
-        Norwegian
-        Nyanja
-        Odia
-        Pashto
-        Persian
-        Polish
-        Portuguese
-        Punjabi
-        Romanian
-        Russian
-        Samoan
-        Scots Gaelic
-        Serbian
-        Sesotho
-        Shona
-        Sindhi
-        Sinhala
-        Slovak
-        Slovenian
-        Somali
-        Spanish
-        Sundanese
-        Swahili
-        Swedish
-        Tajik
-        Tamil
-        Tatar
-        Telugu
-        Thai
-        Turkish
-        Turkmen
-        Ukrainian
-        Urdu
-        Uyghur
-        Uzbek
-        Vietnamese
-        Welsh
-        Xhosa
-        Yiddish
-        Yoruba
-        Zulu
-        ```
-      tags:
-        - AI
-      security:
-        - ApiKey: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                word:
-                  type: string
-                  description: 'Any word, no phrase!'
-                  example: Car
-                language:
-                  type: string
-                  description: Choose one of the over 100 supported languages. The word should be in the same language.
-                  example: English
-      responses:
-        '200':
-          description: Expected Response
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-                        example: success
-                      code:
-                        type: integer
-                        format: int32
-                        example: 200
-                      message:
-                        type: string
-                        example: OK
-                  - type: object
-                    properties:
-                      data:
-                        type: string
-        '400':
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '429':
-          description: Too Many Requests Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
-        '500':
-          description: Unexpected Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  code:
-                    type: integer
-                    format: int32
-                  message:
-                    type: string
-                  note:
-                    type: string
   /currency:
     post:
       summary: Convert an amount from one currency to another currency
@@ -3502,6 +3070,340 @@ paths:
                     type: string
                   note:
                     type: string
+  /book:
+    get:
+      summary: Provides a random book with association to Google open books
+      operationId: book
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This endpoint provides over 6.8k books between 1853 and 2019.
+      tags:
+        - Open Data
+      parameters:
+        - in: query
+          name: limit
+          description: |
+            Must be a value greater or equals to `1`
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: offset
+          description: |
+            Must be a value greater or equals to `0`
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: published_year
+          description: |
+            Search for books which are published in the given year.
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 1995
+        - in: query
+          name: isbn13
+          description: |
+            Search for books with a concret isbn13 number.
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 9781579126278
+        - in: query
+          name: isbn10
+          description: |
+            Search for books with a concret isbn10 number.
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 1579126278
+        - in: query
+          name: random
+          description: |
+            Set `random` to `true` to get a random exercise.
+          required: false
+          schema:
+            type: boolean
+            example: true
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          isbn13:
+                            type: string
+                          isbn10:
+                            type: string
+                          title:
+                            type: string
+                          subtitle:
+                            type: string
+                          authors:
+                            type: string
+                          categories:
+                            type: string
+                          thumbnail:
+                            type: string
+                          description:
+                            type: string
+                          published_year:
+                            type: integer
+                            format: int32
+                          average_rating:
+                            type: number
+                            format: float
+                          num_pages:
+                            type: integer
+                            format: int32
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /chess/game:
+    get:
+      summary: Provides chess game data
+      operationId: chessgame
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This endpoint provides over 20k chess games with many information about the game.
+      tags:
+        - Open Data
+      parameters:
+        - in: query
+          name: limit
+          description: |
+            Must be a value greater or equals to `1`
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: offset
+          description: |
+            Must be a value greater or equals to `0`
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: rated
+          description: |
+            Filter for rated. Set this to `true` to receive only rated games.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - in: query
+          name: opening_code
+          description: |
+            Filter for opening_code.
+          required: false
+          schema:
+            type: string
+            example: A04
+        - in: query
+          name: victory_status
+          description: |
+            Filter by victory status. Available values are `Resign`, `Out of Time`, `Draw`, `Mate`
+          required: false
+          schema:
+            type: string
+            example: Mate
+        - in: query
+          name: winner
+          description: |
+            Filter by winner. Set this to `white` or `black` to receive only games with the given winner.
+          required: false
+          schema:
+            type: string
+            example: black
+        - in: query
+          name: random
+          description: |
+            Set `random` to `true` to get a random exercise.
+          required: false
+          schema:
+            type: boolean
+            example: true
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          rated:
+                            type: boolean
+                          turns:
+                            type: integer
+                            format: int32
+                          victory_status:
+                            type: string
+                          time_increment:
+                            type: string
+                          winner:
+                            type: string
+                          white_rating:
+                            type: integer
+                            format: int32
+                          black_rating:
+                            type: integer
+                            format: int32
+                          moves:
+                            type: string
+                          opening_code:
+                            type: string
+                          opening_moves:
+                            type: integer
+                            format: int32
+                          opening_fullname:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /domains:
     get:
       summary: Provides a list of official top level domains
@@ -3554,6 +3456,238 @@ paths:
                               type: string
                               description: Registrar
                               example: DENIC eG
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /exercise:
+    get:
+      summary: 'Provides a coding exercise with easy, medium and hard difficulties.'
+      operationId: exercise
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        These exercises (over 1.6k) are for programmers to solve the problems which are described. The programming language does not matter, they can be solved in any programming language.
+      tags:
+        - Open Data
+      parameters:
+        - in: query
+          name: limit
+          description: |
+            Must be a value greater or equals to `1`
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: offset
+          description: |
+            Must be a value greater or equals to `0`
+          required: false
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: difficulty
+          description: |
+            Filter by difficulty. Available values are `Easy`, `Medium`, `Hard`
+          required: false
+          schema:
+            type: string
+            example: Medium
+        - in: query
+          name: random
+          description: |
+            Set `random` to `true` to get a random exercise.
+          required: false
+          schema:
+            type: boolean
+            example: true
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            domain:
+                              type: string
+                              description: Top Level Domain
+                              example: .de
+                            type:
+                              type: string
+                              description: country-code or generic
+                              example: country-code
+                            manager:
+                              type: string
+                              description: Registrar
+                              example: DENIC eG
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /affirmation:
+    get:
+      summary: Positive affirmations! Because we love you!
+      operationId: affirmation
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This endpoint provides a random affirmation from a pool of ~500 affirmations with tags/categories.
+      tags:
+        - Random
+      parameters:
+        - in: query
+          name: tag
+          description: |
+            Filter by tag. Available tags are: `love`, `health`, `beauty`, `gratitude`, `spiritual`, `happiness`, `money`, `blessing`, `sleep`
+          required: false
+          schema:
+            type: string
+            example: love
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          affirmation:
+                            type: string
+                          tag:
+                            type: string
         '400':
           description: Bad Request Error
           content:
@@ -3938,6 +4072,186 @@ paths:
                         type: integer
                         format: int32
                         example: 42
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /poem:
+    get:
+      summary: Famous and loved poems
+      operationId: poem
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This endpoint provides a random poem from a pool of ~26.5k poems.
+      tags:
+        - Random
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                          difficulty:
+                            type: string
+                          description:
+                            type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /quote:
+    get:
+      summary: Inspiring quotes for every positive mood
+      operationId: quote
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        This endpoint provides an inspiring quote from a pool of ~1.7k quotes with tag/category.
+      tags:
+        - Random
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          quote:
+                            type: string
+                          tag:
+                            type: string
         '400':
           description: Bad Request Error
           content:
@@ -5045,6 +5359,131 @@ paths:
                     type: string
                   note:
                     type: string
+  /plagiarism:
+    post:
+      summary: Checks a text (sentences) for plagiarism.
+      operationId: plagiarism
+      description: |
+        **How it works**:
+
+        The text the endpoint gets is first cut into sentences. That is, it determines what a sentence is, where a sentence ends, and then splits it into several elements. Each sentence is then converted into so-called tokens (word by word) so that they can later be compared with the reference text.
+
+        The sentences are searched as a whole at a search engine. All links that the search engine gives are visited, downloaded, the content is analyzed, cleaned (header, scripts, buttons, footer, etc... everything that has nothing to do with the context is removed). The content is then tokenized as well.
+
+        How are the texts compared now? There are several algorithms. We have tested some of them (Hamming distance, Jaro-Winkler, Levenshtein distance and Dice coefficient). The best results came from CosineSimilarity:
+
+        ```
+        "This algorithm calculates the cosine of the angle between two vectors representing the texts. The texts are represented as vectors in a multi-dimensional space, and the cosine of the angle between the vectors is used as a similarity score. Cosine similarity is commonly used for comparing document similarity, where documents are represented as term frequency-inverse document frequency (TF-IDF) vectors or word embeddings."
+        ```
+
+        Consequently, we compare the set with all content of all web pages with the Cosine algorithm to get a score. We do this with every sentence.
+
+        If several sentences point to the same source, the values are added together to get a final score for one source.
+
+        All results from all sources and sentences that were tokenized are listed (descending by score). above `1` means: `very high probability of plagiarism`, below `1` means `probability of plagiarism`
+      tags:
+        - Utility
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: |
+                    Any string for plagiarism checking. The string can contain multiple sentences. Maximum 1000 characters. Must not be empty.
+                  example: 'All the world’s a stage, and all the men and women merely players.'
+              required:
+                - text
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          url:
+                            type: string
+                            format: url
+                            description: The url where the similarity was found
+                          similarity:
+                            type: number
+                            format: float
+                            description: |
+                              Similarity score: Above `1` means "Very high probability of plagiarism". Below `1` means "Plagiarism probability"
+
+                              Example: A score of 0.33791045307978496 would mean, that may not be plagiarism. Only 33% of the given text is similar to the reference texts.
+                            example: 0.33791045307978496
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /qrcode:
     post:
       summary: Create QR Code (Quick Response Code)
@@ -5302,6 +5741,221 @@ paths:
                     type: string
         '401':
           description: Unauthorized Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /tts:
+    post:
+      summary: Turns text into speech
+      operationId: tts
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Provides a url or binary for the soundfile.
+      tags:
+        - Utility
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Your text
+                  example: Hello. Welcome to the Wild Devs Community.
+                voice:
+                  type: string
+                  description: |
+                    Provide the voice with locale, code and speaker in following format: locale/code#speaker, see example.
+                  example: en_US/vctk#p256
+                link:
+                  type: boolean
+                  description: |
+                    If this set to `true` a link for the sound file will be sent, which is available for 15 minutes.
+
+                    If this set to `false`, binary data will be sent for direct download.
+                  example: true
+                ssml:
+                  type: boolean
+                  description: This is still in experimental state. Speech Synthesis Markup Language Support.
+                  example: false
+              required:
+                - text
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          link:
+                            type: string
+                            format: url
+                            description: Link to the soundfile (.wav) which is available for 15 minutes.
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /tts/voices:
+    get:
+      summary: 'Provides all supported voices with locale, code and speakers'
+      operationId: ttsVoices
+      description: |
+        `Member` & `Subscriber` Endpoint. API-Key is needed.
+
+        Provides all supported voices with locale, code and speakers
+      tags:
+        - Utility
+      security:
+        - ApiKey: []
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          voice:
+                            type: string
+                            example: en_US/cmu-arctic_low
+                          speakers:
+                            type: array
+                            items:
+                              type: string
+                              example: rxr
+        '400':
+          description: Bad Request Error
           content:
             application/json:
               schema:

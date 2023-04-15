@@ -1,0 +1,26 @@
+post:
+  summary: Turns text into speech
+  operationId: tts
+  description: |
+    `Member` & `Subscriber` Endpoint. API-Key is needed.
+    
+    Provides a url or binary for the soundfile.
+  tags:
+    - Utility
+  security:
+    - ApiKey: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/utils/tts/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/utils/tts/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

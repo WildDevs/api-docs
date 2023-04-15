@@ -58,10 +58,10 @@ servers:
     description: API Production Server
 paths:
 # AI
-  /dictionary:
-    $ref: "./resources/ai/dictionary/post.yaml"
-  /synonyms:
-    $ref: "./resources/ai/synonyms/post.yaml"
+  # /dictionary:
+  #   $ref: "./resources/ai/dictionary/post.yaml"
+  # /synonyms:
+  #   $ref: "./resources/ai/synonyms/post.yaml"
 # Conversion
   /currency:
     $ref: "./resources/conversion/currency/post.yaml"
@@ -104,15 +104,27 @@ paths:
   /whatsmyip:
     $ref: "./resources/nettools/whatsmyip/get.yaml"
 # Open Data
+  /book:
+    $ref: "./resources/opendata/book/get.yaml"
+  /chess/game:
+    $ref: "./resources/opendata/chessgame/get.yaml"
   /domains:
     $ref: "./resources/opendata/domains/get.yaml"
+  /exercise:
+    $ref: "./resources/opendata/exercise/get.yaml"
 # Random
+  /affirmation:
+    $ref: "./resources/random/affirmation/get.yaml"
   /joke:
     $ref: "./resources/random/joke/get.yaml"
   /string:
     $ref: "./resources/random/string/post.yaml"
   /number:
     $ref: "./resources/random/number/post.yaml"
+  /poem:
+    $ref: "./resources/random/poem/get.yaml"
+  /quote:
+    $ref: "./resources/random/quote/get.yaml"
 # UrlShortener
   /urlshorteners:
     $ref: "./resources/urlshortener/get.yaml"
@@ -131,10 +143,16 @@ paths:
     $ref: "./resources/utils/encode/post.yaml"
   /hash:
     $ref: "./resources/utils/hash/post.yaml"
+  /plagiarism:
+    $ref: "./resources/utils/plagiarism/post.yaml"
   /qrcode:
     $ref: "./resources/utils/qrcode/post.yaml"
   /nsfw:
     $ref: "./resources/utils/nsfw/post.yaml"
+  /tts:
+    $ref: "./resources/utils/tts/post.yaml"
+  /tts/voices:
+    $ref: "./resources/utils/tts/voices/get.yaml"
 # Validation
   /bic:
     $ref: "./resources/validation/bic/post.yaml"
