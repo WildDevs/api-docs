@@ -1,0 +1,58 @@
+- in: query
+  name: limit
+  description: |
+    Must be a value greater or equals to `1`
+  required: false
+  schema:
+    type: integer
+    format: int32
+    example: 1
+
+- in: query
+  name: offset
+  description: |
+    Must be a value greater or equals to `0`
+  required: false
+  schema:
+    type: integer
+    format: int32
+    example: 1
+
+- in: query
+  name: published_year
+  description: |
+    Search for books which are published in the given year.
+  required: false
+  schema:
+    type: integer
+    format: int32
+    example: 1995
+
+- in: query
+  name: isbn13
+  description: |
+    Search for books with a concret isbn13 number.
+  required: false
+  schema:
+    type: integer
+    format: int32
+    example: 9781579126278
+
+- in: query
+  name: isbn10
+  description: |
+    Search for books with a concret isbn10 number.
+  required: false
+  schema:
+    type: integer
+    format: int32
+    example: 1579126278
+
+- in: query
+  name: random
+  description: |
+    Set `random` to `true` to get a random exercise.
+  required: false
+  schema:
+    type: boolean
+    example: true

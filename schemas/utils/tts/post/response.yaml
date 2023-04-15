@@ -1,0 +1,6 @@
+type: object
+properties:
+  link:
+    type: string
+    format: url
+    description: Link to the soundfile (.wav) which is available for 15 minutes.

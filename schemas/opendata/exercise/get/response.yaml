@@ -1,0 +1,16 @@
+type: array
+items:
+  type: object
+  properties:
+    domain:
+      type: string
+      description: Top Level Domain
+      example: .de
+    type:
+      type: string
+      description: country-code or generic
+      example: country-code
+    manager:
+      type: string
+      description: Registrar
+      example: DENIC eG

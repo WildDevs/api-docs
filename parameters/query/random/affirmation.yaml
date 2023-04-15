@@ -1,0 +1,8 @@
+- in: query
+  name: tag
+  description: |
+    Filter by tag. Available tags are: `love`, `health`, `beauty`, `gratitude`, `spiritual`, `happiness`, `money`, `blessing`, `sleep`
+  required: false
+  schema:
+    type: string
+    example: love

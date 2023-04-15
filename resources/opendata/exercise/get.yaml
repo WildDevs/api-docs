@@ -1,0 +1,20 @@
+get:
+  summary: Provides a coding exercise with easy, medium and hard difficulties.
+  operationId: exercise
+  description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+    These exercises (over 1.6k) are for programmers to solve the problems which are described. The programming language does not matter, they can be solved in any programming language.
+  tags:
+    - Open Data
+  parameters:
+    $ref: "../../../parameters/query/opendata/exercise.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/opendata/exercise/get.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

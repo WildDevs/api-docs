@@ -1,0 +1,38 @@
+post:
+  summary: Checks a text (sentences) for plagiarism.
+  operationId: plagiarism
+  description: |
+    **How it works**:
+
+    The text the endpoint gets is first cut into sentences. That is, it determines what a sentence is, where a sentence ends, and then splits it into several elements. Each sentence is then converted into so-called tokens (word by word) so that they can later be compared with the reference text.
+
+    The sentences are searched as a whole at a search engine. All links that the search engine gives are visited, downloaded, the content is analyzed, cleaned (header, scripts, buttons, footer, etc... everything that has nothing to do with the context is removed). The content is then tokenized as well.
+
+    How are the texts compared now? There are several algorithms. We have tested some of them (Hamming distance, Jaro-Winkler, Levenshtein distance and Dice coefficient). The best results came from CosineSimilarity:
+  
+    ```
+    "This algorithm calculates the cosine of the angle between two vectors representing the texts. The texts are represented as vectors in a multi-dimensional space, and the cosine of the angle between the vectors is used as a similarity score. Cosine similarity is commonly used for comparing document similarity, where documents are represented as term frequency-inverse document frequency (TF-IDF) vectors or word embeddings."
+    ```
+
+    Consequently, we compare the set with all content of all web pages with the Cosine algorithm to get a score. We do this with every sentence.
+
+    If several sentences point to the same source, the values are added together to get a final score for one source.
+
+    All results from all sources and sentences that were tokenized are listed (descending by score). above `1` means: `very high probability of plagiarism`, below `1` means `probability of plagiarism`
+  tags:
+    - Utility
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/utils/plagiarism/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/utils/plagiarism/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"

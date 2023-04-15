@@ -1,0 +1,9 @@
+type: object
+properties:
+  text:
+    type: string
+    description: |
+      Any string for plagiarism checking. The string can contain multiple sentences. Maximum 1000 characters. Must not be empty.
+    example: All the world’s a stage, and all the men and women merely players.
+required:
+  - text
