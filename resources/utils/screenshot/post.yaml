@@ -4,7 +4,8 @@ post:
   description: |
     `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
 
-    ## Options
+    **Options**
+
     Following options are available for the payload:
 
     | Key                | Description                                                                    | Required?      |
@@ -14,7 +15,8 @@ post:
     | devices            | Pass an array with presets or custom values, see below. default: 1920x1080     | No             |
     | return             | Set it to link or base64. If its set to link (recommended), you will get links to the screenshots, which will be hosted for 15 minutes. If its set to base64, you will receive them as base64 encoded string (response payload can be big).                                                         | Yes            |
 
-    ## Presets
+    **Presets**
+    
     Available device presets to choose. You can also set a custom viewport in following format: `widthxheight`
 
     Pass `devices` to the payload to create screenshots for the given viewports. 
@@ -24,7 +26,7 @@ post:
 
     Users can only choose one device (preset or custom). Members are allowed to pass upto 3 devices, Subscribers can pass upto 10 devices!
 
-    ### Apple
+    **Apple**
     ```
     iPad10 
     iPadAir
@@ -61,8 +63,7 @@ post:
     MacBookPro13
     MacBookPro16
     ```
-
-    ### Google
+    **Google**
     ```
     Pixel3
     Pixel3XL
@@ -74,16 +75,14 @@ post:
     Pixel5
     Pixel5XL
     ```
-
-    ### Honor
+    **Honor**
     ```
     Honor6X
     Honor7X
     Honor8X 
     Honor9X
     ```
-
-    ### HTC
+    **HTC**
     ```
     HTCDesire19s
     HTCOne
@@ -95,8 +94,7 @@ post:
     HTCU12Plus
     HTCWildfireX
     ```
-
-    ### Huawei
+    **Huawei**
     ```
     HuaweiMate10Lite
     HuaweiMate20Lite
@@ -120,8 +118,7 @@ post:
     HuaweiY9Prime
     HuaweiY9s
     ```
-
-    ### LG
+    **LG**
     ```
     LGGPad5
     LGG3
@@ -145,8 +142,7 @@ post:
     LGTributeEmpire
     LGW30
     ```
-
-    ### Microsoft
+    **Microsoft**
     ```
     MSLumina1020
     MSLumina1520
@@ -172,8 +168,7 @@ post:
     MSSurfacePro7
     MSSurfaceProX
     ```
-
-    ### OnePlus
+    **OnePlus**
     ```
     OnePlus6
     OnePlus6T
@@ -188,8 +183,7 @@ post:
     OnePlus9Pro
     OnePlusNord
     ```
-
-    ### Samsung
+    **Samsung**
     ```
     SamsungA30
     SamsungA31
@@ -226,16 +220,14 @@ post:
     SamsungZFlip
     SamsungZFold
     ```
-
-    ### Sony
+    **Sony**
     ```
     SonyXperiaZUltra
     SonyXperiaZ2
     SonyXperiaZ3
     SonyXperiaZ5
     ```
-
-    ### Xiaomi
+    **Xiaomi**
     ```
     XiaomiMi9Lite
     XiaomiMi9SE

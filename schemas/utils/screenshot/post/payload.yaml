@@ -19,8 +19,7 @@ properties:
     items:
       type: string
     description: Pass an array of custom viewports or choose from our presets.
-    example: |
-      ["iPhone14", "HuaweiP8Lite", "562x760"]
+    example: ["iPhone14", "HuaweiP8Lite", "562x760"]
 required:
   - url
   - return
