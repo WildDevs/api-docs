@@ -1,0 +1,21 @@
+type: array
+items:
+  type: object
+  properties:
+    device:
+      type: string
+      description: device name
+    width:
+      type: integer
+      format: int32
+    height:
+      type: integer
+      format: int32
+    link:
+      type: string
+      format: url
+      description: only if `return` is set to link
+    data:
+      type: string
+      format: base64
+      description: only if `return` is set to base64

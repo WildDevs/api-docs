@@ -145,10 +145,12 @@ paths:
     $ref: "./resources/utils/hash/post.yaml"
   /plagiarism:
     $ref: "./resources/utils/plagiarism/post.yaml"
-  /qrcode:
-    $ref: "./resources/utils/qrcode/post.yaml"
   /nsfw:
     $ref: "./resources/utils/nsfw/post.yaml"
+  /qrcode:
+    $ref: "./resources/utils/qrcode/post.yaml"
+  /screenshot:
+    $ref: "./resources/utils/screenshot/post.yaml"
   /tts:
     $ref: "./resources/utils/tts/post.yaml"
   /tts/voices:

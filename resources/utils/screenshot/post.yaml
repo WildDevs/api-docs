@@ -1,0 +1,268 @@
+post:
+  summary: Create screenshots from a website.
+  operationId: screenshot
+  description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+    ## Options
+    Following options are available for the payload:
+
+    | Key                | Description                                                                    | Required?      |
+    |--------------------|--------------------------------------------------------------------------------|----------------|
+    | url                | Url with full schema (https:// or http://)                                     | Yes            |
+    | fullPage           | Set to true, to screenshot the whole page. default: false                     | No             |
+    | devices            | Pass an array with presets or custom values, see below. default: 1920x1080     | No             |
+    | return             | Set it to link or base64. If its set to link (recommended), you will get links to the screenshots, which will be hosted for 15 minutes. If its set to base64, you will receive them as base64 encoded string (response payload can be big).                                                         | Yes            |
+
+    ## Presets
+    Available device presets to choose. You can also set a custom viewport in following format: `widthxheight`
+
+    Pass `devices` to the payload to create screenshots for the given viewports. 
+    Example: "devices": ["iPhone14", "HuaweiP8Lite", "562x760"]
+
+    When passing custom viewport, width must be between `0` and `1920` and height must be between `0` and `1080`.
+
+    Users can only choose one device (preset or custom). Members are allowed to pass upto 3 devices, Subscribers can pass upto 10 devices!
+
+    ### Apple
+    ```
+    iPad10 
+    iPadAir
+    iPadAir2020
+    iPadMini
+    iPadPro11
+    iPadPro12
+    iPhone11Pro
+    iPhone11ProMax
+    iPhone12
+    iPhone12Mini
+    iPhone12Pro
+    iPhone12ProMax
+    iPhone13
+    iPhone13Mini
+    iPhone13Pro
+    iPhone13ProMax
+    iPhone13
+    iPhone13Mini
+    iPhone13Pro
+    iPhone13ProMax
+    iPhone14
+    iPhone14Plus
+    iPhone14Pro
+    iPhone14ProMax
+    iPhoneSE
+    iPhoneSE2020
+    iPhoneSE2022
+    iPhoneXR
+    iPhoneXSMax
+
+    MacBookAir13
+    MacBookPro
+    MacBookPro13
+    MacBookPro16
+    ```
+
+    ### Google
+    ```
+    Pixel3
+    Pixel3XL
+    Pixel3a
+    Pixel3aXL
+    Pixel4
+    Pixel4XL
+    Pixel4a
+    Pixel5
+    Pixel5XL
+    ```
+
+    ### Honor
+    ```
+    Honor6X
+    Honor7X
+    Honor8X 
+    Honor9X
+    ```
+
+    ### HTC
+    ```
+    HTCDesire19s
+    HTCOne
+    HTCOneM8
+    HTCOneM9
+    HTCUUltra
+    HTCU11
+    HTCU11Plus
+    HTCU12Plus
+    HTCWildfireX
+    ```
+
+    ### Huawei
+    ```
+    HuaweiMate10Lite
+    HuaweiMate20Lite
+    HuaweiMate20Pro
+    HuaweiMate30
+    HuaweiMate30Pro
+    HuaweiMatePadPro
+    HuaweiNova7Pro
+    HuaweiNova7i
+    HuaweiP10Plus
+    HuaweiP20Lite
+    HuaweiP20Pro
+    HuaweiP30
+    HuaweiP30Lite
+    HuaweiP30Pro
+    HuaweiP40Lite
+    HuaweiP40Pro
+    HuaweiP8Lite
+    HuaweiP9Lite
+    HuaweiP9
+    HuaweiY9Prime
+    HuaweiY9s
+    ```
+
+    ### LG
+    ```
+    LGGPad5
+    LGG3
+    LGG4
+    LGG5
+    LGG7One
+    LGG7Fit
+    LGG8ThinQ
+    LGG8XThinQ
+    LGK10
+    LGK11Plus
+    LGK20
+    LGK30
+    LGK40
+    LGK50
+    LGK51S
+    LGK61
+    LGNexus5
+    LGStylo4
+    LGStylo5
+    LGTributeEmpire
+    LGW30
+    ```
+
+    ### Microsoft
+    ```
+    MSLumina1020
+    MSLumina1520
+    MSLumina520
+    MSLumina650
+    MSLumina925
+    MSLumina950XL
+    MSSurface
+    MSSurface2
+    MSSurface3
+    MSSurfaceBook
+    MSSurfaceBook313
+    MSSurfaceBook315
+    MSSurfaceLaptop
+    MSSurfaceLaptop313
+    MSSurfaceLaptop315
+    MSSurfacePro
+    MSSurfacePro2
+    MSSurfacePro3
+    MSSurfacePro4
+    MSSurfacePro5
+    MSSurfacePro6
+    MSSurfacePro7
+    MSSurfaceProX
+    ```
+
+    ### OnePlus
+    ```
+    OnePlus6
+    OnePlus6T
+    OnePlus7
+    OnePlus7Pro
+    OnePlus7T
+    OnePlus7TPro
+    OnePlus8
+    OnePlus8Pro
+    OnePlus8T
+    OnePlus9
+    OnePlus9Pro
+    OnePlusNord
+    ```
+
+    ### Samsung
+    ```
+    SamsungA30
+    SamsungA31
+    SamsungA32
+    SamsungA50
+    SamsungA50s
+    SamsungA6s
+    SamsungA70s
+    SamsungA71
+    SamsungFold
+    SamsungJ7Prime
+    SamsungNote3
+    SamsungNote4
+    SamsungNote8
+    SamsungNote9
+    SamsungNote10
+    SamsungNote10Plus
+    SamsungNote20
+    SamsungS10
+    SamsungS10Lite
+    SamsungS10Plus
+    SamsungS20
+    SamsungS20FE
+    SamsungS20Ultra
+    SamsungS21Ultra5G
+    SamsungS6
+    SamsungS6Edge
+    SamsungS7
+    SamsungS7Edge
+    SamsungS8
+    SamsungS8Plus
+    SamsungS9
+    SamsungS9Plus
+    SamsungZFlip
+    SamsungZFold
+    ```
+
+    ### Sony
+    ```
+    SonyXperiaZUltra
+    SonyXperiaZ2
+    SonyXperiaZ3
+    SonyXperiaZ5
+    ```
+
+    ### Xiaomi
+    ```
+    XiaomiMi9Lite
+    XiaomiMi9SE
+    XiaomiMi9
+    XiaomiMi9T
+    XiaomiRedmiNote7
+    XiaomiRedmiNote8
+    XiaomiRedmiNote8Pro
+    XiaomiRedmiNote9
+    XiaomiRedmiNote9Pro
+    ```
+  tags:
+    - Utility
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../schemas/utils/screenshot/post/payload.yaml"
+  responses:
+    '200':
+      $ref: "../../../responses/utils/screenshot/post.yaml"
+    '400':
+      $ref: "../../../responses/error/badrequest.yaml"
+    '401':
+      $ref: "../../../responses/error/unauthorized.yaml"
+    '429':
+      $ref: "../../../responses/error/toomanyrequests.yaml"
+    '500':
+      $ref: "../../../responses/error/unexpected.yaml"
