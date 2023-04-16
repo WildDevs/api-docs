@@ -2,6 +2,8 @@ post:
   summary: Decode text to base64, utf8, utf16le, hex, ascii and latin1
   operationId: decode
   description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
     Decodes given text into various formats
 
     Allowed **from** values are: base64, utf8, utf16le, hex, ascii and latin1

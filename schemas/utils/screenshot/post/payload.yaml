@@ -1,0 +1,25 @@
+type: object
+properties:
+  url:
+    type: string
+    description: The url to the website
+    example: https://bing.com
+  return:
+    type: string
+    description: |
+      `link` or `base64`. Links will be hosted for 15 minutes.
+    example: link
+  fullPage:
+    type: boolean
+    description: | 
+      Set to true, to screenshot the whole page. default: false
+    example: false
+  devices:
+    type: array
+    items:
+      type: string
+    description: Pass an array of custom viewports or choose from our presets.
+    example: ["iPhone14", "HuaweiP8Lite", "562x760"]
+required:
+  - url
+  - return
