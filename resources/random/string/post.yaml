@@ -2,6 +2,8 @@ post:
   summary: Random String Generator
   operationId: string
   description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
     Generate random strings for passwords, product keys, vouchers or uuids as identifiers.
   
     Allowed methods: string, bytes, base32, base62, uuidv4, uuidv5
