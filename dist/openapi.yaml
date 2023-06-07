@@ -56,6 +56,438 @@ servers:
   - url: 'https://api.wild-devs.net/v1'
     description: API Production Server
 paths:
+  /dictionary:
+    post:
+      summary: Describes a given word for a desired language
+      operationId: dictionary
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed. This endpoint consumes AI tokens (depends on the output length).
+
+        Provide a word + language and the AI will describe the word. The output is in the same language as the word.
+
+        Supported languages:
+        ```
+        Afrikaans
+        Albanian
+        Arabic
+        Armenian
+        Assamese
+        Azerbaijani
+        Basque
+        Belarusian
+        Bengali
+        Bosnian
+        Bulgarian
+        Burmese
+        Cantonese
+        Catalan
+        Cebuano
+        Chichewa
+        Chinese
+        Corsican
+        Croatian
+        Czech
+        Danish
+        Dutch
+        English
+        Esperanto
+        Estonian
+        Filipino
+        Finnish
+        French
+        Frisian
+        Galician
+        Georgian
+        German
+        Greek
+        Gujarati
+        Haitian Creole
+        Hausa
+        Hawaiian
+        Hebrew
+        Hindi
+        Hmong
+        Hungarian
+        Icelandic
+        Igbo
+        Indonesian
+        Irish
+        Italian
+        Japanese
+        Javanese
+        Kannada
+        Kazakh
+        Khmer
+        Kinyarwanda
+        Korean
+        Kurdish
+        Kyrgyz
+        Lao
+        Latin
+        Latvian
+        Lithuanian
+        Luxembourgish
+        Macedonian
+        Malagasy
+        Malay
+        Malayalam
+        Maltese
+        Maori
+        Marathi
+        Mongolian
+        Myanmar
+        Nepali
+        Norwegian
+        Nyanja
+        Odia
+        Pashto
+        Persian
+        Polish
+        Portuguese
+        Punjabi
+        Romanian
+        Russian
+        Samoan
+        Scots Gaelic
+        Serbian
+        Sesotho
+        Shona
+        Sindhi
+        Sinhala
+        Slovak
+        Slovenian
+        Somali
+        Spanish
+        Sundanese
+        Swahili
+        Swedish
+        Tajik
+        Tamil
+        Tatar
+        Telugu
+        Thai
+        Turkish
+        Turkmen
+        Ukrainian
+        Urdu
+        Uyghur
+        Uzbek
+        Vietnamese
+        Welsh
+        Xhosa
+        Yiddish
+        Yoruba
+        Zulu
+        ```
+      tags:
+        - AI
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                word:
+                  type: string
+                  description: 'Any word, no phrase!'
+                  example: Car
+                language:
+                  type: string
+                  description: Choose one of the over 100 supported languages. The word should be in the same language.
+                  example: English
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+  /synonyms:
+    post:
+      summary: Finds synonyms for the given word
+      operationId: synonyms
+      description: |
+        `Subscriber` Only Endpoint. API-Key is needed. This endpoint consumes AI tokens (depends on the output length).
+
+        Provide a word + language and the AI will find synonyms for the word. The output is in the same language as the word.
+
+        Supported languages:
+        ```
+        Afrikaans
+        Albanian
+        Arabic
+        Armenian
+        Assamese
+        Azerbaijani
+        Basque
+        Belarusian
+        Bengali
+        Bosnian
+        Bulgarian
+        Burmese
+        Cantonese
+        Catalan
+        Cebuano
+        Chichewa
+        Chinese
+        Corsican
+        Croatian
+        Czech
+        Danish
+        Dutch
+        English
+        Esperanto
+        Estonian
+        Filipino
+        Finnish
+        French
+        Frisian
+        Galician
+        Georgian
+        German
+        Greek
+        Gujarati
+        Haitian Creole
+        Hausa
+        Hawaiian
+        Hebrew
+        Hindi
+        Hmong
+        Hungarian
+        Icelandic
+        Igbo
+        Indonesian
+        Irish
+        Italian
+        Japanese
+        Javanese
+        Kannada
+        Kazakh
+        Khmer
+        Kinyarwanda
+        Korean
+        Kurdish
+        Kyrgyz
+        Lao
+        Latin
+        Latvian
+        Lithuanian
+        Luxembourgish
+        Macedonian
+        Malagasy
+        Malay
+        Malayalam
+        Maltese
+        Maori
+        Marathi
+        Mongolian
+        Myanmar
+        Nepali
+        Norwegian
+        Nyanja
+        Odia
+        Pashto
+        Persian
+        Polish
+        Portuguese
+        Punjabi
+        Romanian
+        Russian
+        Samoan
+        Scots Gaelic
+        Serbian
+        Sesotho
+        Shona
+        Sindhi
+        Sinhala
+        Slovak
+        Slovenian
+        Somali
+        Spanish
+        Sundanese
+        Swahili
+        Swedish
+        Tajik
+        Tamil
+        Tatar
+        Telugu
+        Thai
+        Turkish
+        Turkmen
+        Ukrainian
+        Urdu
+        Uyghur
+        Uzbek
+        Vietnamese
+        Welsh
+        Xhosa
+        Yiddish
+        Yoruba
+        Zulu
+        ```
+      tags:
+        - AI
+      security:
+        - ApiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                word:
+                  type: string
+                  description: 'Any word, no phrase!'
+                  example: Car
+                language:
+                  type: string
+                  description: Choose one of the over 100 supported languages. The word should be in the same language.
+                  example: English
+      responses:
+        '200':
+          description: Expected Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: success
+                      code:
+                        type: integer
+                        format: int32
+                        example: 200
+                      message:
+                        type: string
+                        example: OK
+                  - type: object
+                    properties:
+                      data:
+                        type: string
+        '400':
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '429':
+          description: Too Many Requests Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
+        '500':
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                  note:
+                    type: string
   /currency:
     post:
       summary: Convert an amount from one currency to another currency
@@ -3084,8 +3516,10 @@ paths:
         - in: query
           name: limit
           description: |
-            Must be a value greater or equals to `1`
+            Must be a value greater or equals to `1` and less or equals to `100`
           required: false
+          minimum: 1
+          maximum: 100
           schema:
             type: integer
             format: int32
@@ -3093,8 +3527,10 @@ paths:
         - in: query
           name: offset
           description: |
-            Must be a value greater or equals to `0`
+            Must be a value greater or equals to `1` and less or equals to `100`
           required: false
+          minimum: 1
+          maximum: 100
           schema:
             type: integer
             format: int32
@@ -3129,7 +3565,7 @@ paths:
         - in: query
           name: random
           description: |
-            Set `random` to `true` to get a random exercise.
+            Set `random` to `true` to get a random book.
           required: false
           schema:
             type: boolean
@@ -3248,8 +3684,10 @@ paths:
         - in: query
           name: limit
           description: |
-            Must be a value greater or equals to `1`
+            Must be a value greater or equals to `1` and less or equals to `100`
           required: false
+          minimum: 1
+          maximum: 100
           schema:
             type: integer
             format: int32
@@ -3257,8 +3695,10 @@ paths:
         - in: query
           name: offset
           description: |
-            Must be a value greater or equals to `0`
+            Must be a value greater or equals to `1` and less or equals to `100`
           required: false
+          minimum: 1
+          maximum: 100
           schema:
             type: integer
             format: int32
@@ -3298,7 +3738,7 @@ paths:
         - in: query
           name: random
           description: |
-            Set `random` to `true` to get a random exercise.
+            Set `random` to `true` to get a random chess game.
           required: false
           schema:
             type: boolean
@@ -3521,8 +3961,10 @@ paths:
         - in: query
           name: limit
           description: |
-            Must be a value greater or equals to `1`
+            Must be a value greater or equals to `1` and less or equals to `100`
           required: false
+          minimum: 1
+          maximum: 100
           schema:
             type: integer
             format: int32
@@ -3530,8 +3972,10 @@ paths:
         - in: query
           name: offset
           description: |
-            Must be a value greater or equals to `0`
+            Must be a value greater or equals to `1` and less or equals to `100`
           required: false
+          minimum: 1
+          maximum: 100
           schema:
             type: integer
             format: int32
@@ -3646,12 +4090,42 @@ paths:
       summary: Positive affirmations! Because we love you!
       operationId: affirmation
       description: |
-        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
 
         This endpoint provides a random affirmation from a pool of ~500 affirmations with tags/categories.
       tags:
         - Random
       parameters:
+        - in: query
+          name: limit
+          description: |
+            Must be a value greater or equals to `1` and less or equals to `100`
+          required: false
+          minimum: 1
+          maximum: 100
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: offset
+          description: |
+            Must be a value greater or equals to `1` and less or equals to `100`
+          required: false
+          minimum: 1
+          maximum: 100
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: random
+          description: |
+            Set `random` to `true` to get a random affirmation.
+          required: false
+          schema:
+            type: boolean
+            example: true
         - in: query
           name: tag
           description: |
@@ -3744,7 +4218,7 @@ paths:
       summary: Random Joke Delivery
       operationId: joke
       description: |
-        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
 
         Delivers a random joke from a pool of ~5000. 
 
@@ -3833,6 +4307,8 @@ paths:
       summary: Random String Generator
       operationId: string
       description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
         Generate random strings for passwords, product keys, vouchers or uuids as identifiers.
 
         Allowed methods: string, bytes, base32, base62, uuidv4, uuidv5
@@ -4017,7 +4493,10 @@ paths:
     post:
       summary: Random Number Generator
       operationId: number
-      description: Generate random numbers.
+      description: |
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
+        Generate random numbers.
       tags:
         - Random
       requestBody:
@@ -4128,11 +4607,42 @@ paths:
       summary: Famous and loved poems
       operationId: poem
       description: |
-        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
 
         This endpoint provides a random poem from a pool of ~26.5k poems.
       tags:
         - Random
+      parameters:
+        - in: query
+          name: limit
+          description: |
+            Must be a value greater or equals to `1` and less or equals to `100`
+          required: false
+          minimum: 1
+          maximum: 100
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: offset
+          description: |
+            Must be a value greater or equals to `1` and less or equals to `100`
+          required: false
+          minimum: 1
+          maximum: 100
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: random
+          description: |
+            Set `random` to `true` to get a random poem.
+          required: false
+          schema:
+            type: boolean
+            example: true
       responses:
         '200':
           description: Expected Response
@@ -4219,11 +4729,42 @@ paths:
       summary: Inspiring quotes for every positive mood
       operationId: quote
       description: |
-        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+        `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
 
         This endpoint provides an inspiring quote from a pool of ~1.7k quotes with tag/category.
       tags:
         - Random
+      parameters:
+        - in: query
+          name: limit
+          description: |
+            Must be a value greater or equals to `1` and less or equals to `100`
+          required: false
+          minimum: 1
+          maximum: 100
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: offset
+          description: |
+            Must be a value greater or equals to `1` and less or equals to `100`
+          required: false
+          minimum: 1
+          maximum: 100
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: query
+          name: random
+          description: |
+            Set `random` to `true` to get a random quote.
+          required: false
+          schema:
+            type: boolean
+            example: true
       responses:
         '200':
           description: Expected Response

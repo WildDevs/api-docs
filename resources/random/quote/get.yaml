@@ -2,11 +2,13 @@ get:
   summary: Inspiring quotes for every positive mood
   operationId: quote
   description: |
-    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
   
     This endpoint provides an inspiring quote from a pool of ~1.7k quotes with tag/category.
   tags:
     - Random
+  parameters:
+    $ref: "../../../parameters/query/random/quote.yaml"
   responses:
     '200':
       $ref: "../../../responses/random/quote/get.yaml"

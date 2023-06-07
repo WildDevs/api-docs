@@ -1,7 +1,10 @@
 post:
   summary: Random Number Generator
   operationId: number
-  description: Generate random numbers.
+  description: |
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+    
+    Generate random numbers.
   tags:
     - Random
   requestBody:

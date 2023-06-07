@@ -2,8 +2,8 @@ get:
   summary: Positive affirmations! Because we love you!
   operationId: affirmation
   description: |
-    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.`Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
-  
+    `Public`, `Member` & `Subscriber` Endpoint. API-Key not necessary.
+
     This endpoint provides a random affirmation from a pool of ~500 affirmations with tags/categories.
   tags:
     - Random

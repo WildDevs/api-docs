@@ -58,10 +58,10 @@ servers:
     description: API Production Server
 paths:
 # AI
-  # /dictionary:
-  #   $ref: "./resources/ai/dictionary/post.yaml"
-  # /synonyms:
-  #   $ref: "./resources/ai/synonyms/post.yaml"
+  /dictionary:
+    $ref: "./resources/ai/dictionary/post.yaml"
+  /synonyms:
+    $ref: "./resources/ai/synonyms/post.yaml"
 # Conversion
   /currency:
     $ref: "./resources/conversion/currency/post.yaml"

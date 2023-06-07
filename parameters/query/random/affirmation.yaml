@@ -1,3 +1,37 @@
+
+- in: query
+  name: limit
+  description: |
+    Must be a value greater or equals to `1` and less or equals to `100`
+  required: false
+  minimum: 1
+  maximum: 100
+  schema:
+    type: integer
+    format: int32
+    example: 1
+
+- in: query
+  name: offset
+  description: |
+    Must be a value greater or equals to `1` and less or equals to `100`
+  required: false
+  minimum: 1
+  maximum: 100
+  schema:
+    type: integer
+    format: int32
+    example: 1
+
+- in: query
+  name: random
+  description: |
+    Set `random` to `true` to get a random affirmation.
+  required: false
+  schema:
+    type: boolean
+    example: true
+
 - in: query
   name: tag
   description: |
